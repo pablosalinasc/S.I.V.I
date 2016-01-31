@@ -1,0 +1,2 @@
+class HomeVendedorController < ApplicationController
+end

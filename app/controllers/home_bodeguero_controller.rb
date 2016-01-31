@@ -1,0 +1,2 @@
+class HomeBodegueroController < ApplicationController
+end

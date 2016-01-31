@@ -1,0 +1,2 @@
+module HomeBodegueroHelper
+end

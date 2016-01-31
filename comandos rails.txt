@@ -1,0 +1,26 @@
+crear aplicación
+rails new nombreAplicacion
+
+crear controlador
+rails generate controller nombreCtrl accion(vista)
+
+crear modelo
+rails generate model nombreModelo
+
+crear base de datos
+rake db:create
+
+migrar base de datos (actualiar campos)
+rake db:migrate
+
+Repeat de articulos (del contorlador) en la vista
+<% articulos.each do |articulo| %>
+	informacion de los articulos
+<%end%>
+
+eliminar controlador
+rails destroy controller nombre
+
+eliminar modelo
+rails destroy controller nombre
+
