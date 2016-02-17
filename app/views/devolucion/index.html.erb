@@ -1,0 +1,43 @@
+<h1>Listing devolucion</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id venta</th>
+      <th>Id local</th>
+      <th>Id vendedor</th>
+      <th>Id estado devolucion</th>
+      <th>Fecha devolucion</th>
+      <th>Monto cambio</th>
+      <th>Cant insumos nuevos devolucion</th>
+      <th>Tipo devolucion</th>
+      <th>Comentario devolucion</th>
+      <th>Insumos defectuosos devolucion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devolucion.each do |devolucion| %>
+      <tr>
+        <td><%= devolucion.ID_VENTA %></td>
+        <td><%= devolucion.ID_LOCAL %></td>
+        <td><%= devolucion.ID_VENDEDOR %></td>
+        <td><%= devolucion.ID_ESTADO_DEVOLUCION %></td>
+        <td><%= devolucion.FECHA_DEVOLUCION %></td>
+        <td><%= devolucion.MONTO_CAMBIO %></td>
+        <td><%= devolucion.CANT_INSUMOS_NUEVOS_DEVOLUCION %></td>
+        <td><%= devolucion.TIPO_DEVOLUCION %></td>
+        <td><%= devolucion.COMENTARIO_DEVOLUCION %></td>
+        <td><%= devolucion.INSUMOS_DEFECTUOSOS_DEVOLUCION %></td>
+        <td><%= link_to 'Show', devolucion %></td>
+        <td><%= link_to 'Edit', edit_devolucion_path(devolucion) %></td>
+        <td><%= link_to 'Destroy', devolucion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Devolucion', new_devolucion_path %>

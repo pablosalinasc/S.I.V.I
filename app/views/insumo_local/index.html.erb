@@ -1,0 +1,29 @@
+<h1>Listing insumo_local</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id insumo</th>
+      <th>Id local</th>
+      <th>Stock insumo local</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @insumo_local.each do |insumo_local| %>
+      <tr>
+        <td><%= insumo_local.ID_INSUMO %></td>
+        <td><%= insumo_local.ID_LOCAL %></td>
+        <td><%= insumo_local.STOCK_INSUMO_LOCAL %></td>
+        <td><%= link_to 'Show', insumo_local %></td>
+        <td><%= link_to 'Edit', edit_insumo_local_path(insumo_local) %></td>
+        <td><%= link_to 'Destroy', insumo_local, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insumo local', new_insumo_local_path %>

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id venta:</strong>
+  <%= @devolucion.ID_VENTA %>
+</p>
+
+<p>
+  <strong>Id local:</strong>
+  <%= @devolucion.ID_LOCAL %>
+</p>
+
+<p>
+  <strong>Id vendedor:</strong>
+  <%= @devolucion.ID_VENDEDOR %>
+</p>
+
+<p>
+  <strong>Id estado devolucion:</strong>
+  <%= @devolucion.ID_ESTADO_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Fecha devolucion:</strong>
+  <%= @devolucion.FECHA_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Monto cambio:</strong>
+  <%= @devolucion.MONTO_CAMBIO %>
+</p>
+
+<p>
+  <strong>Cant insumos nuevos devolucion:</strong>
+  <%= @devolucion.CANT_INSUMOS_NUEVOS_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Tipo devolucion:</strong>
+  <%= @devolucion.TIPO_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Comentario devolucion:</strong>
+  <%= @devolucion.COMENTARIO_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Insumos defectuosos devolucion:</strong>
+  <%= @devolucion.INSUMOS_DEFECTUOSOS_DEVOLUCION %>
+</p>
+
+<%= link_to 'Edit', edit_devolucion_path(@devolucion) %> |
+<%= link_to 'Back', devolucion_index_path %>

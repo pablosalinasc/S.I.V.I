@@ -1,0 +1,49 @@
+<%= form_for(@guia_de_despacho) do |f| %>
+  <% if @guia_de_despacho.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guia_de_despacho.errors.count, "error") %> prohibited this guia_de_despacho from being saved:</h2>
+
+      <ul>
+      <% @guia_de_despacho.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_COMPRA %><br>
+    <%= f.number_field :ID_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_SALIDA_GUIA %><br>
+    <%= f.datetime_select :FECHA_SALIDA_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_RECEPCION_GUIA %><br>
+    <%= f.datetime_select :FECHA_RECEPCION_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :TIPO_MOVIMIENTO_GUIA %><br>
+    <%= f.text_field :TIPO_MOVIMIENTO_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :VEHICULO_GUIA %><br>
+    <%= f.text_field :VEHICULO_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :DESTINO_GUIA %><br>
+    <%= f.text_field :DESTINO_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :DESPACHO_LOCAL_GUIA %><br>
+    <%= f.check_box :DESPACHO_LOCAL_GUIA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

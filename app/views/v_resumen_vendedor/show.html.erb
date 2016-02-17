@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id usuario:</strong>
+  <%= @v_resumen_vendedor.ID_USUARIO %>
+</p>
+
+<p>
+  <strong>Nombre usuario:</strong>
+  <%= @v_resumen_vendedor.NOMBRE_USUARIO %>
+</p>
+
+<p>
+  <strong>Rut usuario:</strong>
+  <%= @v_resumen_vendedor.RUT_USUARIO %>
+</p>
+
+<p>
+  <strong>Correo usuario:</strong>
+  <%= @v_resumen_vendedor.CORREO_USUARIO %>
+</p>
+
+<p>
+  <strong>Telefono usuario:</strong>
+  <%= @v_resumen_vendedor.TELEFONO_USUARIO %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @v_resumen_vendedor.EDAD %>
+</p>
+
+<p>
+  <strong>Ventas:</strong>
+  <%= @v_resumen_vendedor.VENTAS %>
+</p>
+
+<p>
+  <strong>Devoluciones:</strong>
+  <%= @v_resumen_vendedor.DEVOLUCIONES %>
+</p>
+
+<%= link_to 'Edit', edit_v_resumen_vendedor_path(@v_resumen_vendedor) %> |
+<%= link_to 'Back', v_resumen_vendedor_index_path %>

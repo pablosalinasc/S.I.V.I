@@ -1,0 +1,25 @@
+<%= form_for(@transicion_estado_compra) do |f| %>
+  <% if @transicion_estado_compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transicion_estado_compra.errors.count, "error") %> prohibited this transicion_estado_compra from being saved:</h2>
+
+      <ul>
+      <% @transicion_estado_compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_ESTADO_COMPRA_DESDE %><br>
+    <%= f.number_field :ID_ESTADO_COMPRA_DESDE %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_ESTADO_COMPRA_HASTA %><br>
+    <%= f.number_field :ID_ESTADO_COMPRA_HASTA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

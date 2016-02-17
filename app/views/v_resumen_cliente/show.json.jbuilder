@@ -1,0 +1,1 @@
+json.extract! @v_resumen_cliente, :id, :ID_CLIENTE, :NOMBRE_CLIENTE, :RUT_CLIENTE, :CORREO_CLIENTE, :TELEFONO_CLIENTE, :EDAD, :DESCUENTO_CLIENTE, :VENTAS, :DEVOLUCIONES, :created_at, :updated_at

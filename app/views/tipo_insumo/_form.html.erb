@@ -1,0 +1,25 @@
+<%= form_for(@tipo_insumo) do |f| %>
+  <% if @tipo_insumo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_insumo.errors.count, "error") %> prohibited this tipo_insumo from being saved:</h2>
+
+      <ul>
+      <% @tipo_insumo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :NOMBRE_INSUMO %><br>
+    <%= f.text_field :NOMBRE_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :COMPATIBILIDAD_INSUMO %><br>
+    <%= f.check_box :COMPATIBILIDAD_INSUMO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

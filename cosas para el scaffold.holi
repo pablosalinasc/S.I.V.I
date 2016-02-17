@@ -1,0 +1,87 @@
+
+rails generate scaffold Bodeguero ID_LOCAL:integer --no-migration
+
+rails generate scaffold Cliente NOMBRE_CLIENTE:string RUT_CLIENTE:string CORREO_CLIENTE:string TELEFONO_CLIENTE:string FECHA_NACIMIENTO_CLIENTE:datetime DESCUENTO_CLIENTE:float --no-migration
+
+rails generate scaffold CodigoProveedor ID_PROVEEDOR:integer ID_INSUMO:integer CODIGO_INSUMO:string --no-migration
+
+rails generate scaffold Compatibilidad ID_MARCA:integer ID_INSUMO:integer --no-migration
+
+rails generate scaffold Cotizacion ID_PROVEEDOR:integer FECHA_COTIZACION:datetime MONTO_TOTAL_COTIZACION:float --no-migration
+
+rails generate scaffold DetalleCambioInsumo ID_DEVOLUCION:integer LINEA_CAMBIO:integer ID_INSUMO:integer PRECIO_CAMBIO:integer CANTIDAD_CAMBIO:integer DESCUENTO_CAMBIO:integer --no-migration
+
+rails generate scaffold DetalleCotizacion ID_COTIZACION:integer LINEA_COTIZACION:integer ID_PROVEEDOR:integer ID_INSUMO:integer CODIGO_INSUMO:string CANTIDAD_COTIZACION:integer PRECIO_COTIZACION:float --no-migration
+
+rails generate scaffold DetalleDevolucion ID_DEVOLUCION:integer LINEA_DEVOLUCION:integer ID_INSUMO:integer CANTIDAD_PRODUCTOS:integer --no-migration
+
+rails generate scaffold DetalleGuiaDeDespacho ID_GUIA_DESPACHO:integer LINEA_GUIA:integer ID_PROVEEDOR:integer ID_INSUMO:integer CODIGO_INSUMO:string CANTIDAD_GUIA:integer PRECIO_GUIA:float --no-migration
+
+rails generate scaffold DetalleOrdenDeCompra ID_COMPRA:integer LINEA_COMPRA:integer ID_PROVEEDOR:integer ID_INSUMO:integer CODIGO_INSUMO:string CANTIDAD_COMPRA:integer PRECIO_COMPRA:float --no-migration
+
+rails generate scaffold DetalleVenta ID_VENTA:integer LINEA_VENTA:integer ID_INSUMO:integer CANTIDAD_VENTA:integer PRECIO_VENTA:integer DESCUENTO_VENTA:integer --no-migration
+
+rails generate scaffold Devolucion ID_VENTA:integer ID_LOCAL:integer ID_VENDEDOR:integer ID_ESTADO_DEVOLUCION:integer FECHA_DEVOLUCION:datetime MONTO_CAMBIO:integer CANT_INSUMOS_NUEVOS_DEVOLUCION:integer TIPO_DEVOLUCION:string COMENTARIO_DEVOLUCION:string INSUMOS_DEFECTUOSOS_DEVOLUCION:boolean --no-migration
+
+rails generate scaffold EstadoDevolucion DESCRIPCION_ESTADO_DEVOLUCION:string --no-migration
+
+rails generate scaffold EstadoOrdenDeCompra DESCRIPCION_ESTADO_COMPRA:string --no-migration
+
+rails generate scaffold GuiaDeDespacho ID_COMPRA:integer ID_PROVEEDOR:integer FECHA_SALIDA_GUIA:datetime FECHA_RECEPCION_GUIA:datetime TIPO_MOVIMIENTO_GUIA:string VEHICULO_GUIA:string DESTINO_GUIA:string DESPACHO_LOCAL_GUIA:boolean --no-migration
+
+rails generate scaffold GuiaLocalBodeguero ID_LOCAL:integer ID_BODEGUERO:integer ID_GUIA_DESPACHO:integer --no-migration
+
+rails generate scaffold Insumo ID_TIPO_INSUMO:integer PRECIO_INSUMO:integer NOMBRE_UNICO_INSUMO:string --no-migration
+
+rails generate scaffold InsumoLocal ID_INSUMO:integer ID_LOCAL:integer STOCK_INSUMO_LOCAL:integer --no-migration
+
+rails generate scaffold Local DIRECCION_LOCAL:string --no-migration
+
+rails generate scaffold Log ID_USUARIO_LOG:integer ID_TUPLA_LOG:integer NEW_VALUE_LOG:string OLD_VALUE_LOG:string FECHA_LOG:datetime NOMBRE_TABLA_LOG:string --no-migration
+
+rails generate scaffold Marca NOMBRE_MARCA:string --no-migration
+
+rails generate scaffold OrdenDeCompra ID_PROVEEDOR:integer ID_COTIZACION:integer ID_ESTADO_COMPRA:integer FECHA_COMPRA:datetime MONTO_TOTAL_COMPRA:float --no-migration
+
+rails generate scaffold Parametro NOMBRE_PARAMETRO:string VALOR_PARAMETRO:string --no-migration
+
+rails generate scaffold Propiedad NOMBRE_PROPIEDAD:string EJEMPLO_VALOR_PROPIEDAD:string --no-migration
+
+rails generate scaffold PropiedadValor ID_PROPIEDAD:integer ID_INSUMO:integer VALOR:string --no-migration
+
+rails generate scaffold Proveedor NOMBRE_PROVEEDOR:string PAIS_PROVEEDOR:string CIUDAD_PROVEEDOR:string DIRECCION_PROVEEDOR:string CORREO_PROVEEDOR:string --no-migration
+
+rails generate scaffold TipoInsumo NOMBRE_INSUMO:string COMPATIBILIDAD_INSUMO:boolean --no-migration
+
+rails generate scaffold TipoInsumoPropiedad ID_PROPIEDAD:integer PRINCIPAL_PROPIEDAD:boolean ID_TIPO_INSUMO:integer --no-migration
+
+rails generate scaffold TransicionEstadoCompra ID_ESTADO_COMPRA_DESDE:integer ID_ESTADO_COMPRA_HASTA:integer --no-migration
+
+rails generate scaffold TransicionEstadosDevolucion ID_ESTADO_DEVOLUCION_DESDE:integer ID_ESTADO_DEVOLUCION_HASTA:integer --no-migration
+
+rails generate scaffold Usuario NOMBRE_USUARIO:string RUT_USUARIO:string FECHA_NACIMIENTO_USUARIO:date CORREO_USUARIO:string TELEFONO_USUARIO:string ROL_USUARIO:string --no-migration
+
+rails generate scaffold VDevolucion ID_DEVOLUCION:integer ID_VENTA:integer ID_LOCAL:integer ID_VENDEDOR:integer ID_ESTADO_DEVOLUCION:integer FECHA_DEVOLUCION:datetime MONTO_CAMBIO:integer CANT_INSUMOS_NUEVOS_DEVOLUCION:integer TIPO_DEVOLUCION:string COMENTARIO_DEVOLUCION:string INSUMOS_DEFECTUOSOS_DEVOLUCION:boolean NOMBRE_VENDEDOR:string NOMBRE_CLIENTE:string ESTADO_ACTUAL:string DIRECCION_LOCAL:string --no-migration
+
+rails generate scaffold VGuiaDespacho ID_GUIA_DESPACHO:integer ID_COMPRA:integer ID_PROVEEDOR:integer FECHA_SALIDA_GUIA:datetime FECHA_RECEPCION_GUIA:datetime TIPO_MOVIMIENTO_GUIA:string VEHICULO_GUIA:string DESTINO_GUIA:string DESPACHO_LOCAL_GUIA:boolean NOMBRE_BODEGUERO_ENCARGADO:string NOMBRE_PROVEEDOR:string LOCAL_DESPACHO:string --no-migration
+
+rails generate scaffold VOrdenDeCompra ID_COMPRA:integer ID_PROVEEDOR:integer ID_COTIZACION:integer ID_ESTADO_COMPRA:integer FECHA_COMPRA:datetime MONTO_TOTAL_COMPRA:float NOMBRE_PROVEEDOR:string FECHA_COTIZACION:datetime ESTADO_ACTUAL:string --no-migration
+
+rails generate scaffold VProveedor ID_PROVEEDOR:integer NOMBRE_PROVEEDOR:string PAIS_PROVEEDOR:string CIUDAD_PROVEEDOR:string DIRECCION_PROVEEDOR:string CORREO_PROVEEDOR:string CANTIDAD_COTIZACIONES:integer CANTIDAD_ORDENES_DE_COMPRA:integer --no-migration
+
+rails generate scaffold VResumenBodeguero ID_USUARIO:integer NOMBRE_USUARIO:string RUT_USUARIO:string CORREO_USUARIO:string TELEFONO_USUARIO:string EDAD:integer VENTAS:integer COMPRAS:integer --no-migration
+
+rails generate scaffold VResumenCliente ID_CLIENTE:integer NOMBRE_CLIENTE:string RUT_CLIENTE:string CORREO_CLIENTE:string TELEFONO_CLIENTE:string EDAD:integer DESCUENTO_CLIENTE:float VENTAS:integer DEVOLUCIONES:integer --no-migration
+
+rails generate scaffold VResumenLocal ID_LOCAL:integer DIRECCION_LOCAL:string CANTIDAD_VENDEDORES:integer CANTIDAD_BODEGUEROS:integer VENTAS_ULTIMO_MES:integer DEVOLUCIONES_ULTIMO_MES:integer --no-migration
+
+rails generate scaffold VResumenVendedor ID_USUARIO:integer NOMBRE_USUARIO:string RUT_USUARIO:string CORREO_USUARIO:string TELEFONO_USUARIO:string EDAD:integer VENTAS:integer DEVOLUCIONES:integer --no-migration
+
+rails generate scaffold VStockInsumo ID_INSUMO:integer DIRECCION_LOCAL:string STOCK_INSUMO_LOCAL:integer --no-migration
+
+rails generate scaffold VVenta ID_VENTA:integer NOMBRE_VENDEDOR:string NOMBRE_CLIENTE:string DIRECCION_LOCAL:string --no-migration
+
+rails generate scaffold Vendedor ID_LOCAL:integer --no-migration
+
+rails generate scaffold Venta ID_VENDEDOR:integer ID_LOCAL:integer ID_CLIENTE:integer FECHA_VENTA:datetime FORMA_DE_PAGO_VENTA:string DESCUENTO_TOTAL_VENTA:integer MONTO_TOTAL_VENTA:integer DESPACHADA_VENTA:boolean ID_BODEGUERO_DESPACHO:integer NUMERO_BOLETA_VENTA:integer --no-migration
+

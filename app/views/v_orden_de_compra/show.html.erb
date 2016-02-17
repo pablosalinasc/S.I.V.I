@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id compra:</strong>
+  <%= @v_orden_de_compra.ID_COMPRA %>
+</p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @v_orden_de_compra.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Id cotizacion:</strong>
+  <%= @v_orden_de_compra.ID_COTIZACION %>
+</p>
+
+<p>
+  <strong>Id estado compra:</strong>
+  <%= @v_orden_de_compra.ID_ESTADO_COMPRA %>
+</p>
+
+<p>
+  <strong>Fecha compra:</strong>
+  <%= @v_orden_de_compra.FECHA_COMPRA %>
+</p>
+
+<p>
+  <strong>Monto total compra:</strong>
+  <%= @v_orden_de_compra.MONTO_TOTAL_COMPRA %>
+</p>
+
+<p>
+  <strong>Nombre proveedor:</strong>
+  <%= @v_orden_de_compra.NOMBRE_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Fecha cotizacion:</strong>
+  <%= @v_orden_de_compra.FECHA_COTIZACION %>
+</p>
+
+<p>
+  <strong>Estado actual:</strong>
+  <%= @v_orden_de_compra.ESTADO_ACTUAL %>
+</p>
+
+<%= link_to 'Edit', edit_v_orden_de_compra_path(@v_orden_de_compra) %> |
+<%= link_to 'Back', v_orden_de_compra_index_path %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id local:</strong>
+  <%= @v_resumen_local.ID_LOCAL %>
+</p>
+
+<p>
+  <strong>Direccion local:</strong>
+  <%= @v_resumen_local.DIRECCION_LOCAL %>
+</p>
+
+<p>
+  <strong>Cantidad vendedores:</strong>
+  <%= @v_resumen_local.CANTIDAD_VENDEDORES %>
+</p>
+
+<p>
+  <strong>Cantidad bodegueros:</strong>
+  <%= @v_resumen_local.CANTIDAD_BODEGUEROS %>
+</p>
+
+<p>
+  <strong>Ventas ultimo mes:</strong>
+  <%= @v_resumen_local.VENTAS_ULTIMO_MES %>
+</p>
+
+<p>
+  <strong>Devoluciones ultimo mes:</strong>
+  <%= @v_resumen_local.DEVOLUCIONES_ULTIMO_MES %>
+</p>
+
+<%= link_to 'Edit', edit_v_resumen_local_path(@v_resumen_local) %> |
+<%= link_to 'Back', v_resumen_local_index_path %>

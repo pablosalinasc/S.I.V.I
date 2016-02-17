@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_INSUMO: 1
+  ID_LOCAL: 1
+  STOCK_INSUMO_LOCAL: 1
+
+two:
+  ID_INSUMO: 1
+  ID_LOCAL: 1
+  STOCK_INSUMO_LOCAL: 1

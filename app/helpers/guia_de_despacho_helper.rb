@@ -1,0 +1,2 @@
+module GuiaDeDespachoHelper
+end

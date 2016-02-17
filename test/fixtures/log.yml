@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_USUARIO_LOG: 1
+  ID_TUPLA_LOG: 1
+  NEW_VALUE_LOG: MyString
+  OLD_VALUE_LOG: MyString
+  FECHA_LOG: 2016-02-17 13:11:33
+  NOMBRE_TABLA_LOG: MyString
+
+two:
+  ID_USUARIO_LOG: 1
+  ID_TUPLA_LOG: 1
+  NEW_VALUE_LOG: MyString
+  OLD_VALUE_LOG: MyString
+  FECHA_LOG: 2016-02-17 13:11:33
+  NOMBRE_TABLA_LOG: MyString

@@ -1,0 +1,29 @@
+<h1>Listing insumo</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id tipo insumo</th>
+      <th>Precio insumo</th>
+      <th>Nombre unico insumo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @insumo.each do |insumo| %>
+      <tr>
+        <td><%= insumo.ID_TIPO_INSUMO %></td>
+        <td><%= insumo.PRECIO_INSUMO %></td>
+        <td><%= insumo.NOMBRE_UNICO_INSUMO %></td>
+        <td><%= link_to 'Show', insumo %></td>
+        <td><%= link_to 'Edit', edit_insumo_path(insumo) %></td>
+        <td><%= link_to 'Destroy', insumo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insumo', new_insumo_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @cotizacion.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Fecha cotizacion:</strong>
+  <%= @cotizacion.FECHA_COTIZACION %>
+</p>
+
+<p>
+  <strong>Monto total cotizacion:</strong>
+  <%= @cotizacion.MONTO_TOTAL_COTIZACION %>
+</p>
+
+<%= link_to 'Edit', edit_cotizacion_path(@cotizacion) %> |
+<%= link_to 'Back', cotizacion_index_path %>

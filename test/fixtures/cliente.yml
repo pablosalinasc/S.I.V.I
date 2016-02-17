@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  NOMBRE_CLIENTE: MyString
+  RUT_CLIENTE: MyString
+  CORREO_CLIENTE: MyString
+  TELEFONO_CLIENTE: MyString
+  FECHA_NACIMIENTO_CLIENTE: 2016-02-17 13:05:54
+  DESCUENTO_CLIENTE: 1.5
+
+two:
+  NOMBRE_CLIENTE: MyString
+  RUT_CLIENTE: MyString
+  CORREO_CLIENTE: MyString
+  TELEFONO_CLIENTE: MyString
+  FECHA_NACIMIENTO_CLIENTE: 2016-02-17 13:05:54
+  DESCUENTO_CLIENTE: 1.5

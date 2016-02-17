@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_USUARIO: 1
+  NOMBRE_USUARIO: MyString
+  RUT_USUARIO: MyString
+  CORREO_USUARIO: MyString
+  TELEFONO_USUARIO: MyString
+  EDAD: 1
+  VENTAS: 1
+  COMPRAS: 1
+
+two:
+  ID_USUARIO: 1
+  NOMBRE_USUARIO: MyString
+  RUT_USUARIO: MyString
+  CORREO_USUARIO: MyString
+  TELEFONO_USUARIO: MyString
+  EDAD: 1
+  VENTAS: 1
+  COMPRAS: 1

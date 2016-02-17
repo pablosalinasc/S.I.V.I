@@ -1,0 +1,47 @@
+<h1>Listing v_guia_despacho</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id guia despacho</th>
+      <th>Id compra</th>
+      <th>Id proveedor</th>
+      <th>Fecha salida guia</th>
+      <th>Fecha recepcion guia</th>
+      <th>Tipo movimiento guia</th>
+      <th>Vehiculo guia</th>
+      <th>Destino guia</th>
+      <th>Despacho local guia</th>
+      <th>Nombre bodeguero encargado</th>
+      <th>Nombre proveedor</th>
+      <th>Local despacho</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_guia_despacho.each do |v_guia_despacho| %>
+      <tr>
+        <td><%= v_guia_despacho.ID_GUIA_DESPACHO %></td>
+        <td><%= v_guia_despacho.ID_COMPRA %></td>
+        <td><%= v_guia_despacho.ID_PROVEEDOR %></td>
+        <td><%= v_guia_despacho.FECHA_SALIDA_GUIA %></td>
+        <td><%= v_guia_despacho.FECHA_RECEPCION_GUIA %></td>
+        <td><%= v_guia_despacho.TIPO_MOVIMIENTO_GUIA %></td>
+        <td><%= v_guia_despacho.VEHICULO_GUIA %></td>
+        <td><%= v_guia_despacho.DESTINO_GUIA %></td>
+        <td><%= v_guia_despacho.DESPACHO_LOCAL_GUIA %></td>
+        <td><%= v_guia_despacho.NOMBRE_BODEGUERO_ENCARGADO %></td>
+        <td><%= v_guia_despacho.NOMBRE_PROVEEDOR %></td>
+        <td><%= v_guia_despacho.LOCAL_DESPACHO %></td>
+        <td><%= link_to 'Show', v_guia_despacho %></td>
+        <td><%= link_to 'Edit', edit_v_guia_despacho_path(v_guia_despacho) %></td>
+        <td><%= link_to 'Destroy', v_guia_despacho, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V guia despacho', new_v_guia_despacho_path %>

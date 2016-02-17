@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_LOCAL: 1
+  DIRECCION_LOCAL: MyString
+  CANTIDAD_VENDEDORES: 1
+  CANTIDAD_BODEGUEROS: 1
+  VENTAS_ULTIMO_MES: 1
+  DEVOLUCIONES_ULTIMO_MES: 1
+
+two:
+  ID_LOCAL: 1
+  DIRECCION_LOCAL: MyString
+  CANTIDAD_VENDEDORES: 1
+  CANTIDAD_BODEGUEROS: 1
+  VENTAS_ULTIMO_MES: 1
+  DEVOLUCIONES_ULTIMO_MES: 1

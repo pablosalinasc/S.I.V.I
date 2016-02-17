@@ -1,0 +1,2 @@
+module DetalleCambioInsumoHelper
+end

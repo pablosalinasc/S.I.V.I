@@ -1,0 +1,41 @@
+<%= form_for(@v_resumen_local) do |f| %>
+  <% if @v_resumen_local.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_resumen_local.errors.count, "error") %> prohibited this v_resumen_local from being saved:</h2>
+
+      <ul>
+      <% @v_resumen_local.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_LOCAL %><br>
+    <%= f.number_field :ID_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :DIRECCION_LOCAL %><br>
+    <%= f.text_field :DIRECCION_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :CANTIDAD_VENDEDORES %><br>
+    <%= f.number_field :CANTIDAD_VENDEDORES %>
+  </div>
+  <div class="field">
+    <%= f.label :CANTIDAD_BODEGUEROS %><br>
+    <%= f.number_field :CANTIDAD_BODEGUEROS %>
+  </div>
+  <div class="field">
+    <%= f.label :VENTAS_ULTIMO_MES %><br>
+    <%= f.number_field :VENTAS_ULTIMO_MES %>
+  </div>
+  <div class="field">
+    <%= f.label :DEVOLUCIONES_ULTIMO_MES %><br>
+    <%= f.number_field :DEVOLUCIONES_ULTIMO_MES %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

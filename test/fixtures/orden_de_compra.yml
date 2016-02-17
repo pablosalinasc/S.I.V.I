@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_PROVEEDOR: 1
+  ID_COTIZACION: 1
+  ID_ESTADO_COMPRA: 1
+  FECHA_COMPRA: 2016-02-17 13:12:13
+  MONTO_TOTAL_COMPRA: 1.5
+
+two:
+  ID_PROVEEDOR: 1
+  ID_COTIZACION: 1
+  ID_ESTADO_COMPRA: 1
+  FECHA_COMPRA: 2016-02-17 13:12:13
+  MONTO_TOTAL_COMPRA: 1.5

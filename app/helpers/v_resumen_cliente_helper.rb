@@ -1,0 +1,2 @@
+module VResumenClienteHelper
+end

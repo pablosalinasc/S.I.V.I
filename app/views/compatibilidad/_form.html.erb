@@ -1,0 +1,25 @@
+<%= form_for(@compatibilidad) do |f| %>
+  <% if @compatibilidad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compatibilidad.errors.count, "error") %> prohibited this compatibilidad from being saved:</h2>
+
+      <ul>
+      <% @compatibilidad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_MARCA %><br>
+    <%= f.number_field :ID_MARCA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_INSUMO %><br>
+    <%= f.number_field :ID_INSUMO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

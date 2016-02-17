@@ -1,0 +1,39 @@
+<h1>Listing v_resumen_vendedor</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id usuario</th>
+      <th>Nombre usuario</th>
+      <th>Rut usuario</th>
+      <th>Correo usuario</th>
+      <th>Telefono usuario</th>
+      <th>Edad</th>
+      <th>Ventas</th>
+      <th>Devoluciones</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_resumen_vendedor.each do |v_resumen_vendedor| %>
+      <tr>
+        <td><%= v_resumen_vendedor.ID_USUARIO %></td>
+        <td><%= v_resumen_vendedor.NOMBRE_USUARIO %></td>
+        <td><%= v_resumen_vendedor.RUT_USUARIO %></td>
+        <td><%= v_resumen_vendedor.CORREO_USUARIO %></td>
+        <td><%= v_resumen_vendedor.TELEFONO_USUARIO %></td>
+        <td><%= v_resumen_vendedor.EDAD %></td>
+        <td><%= v_resumen_vendedor.VENTAS %></td>
+        <td><%= v_resumen_vendedor.DEVOLUCIONES %></td>
+        <td><%= link_to 'Show', v_resumen_vendedor %></td>
+        <td><%= link_to 'Edit', edit_v_resumen_vendedor_path(v_resumen_vendedor) %></td>
+        <td><%= link_to 'Destroy', v_resumen_vendedor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V resumen vendedor', new_v_resumen_vendedor_path %>

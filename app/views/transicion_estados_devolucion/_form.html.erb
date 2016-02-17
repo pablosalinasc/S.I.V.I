@@ -1,0 +1,25 @@
+<%= form_for(@transicion_estados_devolucion) do |f| %>
+  <% if @transicion_estados_devolucion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transicion_estados_devolucion.errors.count, "error") %> prohibited this transicion_estados_devolucion from being saved:</h2>
+
+      <ul>
+      <% @transicion_estados_devolucion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_ESTADO_DEVOLUCION_DESDE %><br>
+    <%= f.number_field :ID_ESTADO_DEVOLUCION_DESDE %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_ESTADO_DEVOLUCION_HASTA %><br>
+    <%= f.number_field :ID_ESTADO_DEVOLUCION_HASTA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_PROPIEDAD: 1
+  PRINCIPAL_PROPIEDAD: false
+  ID_TIPO_INSUMO: 1
+
+two:
+  ID_PROPIEDAD: 1
+  PRINCIPAL_PROPIEDAD: false
+  ID_TIPO_INSUMO: 1

@@ -1,0 +1,53 @@
+<%= form_for(@v_resumen_cliente) do |f| %>
+  <% if @v_resumen_cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_resumen_cliente.errors.count, "error") %> prohibited this v_resumen_cliente from being saved:</h2>
+
+      <ul>
+      <% @v_resumen_cliente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_CLIENTE %><br>
+    <%= f.number_field :ID_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_CLIENTE %><br>
+    <%= f.text_field :NOMBRE_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :RUT_CLIENTE %><br>
+    <%= f.text_field :RUT_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :CORREO_CLIENTE %><br>
+    <%= f.text_field :CORREO_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :TELEFONO_CLIENTE %><br>
+    <%= f.text_field :TELEFONO_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :EDAD %><br>
+    <%= f.number_field :EDAD %>
+  </div>
+  <div class="field">
+    <%= f.label :DESCUENTO_CLIENTE %><br>
+    <%= f.text_field :DESCUENTO_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :VENTAS %><br>
+    <%= f.number_field :VENTAS %>
+  </div>
+  <div class="field">
+    <%= f.label :DEVOLUCIONES %><br>
+    <%= f.number_field :DEVOLUCIONES %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

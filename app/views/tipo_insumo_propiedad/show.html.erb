@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id propiedad:</strong>
+  <%= @tipo_insumo_propiedad.ID_PROPIEDAD %>
+</p>
+
+<p>
+  <strong>Principal propiedad:</strong>
+  <%= @tipo_insumo_propiedad.PRINCIPAL_PROPIEDAD %>
+</p>
+
+<p>
+  <strong>Id tipo insumo:</strong>
+  <%= @tipo_insumo_propiedad.ID_TIPO_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_tipo_insumo_propiedad_path(@tipo_insumo_propiedad) %> |
+<%= link_to 'Back', tipo_insumo_propiedad_index_path %>

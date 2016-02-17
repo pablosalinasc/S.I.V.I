@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id usuario log:</strong>
+  <%= @log.ID_USUARIO_LOG %>
+</p>
+
+<p>
+  <strong>Id tupla log:</strong>
+  <%= @log.ID_TUPLA_LOG %>
+</p>
+
+<p>
+  <strong>New value log:</strong>
+  <%= @log.NEW_VALUE_LOG %>
+</p>
+
+<p>
+  <strong>Old value log:</strong>
+  <%= @log.OLD_VALUE_LOG %>
+</p>
+
+<p>
+  <strong>Fecha log:</strong>
+  <%= @log.FECHA_LOG %>
+</p>
+
+<p>
+  <strong>Nombre tabla log:</strong>
+  <%= @log.NOMBRE_TABLA_LOG %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', log_index_path %>

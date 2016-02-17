@@ -1,0 +1,77 @@
+<%= form_for(@v_devolucion) do |f| %>
+  <% if @v_devolucion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_devolucion.errors.count, "error") %> prohibited this v_devolucion from being saved:</h2>
+
+      <ul>
+      <% @v_devolucion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_DEVOLUCION %><br>
+    <%= f.number_field :ID_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_VENTA %><br>
+    <%= f.number_field :ID_VENTA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_LOCAL %><br>
+    <%= f.number_field :ID_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_VENDEDOR %><br>
+    <%= f.number_field :ID_VENDEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_ESTADO_DEVOLUCION %><br>
+    <%= f.number_field :ID_ESTADO_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_DEVOLUCION %><br>
+    <%= f.datetime_select :FECHA_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :MONTO_CAMBIO %><br>
+    <%= f.number_field :MONTO_CAMBIO %>
+  </div>
+  <div class="field">
+    <%= f.label :CANT_INSUMOS_NUEVOS_DEVOLUCION %><br>
+    <%= f.number_field :CANT_INSUMOS_NUEVOS_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :TIPO_DEVOLUCION %><br>
+    <%= f.text_field :TIPO_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :COMENTARIO_DEVOLUCION %><br>
+    <%= f.text_field :COMENTARIO_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :INSUMOS_DEFECTUOSOS_DEVOLUCION %><br>
+    <%= f.check_box :INSUMOS_DEFECTUOSOS_DEVOLUCION %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_VENDEDOR %><br>
+    <%= f.text_field :NOMBRE_VENDEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_CLIENTE %><br>
+    <%= f.text_field :NOMBRE_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :ESTADO_ACTUAL %><br>
+    <%= f.text_field :ESTADO_ACTUAL %>
+  </div>
+  <div class="field">
+    <%= f.label :DIRECCION_LOCAL %><br>
+    <%= f.text_field :DIRECCION_LOCAL %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

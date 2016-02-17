@@ -1,0 +1,57 @@
+<%= form_for(@venta) do |f| %>
+  <% if @venta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venta.errors.count, "error") %> prohibited this venta from being saved:</h2>
+
+      <ul>
+      <% @venta.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_VENDEDOR %><br>
+    <%= f.number_field :ID_VENDEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_LOCAL %><br>
+    <%= f.number_field :ID_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_CLIENTE %><br>
+    <%= f.number_field :ID_CLIENTE %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_VENTA %><br>
+    <%= f.datetime_select :FECHA_VENTA %>
+  </div>
+  <div class="field">
+    <%= f.label :FORMA_DE_PAGO_VENTA %><br>
+    <%= f.text_field :FORMA_DE_PAGO_VENTA %>
+  </div>
+  <div class="field">
+    <%= f.label :DESCUENTO_TOTAL_VENTA %><br>
+    <%= f.number_field :DESCUENTO_TOTAL_VENTA %>
+  </div>
+  <div class="field">
+    <%= f.label :MONTO_TOTAL_VENTA %><br>
+    <%= f.number_field :MONTO_TOTAL_VENTA %>
+  </div>
+  <div class="field">
+    <%= f.label :DESPACHADA_VENTA %><br>
+    <%= f.check_box :DESPACHADA_VENTA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_BODEGUERO_DESPACHO %><br>
+    <%= f.number_field :ID_BODEGUERO_DESPACHO %>
+  </div>
+  <div class="field">
+    <%= f.label :NUMERO_BOLETA_VENTA %><br>
+    <%= f.number_field :NUMERO_BOLETA_VENTA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

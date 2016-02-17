@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id compra:</strong>
+  <%= @guia_de_despacho.ID_COMPRA %>
+</p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @guia_de_despacho.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Fecha salida guia:</strong>
+  <%= @guia_de_despacho.FECHA_SALIDA_GUIA %>
+</p>
+
+<p>
+  <strong>Fecha recepcion guia:</strong>
+  <%= @guia_de_despacho.FECHA_RECEPCION_GUIA %>
+</p>
+
+<p>
+  <strong>Tipo movimiento guia:</strong>
+  <%= @guia_de_despacho.TIPO_MOVIMIENTO_GUIA %>
+</p>
+
+<p>
+  <strong>Vehiculo guia:</strong>
+  <%= @guia_de_despacho.VEHICULO_GUIA %>
+</p>
+
+<p>
+  <strong>Destino guia:</strong>
+  <%= @guia_de_despacho.DESTINO_GUIA %>
+</p>
+
+<p>
+  <strong>Despacho local guia:</strong>
+  <%= @guia_de_despacho.DESPACHO_LOCAL_GUIA %>
+</p>
+
+<%= link_to 'Edit', edit_guia_de_despacho_path(@guia_de_despacho) %> |
+<%= link_to 'Back', guia_de_despacho_index_path %>

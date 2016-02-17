@@ -1,0 +1,43 @@
+<h1>Listing venta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id vendedor</th>
+      <th>Id local</th>
+      <th>Id cliente</th>
+      <th>Fecha venta</th>
+      <th>Forma de pago venta</th>
+      <th>Descuento total venta</th>
+      <th>Monto total venta</th>
+      <th>Despachada venta</th>
+      <th>Id bodeguero despacho</th>
+      <th>Numero boleta venta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @venta.each do |venta| %>
+      <tr>
+        <td><%= venta.ID_VENDEDOR %></td>
+        <td><%= venta.ID_LOCAL %></td>
+        <td><%= venta.ID_CLIENTE %></td>
+        <td><%= venta.FECHA_VENTA %></td>
+        <td><%= venta.FORMA_DE_PAGO_VENTA %></td>
+        <td><%= venta.DESCUENTO_TOTAL_VENTA %></td>
+        <td><%= venta.MONTO_TOTAL_VENTA %></td>
+        <td><%= venta.DESPACHADA_VENTA %></td>
+        <td><%= venta.ID_BODEGUERO_DESPACHO %></td>
+        <td><%= venta.NUMERO_BOLETA_VENTA %></td>
+        <td><%= link_to 'Show', venta %></td>
+        <td><%= link_to 'Edit', edit_venta_path(venta) %></td>
+        <td><%= link_to 'Destroy', venta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Venta', new_venta_path %>

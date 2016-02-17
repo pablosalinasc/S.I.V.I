@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_LOCAL: 1
+  ID_BODEGUERO: 1
+  ID_GUIA_DESPACHO: 1
+
+two:
+  ID_LOCAL: 1
+  ID_BODEGUERO: 1
+  ID_GUIA_DESPACHO: 1

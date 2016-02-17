@@ -1,0 +1,29 @@
+<%= form_for(@v_stock_insumo) do |f| %>
+  <% if @v_stock_insumo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_stock_insumo.errors.count, "error") %> prohibited this v_stock_insumo from being saved:</h2>
+
+      <ul>
+      <% @v_stock_insumo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_INSUMO %><br>
+    <%= f.number_field :ID_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :DIRECCION_LOCAL %><br>
+    <%= f.text_field :DIRECCION_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :STOCK_INSUMO_LOCAL %><br>
+    <%= f.number_field :STOCK_INSUMO_LOCAL %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

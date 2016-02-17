@@ -1,0 +1,27 @@
+<h1>Listing transicion_estado_compra</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id estado compra desde</th>
+      <th>Id estado compra hasta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transicion_estado_compra.each do |transicion_estado_compra| %>
+      <tr>
+        <td><%= transicion_estado_compra.ID_ESTADO_COMPRA_DESDE %></td>
+        <td><%= transicion_estado_compra.ID_ESTADO_COMPRA_HASTA %></td>
+        <td><%= link_to 'Show', transicion_estado_compra %></td>
+        <td><%= link_to 'Edit', edit_transicion_estado_compra_path(transicion_estado_compra) %></td>
+        <td><%= link_to 'Destroy', transicion_estado_compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transicion estado compra', new_transicion_estado_compra_path %>

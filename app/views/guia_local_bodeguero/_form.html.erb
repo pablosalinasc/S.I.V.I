@@ -1,0 +1,29 @@
+<%= form_for(@guia_local_bodeguero) do |f| %>
+  <% if @guia_local_bodeguero.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guia_local_bodeguero.errors.count, "error") %> prohibited this guia_local_bodeguero from being saved:</h2>
+
+      <ul>
+      <% @guia_local_bodeguero.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_LOCAL %><br>
+    <%= f.number_field :ID_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_BODEGUERO %><br>
+    <%= f.number_field :ID_BODEGUERO %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_GUIA_DESPACHO %><br>
+    <%= f.number_field :ID_GUIA_DESPACHO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

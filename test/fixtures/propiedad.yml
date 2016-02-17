@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  NOMBRE_PROPIEDAD: MyString
+  EJEMPLO_VALOR_PROPIEDAD: MyString
+
+two:
+  NOMBRE_PROPIEDAD: MyString
+  EJEMPLO_VALOR_PROPIEDAD: MyString

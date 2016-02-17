@@ -1,0 +1,35 @@
+<h1>Listing v_resumen_local</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id local</th>
+      <th>Direccion local</th>
+      <th>Cantidad vendedores</th>
+      <th>Cantidad bodegueros</th>
+      <th>Ventas ultimo mes</th>
+      <th>Devoluciones ultimo mes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_resumen_local.each do |v_resumen_local| %>
+      <tr>
+        <td><%= v_resumen_local.ID_LOCAL %></td>
+        <td><%= v_resumen_local.DIRECCION_LOCAL %></td>
+        <td><%= v_resumen_local.CANTIDAD_VENDEDORES %></td>
+        <td><%= v_resumen_local.CANTIDAD_BODEGUEROS %></td>
+        <td><%= v_resumen_local.VENTAS_ULTIMO_MES %></td>
+        <td><%= v_resumen_local.DEVOLUCIONES_ULTIMO_MES %></td>
+        <td><%= link_to 'Show', v_resumen_local %></td>
+        <td><%= link_to 'Edit', edit_v_resumen_local_path(v_resumen_local) %></td>
+        <td><%= link_to 'Destroy', v_resumen_local, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V resumen local', new_v_resumen_local_path %>

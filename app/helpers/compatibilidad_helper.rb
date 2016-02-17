@@ -1,0 +1,2 @@
+module CompatibilidadHelper
+end

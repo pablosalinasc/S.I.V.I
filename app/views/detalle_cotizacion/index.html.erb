@@ -1,0 +1,37 @@
+<h1>Listing detalle_cotizacion</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id cotizacion</th>
+      <th>Linea cotizacion</th>
+      <th>Id proveedor</th>
+      <th>Id insumo</th>
+      <th>Codigo insumo</th>
+      <th>Cantidad cotizacion</th>
+      <th>Precio cotizacion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detalle_cotizacion.each do |detalle_cotizacion| %>
+      <tr>
+        <td><%= detalle_cotizacion.ID_COTIZACION %></td>
+        <td><%= detalle_cotizacion.LINEA_COTIZACION %></td>
+        <td><%= detalle_cotizacion.ID_PROVEEDOR %></td>
+        <td><%= detalle_cotizacion.ID_INSUMO %></td>
+        <td><%= detalle_cotizacion.CODIGO_INSUMO %></td>
+        <td><%= detalle_cotizacion.CANTIDAD_COTIZACION %></td>
+        <td><%= detalle_cotizacion.PRECIO_COTIZACION %></td>
+        <td><%= link_to 'Show', detalle_cotizacion %></td>
+        <td><%= link_to 'Edit', edit_detalle_cotizacion_path(detalle_cotizacion) %></td>
+        <td><%= link_to 'Destroy', detalle_cotizacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detalle cotizacion', new_detalle_cotizacion_path %>

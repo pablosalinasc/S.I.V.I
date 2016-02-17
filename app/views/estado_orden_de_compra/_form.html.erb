@@ -1,0 +1,21 @@
+<%= form_for(@estado_orden_de_compra) do |f| %>
+  <% if @estado_orden_de_compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estado_orden_de_compra.errors.count, "error") %> prohibited this estado_orden_de_compra from being saved:</h2>
+
+      <ul>
+      <% @estado_orden_de_compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :DESCRIPCION_ESTADO_COMPRA %><br>
+    <%= f.text_field :DESCRIPCION_ESTADO_COMPRA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

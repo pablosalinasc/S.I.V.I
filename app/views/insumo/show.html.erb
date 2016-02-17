@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id tipo insumo:</strong>
+  <%= @insumo.ID_TIPO_INSUMO %>
+</p>
+
+<p>
+  <strong>Precio insumo:</strong>
+  <%= @insumo.PRECIO_INSUMO %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @insumo.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_insumo_path(@insumo) %> |
+<%= link_to 'Back', insumo_index_path %>

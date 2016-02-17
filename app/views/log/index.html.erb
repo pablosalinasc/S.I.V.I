@@ -1,0 +1,35 @@
+<h1>Listing log</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id usuario log</th>
+      <th>Id tupla log</th>
+      <th>New value log</th>
+      <th>Old value log</th>
+      <th>Fecha log</th>
+      <th>Nombre tabla log</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @log.each do |log| %>
+      <tr>
+        <td><%= log.ID_USUARIO_LOG %></td>
+        <td><%= log.ID_TUPLA_LOG %></td>
+        <td><%= log.NEW_VALUE_LOG %></td>
+        <td><%= log.OLD_VALUE_LOG %></td>
+        <td><%= log.FECHA_LOG %></td>
+        <td><%= log.NOMBRE_TABLA_LOG %></td>
+        <td><%= link_to 'Show', log %></td>
+        <td><%= link_to 'Edit', edit_log_path(log) %></td>
+        <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Log', new_log_path %>

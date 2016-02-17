@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id estado devolucion desde:</strong>
+  <%= @transicion_estados_devolucion.ID_ESTADO_DEVOLUCION_DESDE %>
+</p>
+
+<p>
+  <strong>Id estado devolucion hasta:</strong>
+  <%= @transicion_estados_devolucion.ID_ESTADO_DEVOLUCION_HASTA %>
+</p>
+
+<%= link_to 'Edit', edit_transicion_estados_devolucion_path(@transicion_estados_devolucion) %> |
+<%= link_to 'Back', transicion_estados_devolucion_index_path %>

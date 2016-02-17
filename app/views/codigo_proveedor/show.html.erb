@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @codigo_proveedor.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Id insumo:</strong>
+  <%= @codigo_proveedor.ID_INSUMO %>
+</p>
+
+<p>
+  <strong>Codigo insumo:</strong>
+  <%= @codigo_proveedor.CODIGO_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_codigo_proveedor_path(@codigo_proveedor) %> |
+<%= link_to 'Back', codigo_proveedor_index_path %>

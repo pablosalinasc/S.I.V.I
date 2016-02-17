@@ -1,0 +1,27 @@
+<h1>Listing transicion_estados_devolucion</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id estado devolucion desde</th>
+      <th>Id estado devolucion hasta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transicion_estados_devolucion.each do |transicion_estados_devolucion| %>
+      <tr>
+        <td><%= transicion_estados_devolucion.ID_ESTADO_DEVOLUCION_DESDE %></td>
+        <td><%= transicion_estados_devolucion.ID_ESTADO_DEVOLUCION_HASTA %></td>
+        <td><%= link_to 'Show', transicion_estados_devolucion %></td>
+        <td><%= link_to 'Edit', edit_transicion_estados_devolucion_path(transicion_estados_devolucion) %></td>
+        <td><%= link_to 'Destroy', transicion_estados_devolucion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transicion estados devolucion', new_transicion_estados_devolucion_path %>

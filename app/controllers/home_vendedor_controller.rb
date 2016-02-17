@@ -1,2 +1,0 @@
-class HomeVendedorController < ApplicationController
-end

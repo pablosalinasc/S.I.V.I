@@ -1,0 +1,29 @@
+<%= form_for(@tipo_insumo_propiedad) do |f| %>
+  <% if @tipo_insumo_propiedad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tipo_insumo_propiedad.errors.count, "error") %> prohibited this tipo_insumo_propiedad from being saved:</h2>
+
+      <ul>
+      <% @tipo_insumo_propiedad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_PROPIEDAD %><br>
+    <%= f.number_field :ID_PROPIEDAD %>
+  </div>
+  <div class="field">
+    <%= f.label :PRINCIPAL_PROPIEDAD %><br>
+    <%= f.check_box :PRINCIPAL_PROPIEDAD %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_TIPO_INSUMO %><br>
+    <%= f.number_field :ID_TIPO_INSUMO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

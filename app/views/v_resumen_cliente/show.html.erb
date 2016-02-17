@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id cliente:</strong>
+  <%= @v_resumen_cliente.ID_CLIENTE %>
+</p>
+
+<p>
+  <strong>Nombre cliente:</strong>
+  <%= @v_resumen_cliente.NOMBRE_CLIENTE %>
+</p>
+
+<p>
+  <strong>Rut cliente:</strong>
+  <%= @v_resumen_cliente.RUT_CLIENTE %>
+</p>
+
+<p>
+  <strong>Correo cliente:</strong>
+  <%= @v_resumen_cliente.CORREO_CLIENTE %>
+</p>
+
+<p>
+  <strong>Telefono cliente:</strong>
+  <%= @v_resumen_cliente.TELEFONO_CLIENTE %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @v_resumen_cliente.EDAD %>
+</p>
+
+<p>
+  <strong>Descuento cliente:</strong>
+  <%= @v_resumen_cliente.DESCUENTO_CLIENTE %>
+</p>
+
+<p>
+  <strong>Ventas:</strong>
+  <%= @v_resumen_cliente.VENTAS %>
+</p>
+
+<p>
+  <strong>Devoluciones:</strong>
+  <%= @v_resumen_cliente.DEVOLUCIONES %>
+</p>
+
+<%= link_to 'Edit', edit_v_resumen_cliente_path(@v_resumen_cliente) %> |
+<%= link_to 'Back', v_resumen_cliente_index_path %>

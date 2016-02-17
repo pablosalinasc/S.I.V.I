@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id vendedor:</strong>
+  <%= @venta.ID_VENDEDOR %>
+</p>
+
+<p>
+  <strong>Id local:</strong>
+  <%= @venta.ID_LOCAL %>
+</p>
+
+<p>
+  <strong>Id cliente:</strong>
+  <%= @venta.ID_CLIENTE %>
+</p>
+
+<p>
+  <strong>Fecha venta:</strong>
+  <%= @venta.FECHA_VENTA %>
+</p>
+
+<p>
+  <strong>Forma de pago venta:</strong>
+  <%= @venta.FORMA_DE_PAGO_VENTA %>
+</p>
+
+<p>
+  <strong>Descuento total venta:</strong>
+  <%= @venta.DESCUENTO_TOTAL_VENTA %>
+</p>
+
+<p>
+  <strong>Monto total venta:</strong>
+  <%= @venta.MONTO_TOTAL_VENTA %>
+</p>
+
+<p>
+  <strong>Despachada venta:</strong>
+  <%= @venta.DESPACHADA_VENTA %>
+</p>
+
+<p>
+  <strong>Id bodeguero despacho:</strong>
+  <%= @venta.ID_BODEGUERO_DESPACHO %>
+</p>
+
+<p>
+  <strong>Numero boleta venta:</strong>
+  <%= @venta.NUMERO_BOLETA_VENTA %>
+</p>
+
+<%= link_to 'Edit', edit_venta_path(@venta) %> |
+<%= link_to 'Back', venta_index_path %>

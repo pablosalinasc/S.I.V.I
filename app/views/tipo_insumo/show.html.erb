@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre insumo:</strong>
+  <%= @tipo_insumo.NOMBRE_INSUMO %>
+</p>
+
+<p>
+  <strong>Compatibilidad insumo:</strong>
+  <%= @tipo_insumo.COMPATIBILIDAD_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_tipo_insumo_path(@tipo_insumo) %> |
+<%= link_to 'Back', tipo_insumo_index_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@v_proveedor) do |f| %>
+  <% if @v_proveedor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_proveedor.errors.count, "error") %> prohibited this v_proveedor from being saved:</h2>
+
+      <ul>
+      <% @v_proveedor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_PROVEEDOR %><br>
+    <%= f.text_field :NOMBRE_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :PAIS_PROVEEDOR %><br>
+    <%= f.text_field :PAIS_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :CIUDAD_PROVEEDOR %><br>
+    <%= f.text_field :CIUDAD_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :DIRECCION_PROVEEDOR %><br>
+    <%= f.text_field :DIRECCION_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :CORREO_PROVEEDOR %><br>
+    <%= f.text_field :CORREO_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :CANTIDAD_COTIZACIONES %><br>
+    <%= f.number_field :CANTIDAD_COTIZACIONES %>
+  </div>
+  <div class="field">
+    <%= f.label :CANTIDAD_ORDENES_DE_COMPRA %><br>
+    <%= f.number_field :CANTIDAD_ORDENES_DE_COMPRA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

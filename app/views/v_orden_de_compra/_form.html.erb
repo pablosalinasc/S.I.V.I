@@ -1,0 +1,53 @@
+<%= form_for(@v_orden_de_compra) do |f| %>
+  <% if @v_orden_de_compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_orden_de_compra.errors.count, "error") %> prohibited this v_orden_de_compra from being saved:</h2>
+
+      <ul>
+      <% @v_orden_de_compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_COMPRA %><br>
+    <%= f.number_field :ID_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_COTIZACION %><br>
+    <%= f.number_field :ID_COTIZACION %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_ESTADO_COMPRA %><br>
+    <%= f.number_field :ID_ESTADO_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_COMPRA %><br>
+    <%= f.datetime_select :FECHA_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :MONTO_TOTAL_COMPRA %><br>
+    <%= f.text_field :MONTO_TOTAL_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_PROVEEDOR %><br>
+    <%= f.text_field :NOMBRE_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_COTIZACION %><br>
+    <%= f.datetime_select :FECHA_COTIZACION %>
+  </div>
+  <div class="field">
+    <%= f.label :ESTADO_ACTUAL %><br>
+    <%= f.text_field :ESTADO_ACTUAL %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+<%= form_for(@log) do |f| %>
+  <% if @log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@log.errors.count, "error") %> prohibited this log from being saved:</h2>
+
+      <ul>
+      <% @log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_USUARIO_LOG %><br>
+    <%= f.number_field :ID_USUARIO_LOG %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_TUPLA_LOG %><br>
+    <%= f.number_field :ID_TUPLA_LOG %>
+  </div>
+  <div class="field">
+    <%= f.label :NEW_VALUE_LOG %><br>
+    <%= f.text_field :NEW_VALUE_LOG %>
+  </div>
+  <div class="field">
+    <%= f.label :OLD_VALUE_LOG %><br>
+    <%= f.text_field :OLD_VALUE_LOG %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_LOG %><br>
+    <%= f.datetime_select :FECHA_LOG %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_TABLA_LOG %><br>
+    <%= f.text_field :NOMBRE_TABLA_LOG %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

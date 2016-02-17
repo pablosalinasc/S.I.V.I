@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_TIPO_INSUMO: 1
+  PRECIO_INSUMO: 1
+  NOMBRE_UNICO_INSUMO: MyString
+
+two:
+  ID_TIPO_INSUMO: 1
+  PRECIO_INSUMO: 1
+  NOMBRE_UNICO_INSUMO: MyString

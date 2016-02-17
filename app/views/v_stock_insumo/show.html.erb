@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id insumo:</strong>
+  <%= @v_stock_insumo.ID_INSUMO %>
+</p>
+
+<p>
+  <strong>Direccion local:</strong>
+  <%= @v_stock_insumo.DIRECCION_LOCAL %>
+</p>
+
+<p>
+  <strong>Stock insumo local:</strong>
+  <%= @v_stock_insumo.STOCK_INSUMO_LOCAL %>
+</p>
+
+<%= link_to 'Edit', edit_v_stock_insumo_path(@v_stock_insumo) %> |
+<%= link_to 'Back', v_stock_insumo_index_path %>

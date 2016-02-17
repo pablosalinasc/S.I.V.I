@@ -1,0 +1,35 @@
+<h1>Listing detalle_cambio_insumo</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id devolucion</th>
+      <th>Linea cambio</th>
+      <th>Id insumo</th>
+      <th>Precio cambio</th>
+      <th>Cantidad cambio</th>
+      <th>Descuento cambio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detalle_cambio_insumo.each do |detalle_cambio_insumo| %>
+      <tr>
+        <td><%= detalle_cambio_insumo.ID_DEVOLUCION %></td>
+        <td><%= detalle_cambio_insumo.LINEA_CAMBIO %></td>
+        <td><%= detalle_cambio_insumo.ID_INSUMO %></td>
+        <td><%= detalle_cambio_insumo.PRECIO_CAMBIO %></td>
+        <td><%= detalle_cambio_insumo.CANTIDAD_CAMBIO %></td>
+        <td><%= detalle_cambio_insumo.DESCUENTO_CAMBIO %></td>
+        <td><%= link_to 'Show', detalle_cambio_insumo %></td>
+        <td><%= link_to 'Edit', edit_detalle_cambio_insumo_path(detalle_cambio_insumo) %></td>
+        <td><%= link_to 'Destroy', detalle_cambio_insumo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detalle cambio insumo', new_detalle_cambio_insumo_path %>

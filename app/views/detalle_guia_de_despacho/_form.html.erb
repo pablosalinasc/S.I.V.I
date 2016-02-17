@@ -1,0 +1,45 @@
+<%= form_for(@detalle_guia_de_despacho) do |f| %>
+  <% if @detalle_guia_de_despacho.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@detalle_guia_de_despacho.errors.count, "error") %> prohibited this detalle_guia_de_despacho from being saved:</h2>
+
+      <ul>
+      <% @detalle_guia_de_despacho.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_GUIA_DESPACHO %><br>
+    <%= f.number_field :ID_GUIA_DESPACHO %>
+  </div>
+  <div class="field">
+    <%= f.label :LINEA_GUIA %><br>
+    <%= f.number_field :LINEA_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_INSUMO %><br>
+    <%= f.number_field :ID_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :CODIGO_INSUMO %><br>
+    <%= f.text_field :CODIGO_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :CANTIDAD_GUIA %><br>
+    <%= f.number_field :CANTIDAD_GUIA %>
+  </div>
+  <div class="field">
+    <%= f.label :PRECIO_GUIA %><br>
+    <%= f.text_field :PRECIO_GUIA %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

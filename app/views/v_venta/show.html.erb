@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id venta:</strong>
+  <%= @v_venta.ID_VENTA %>
+</p>
+
+<p>
+  <strong>Nombre vendedor:</strong>
+  <%= @v_venta.NOMBRE_VENDEDOR %>
+</p>
+
+<p>
+  <strong>Nombre cliente:</strong>
+  <%= @v_venta.NOMBRE_CLIENTE %>
+</p>
+
+<p>
+  <strong>Direccion local:</strong>
+  <%= @v_venta.DIRECCION_LOCAL %>
+</p>
+
+<%= link_to 'Edit', edit_v_venta_path(@v_venta) %> |
+<%= link_to 'Back', v_venta_index_path %>

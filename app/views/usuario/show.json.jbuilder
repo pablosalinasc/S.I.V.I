@@ -1,0 +1,1 @@
+json.extract! @usuario, :id, :NOMBRE_USUARIO, :RUT_USUARIO, :FECHA_NACIMIENTO_USUARIO, :CORREO_USUARIO, :TELEFONO_USUARIO, :ROL_USUARIO, :created_at, :updated_at

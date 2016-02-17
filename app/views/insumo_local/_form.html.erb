@@ -1,0 +1,29 @@
+<%= form_for(@insumo_local) do |f| %>
+  <% if @insumo_local.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insumo_local.errors.count, "error") %> prohibited this insumo_local from being saved:</h2>
+
+      <ul>
+      <% @insumo_local.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_INSUMO %><br>
+    <%= f.number_field :ID_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_LOCAL %><br>
+    <%= f.number_field :ID_LOCAL %>
+  </div>
+  <div class="field">
+    <%= f.label :STOCK_INSUMO_LOCAL %><br>
+    <%= f.number_field :STOCK_INSUMO_LOCAL %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

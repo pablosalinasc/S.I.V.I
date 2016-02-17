@@ -1,0 +1,27 @@
+<h1>Listing compatibilidad</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id marca</th>
+      <th>Id insumo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compatibilidad.each do |compatibilidad| %>
+      <tr>
+        <td><%= compatibilidad.ID_MARCA %></td>
+        <td><%= compatibilidad.ID_INSUMO %></td>
+        <td><%= link_to 'Show', compatibilidad %></td>
+        <td><%= link_to 'Edit', edit_compatibilidad_path(compatibilidad) %></td>
+        <td><%= link_to 'Destroy', compatibilidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Compatibilidad', new_compatibilidad_path %>

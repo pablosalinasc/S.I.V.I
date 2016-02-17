@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @v_proveedor.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Nombre proveedor:</strong>
+  <%= @v_proveedor.NOMBRE_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Pais proveedor:</strong>
+  <%= @v_proveedor.PAIS_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Ciudad proveedor:</strong>
+  <%= @v_proveedor.CIUDAD_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Direccion proveedor:</strong>
+  <%= @v_proveedor.DIRECCION_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Correo proveedor:</strong>
+  <%= @v_proveedor.CORREO_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Cantidad cotizaciones:</strong>
+  <%= @v_proveedor.CANTIDAD_COTIZACIONES %>
+</p>
+
+<p>
+  <strong>Cantidad ordenes de compra:</strong>
+  <%= @v_proveedor.CANTIDAD_ORDENES_DE_COMPRA %>
+</p>
+
+<%= link_to 'Edit', edit_v_proveedor_path(@v_proveedor) %> |
+<%= link_to 'Back', v_proveedor_index_path %>
