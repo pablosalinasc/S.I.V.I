@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217215239) do
+ActiveRecord::Schema.define(version: 0) do
 
   create_table "bodeguero", primary_key: "ID_BODEGUERO", force: true do |t|
     t.integer "ID_LOCAL"
@@ -283,9 +283,6 @@ ActiveRecord::Schema.define(version: 20160217215239) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "usuario", ["email"], name: "index_usuario_on_email", unique: true, using: :btree
-  add_index "usuario", ["reset_password_token"], name: "index_usuario_on_reset_password_token", unique: true, using: :btree
-
   create_table "v_devolucion", id: false, force: true do |t|
     t.integer  "ID_DEVOLUCION",                              default: 0, null: false
     t.integer  "ID_VENTA",                                               null: false
@@ -332,24 +329,25 @@ ActiveRecord::Schema.define(version: 20160217215239) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",                           default: 0
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150
-    t.string  "PAIS_PROVEEDOR",             limit: 50
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200
+    t.integer "ID_PROVEEDOR",               limit: 8
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150, default: ""
+    t.string  "PAIS_PROVEEDOR",             limit: 50,  default: ""
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100, default: ""
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200, default: ""
     t.string  "CORREO_PROVEEDOR",           limit: 100
-    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
-    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false
+    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0,  null: false
+    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0,  null: false
   end
 
   create_table "v_resumen_bodeguero", id: false, force: true do |t|
-    t.integer "ID_USUARIO",                   default: 0, null: false
-    t.string  "NOMBRE_USUARIO",   limit: 200,             null: false
-    t.string  "RUT_USUARIO",      limit: 15,              null: false
+    t.integer "ID_USUARIO",                   default: 0,  null: false
+    t.string  "NOMBRE_USUARIO",   limit: 200,              null: false
+    t.string  "RUT_USUARIO",      limit: 15,               null: false
+    t.string  "CORREO_USUARIO",               default: "", null: false
     t.string  "TELEFONO_USUARIO", limit: 12
     t.integer "EDAD",             limit: 8
-    t.integer "VENTAS",           limit: 8,   default: 0, null: false
-    t.integer "COMPRAS",          limit: 8,   default: 0, null: false
+    t.integer "VENTAS",           limit: 8,   default: 0,  null: false
+    t.integer "COMPRAS",          limit: 8,   default: 0,  null: false
   end
 
   create_table "v_resumen_cliente", id: false, force: true do |t|
@@ -374,13 +372,14 @@ ActiveRecord::Schema.define(version: 20160217215239) do
   end
 
   create_table "v_resumen_vendedor", id: false, force: true do |t|
-    t.integer "ID_USUARIO",                   default: 0, null: false
-    t.string  "NOMBRE_USUARIO",   limit: 200,             null: false
-    t.string  "RUT_USUARIO",      limit: 15,              null: false
+    t.integer "ID_USUARIO",                   default: 0,  null: false
+    t.string  "NOMBRE_USUARIO",   limit: 200,              null: false
+    t.string  "RUT_USUARIO",      limit: 15,               null: false
+    t.string  "CORREO_USUARIO",               default: "", null: false
     t.string  "TELEFONO_USUARIO", limit: 12
     t.integer "EDAD",             limit: 8
-    t.integer "VENTAS",           limit: 8,   default: 0, null: false
-    t.integer "DEVOLUCIONES",     limit: 8,   default: 0, null: false
+    t.integer "VENTAS",           limit: 8,   default: 0,  null: false
+    t.integer "DEVOLUCIONES",     limit: 8,   default: 0,  null: false
   end
 
   create_table "v_stock_insumo", id: false, force: true do |t|
