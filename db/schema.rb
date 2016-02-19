@@ -332,14 +332,24 @@ ActiveRecord::Schema.define(version: 20160217215239) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",               limit: 8
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150, default: ""
-    t.string  "PAIS_PROVEEDOR",             limit: 50,  default: ""
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100, default: ""
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200, default: ""
+    t.integer "ID_PROVEEDOR",                           default: 0
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150
+    t.string  "PAIS_PROVEEDOR",             limit: 50
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200
     t.string  "CORREO_PROVEEDOR",           limit: 100
-    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0,  null: false
-    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0,  null: false
+    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
+    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false
+  end
+
+  create_table "v_resumen_bodeguero", id: false, force: true do |t|
+    t.integer "ID_USUARIO",                   default: 0, null: false
+    t.string  "NOMBRE_USUARIO",   limit: 200,             null: false
+    t.string  "RUT_USUARIO",      limit: 15,              null: false
+    t.string  "TELEFONO_USUARIO", limit: 12
+    t.integer "EDAD",             limit: 8
+    t.integer "VENTAS",           limit: 8,   default: 0, null: false
+    t.integer "COMPRAS",          limit: 8,   default: 0, null: false
   end
 
   create_table "v_resumen_cliente", id: false, force: true do |t|
@@ -361,6 +371,16 @@ ActiveRecord::Schema.define(version: 20160217215239) do
     t.integer "CANTIDAD_BODEGUEROS",     limit: 8,   default: 0, null: false
     t.integer "VENTAS_ULTIMO_MES",       limit: 8,   default: 0, null: false
     t.integer "DEVOLUCIONES_ULTIMO_MES", limit: 8,   default: 0, null: false
+  end
+
+  create_table "v_resumen_vendedor", id: false, force: true do |t|
+    t.integer "ID_USUARIO",                   default: 0, null: false
+    t.string  "NOMBRE_USUARIO",   limit: 200,             null: false
+    t.string  "RUT_USUARIO",      limit: 15,              null: false
+    t.string  "TELEFONO_USUARIO", limit: 12
+    t.integer "EDAD",             limit: 8
+    t.integer "VENTAS",           limit: 8,   default: 0, null: false
+    t.integer "DEVOLUCIONES",     limit: 8,   default: 0, null: false
   end
 
   create_table "v_stock_insumo", id: false, force: true do |t|

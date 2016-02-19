@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   devise_for :usuario
   get 'welcome/index'
 
+  devise_scope :usuario do
+    authenticated :usuario do
+      root 'welcome#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+
   resources :venta
 
   resources :vendedor
@@ -92,7 +102,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
