@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :usuario
+  devise_for :usuario, controllers: {registrations: 'registrations'}
   get 'welcome/index'
 
   devise_scope :usuario do

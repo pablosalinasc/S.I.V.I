@@ -315,9 +315,21 @@ VALUES
 (1,1,500),(2,1,500),(3,1,500),(4,1,500),(5,1,500),(1,2,500),(2,2,500),(3,2,500),(4,2,500),(5,2,500),(1,3,500),(2,3,500),(3,3,50),(4,3,500),(5,3,500);
 
 INSERT INTO `sivi`.`usuario`
-(`NOMBRE_USUARIO`,`RUT_USUARIO`,`FECHA_NACIMIENTO_USUARIO`,`email`,`TELEFONO_USUARIO`,`ROL_USUARIO`)
+(`NOMBRE_USUARIO`,
+`RUT_USUARIO`,
+`FECHA_NACIMIENTO_USUARIO`,
+`TELEFONO_USUARIO`,
+`ROL_USUARIO`,
+`email`,
+`encrypted_password`,
+`sign_in_count`,
+`current_sign_in_at`,
+`last_sign_in_at`,
+`current_sign_in_ip`,
+`last_sign_in_ip`)
 VALUES
-('Nelson Andrés Jerez','18540150-2',19930721,'nelson.jerez@usach.cl','224152317','V'),
+('Pablo Salinas', '18455374-0', '1993-02-22', '3598633', 'V', 'pablo.salinas.cabanas@gmail.com', '$2a$10$70n5pvtyE5CUbAfSwfv2y.OCi.lYV445WCPk5SvqV.8NvoYOGM3..', NULL, NULL, NULL, '1', '2016-02-19 17:51:37', '2016-02-19 17:51:37', '127.0.0.1', '127.0.0.1'),
+('Nelson Andrés Jerez','18540150-2',19930721,'','V','nelson.jerez@usach.cl', '$2a$10$70n5pvtyE5CUbAfSwfv2y.OCi.lYV445WCPk5SvqV.8NvoYOGM3..', '1', '2016-02-19 17:51:37', '2016-02-19 17:51:37', '127.0.0.1', '127.0.0.1'),
 ('Jorge Cocio','16913123-4',19891017,'jorge.cocio@usach.cl','226252317','B'),
 ('Pablo Salinas Cabañas','18455374-0',19930222,'pablo.salinasc@usach.cl','226821922','A'),
 ('Jeison Hernandez','13244221-0',19710411,'jeison.hernandez@gmail.com','225412883','V'),
