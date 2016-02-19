@@ -445,7 +445,7 @@ ALTER TABLE TRANSICION_ESTADO_COMPRA COMMENT 'Entidad que define las transicione
 /*==============================================================*/
 CREATE TABLE USUARIO
 (
-  `ID_USUARIO` int(11) NOT NULL,
+  `ID_USUARIO` int(11) NOT NULL auto_increment,
   `NOMBRE_USUARIO` varchar(200) NOT NULL,
   `RUT_USUARIO` varchar(15) NOT NULL,
   `FECHA_NACIMIENTO_USUARIO` date NOT NULL,
