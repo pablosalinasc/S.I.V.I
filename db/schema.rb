@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160217215239) do
 
   create_table "bodeguero", primary_key: "ID_BODEGUERO", force: true do |t|
     t.integer "ID_LOCAL"
@@ -266,13 +266,25 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "transicion_estados_devolucion", ["ID_ESTADO_DEVOLUCION_HASTA"], name: "FK_RELATIONSHIP_61", using: :btree
 
   create_table "usuario", primary_key: "ID_USUARIO", force: true do |t|
-    t.string "NOMBRE_USUARIO",           limit: 200, null: false
-    t.string "RUT_USUARIO",              limit: 15,  null: false
-    t.date   "FECHA_NACIMIENTO_USUARIO",             null: false
-    t.string "CORREO_USUARIO",           limit: 150, null: false
-    t.string "TELEFONO_USUARIO",         limit: 12
-    t.string "ROL_USUARIO",              limit: 1,   null: false
+    t.string   "NOMBRE_USUARIO",           limit: 200,              null: false
+    t.string   "RUT_USUARIO",              limit: 15,               null: false
+    t.date     "FECHA_NACIMIENTO_USUARIO",                          null: false
+    t.string   "TELEFONO_USUARIO",         limit: 12
+    t.string   "ROL_USUARIO",              limit: 1,                null: false
+    t.string   "email",                                default: "", null: false
+    t.string   "encrypted_password",                   default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                        default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "usuario", ["email"], name: "index_usuario_on_email", unique: true, using: :btree
+  add_index "usuario", ["reset_password_token"], name: "index_usuario_on_reset_password_token", unique: true, using: :btree
 
   create_table "v_devolucion", id: false, force: true do |t|
     t.integer  "ID_DEVOLUCION",                              default: 0, null: false
@@ -320,25 +332,14 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",                           default: 0
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150
-    t.string  "PAIS_PROVEEDOR",             limit: 50
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200
+    t.integer "ID_PROVEEDOR",               limit: 8
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150, default: ""
+    t.string  "PAIS_PROVEEDOR",             limit: 50,  default: ""
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100, default: ""
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200, default: ""
     t.string  "CORREO_PROVEEDOR",           limit: 100
-    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
-    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false
-  end
-
-  create_table "v_resumen_bodeguero", id: false, force: true do |t|
-    t.integer "ID_USUARIO",                   default: 0, null: false
-    t.string  "NOMBRE_USUARIO",   limit: 200,             null: false
-    t.string  "RUT_USUARIO",      limit: 15,              null: false
-    t.string  "CORREO_USUARIO",   limit: 150,             null: false
-    t.string  "TELEFONO_USUARIO", limit: 12
-    t.integer "EDAD",             limit: 8
-    t.integer "VENTAS",           limit: 8,   default: 0, null: false
-    t.integer "COMPRAS",          limit: 8,   default: 0, null: false
+    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0,  null: false
+    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0,  null: false
   end
 
   create_table "v_resumen_cliente", id: false, force: true do |t|
@@ -360,17 +361,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "CANTIDAD_BODEGUEROS",     limit: 8,   default: 0, null: false
     t.integer "VENTAS_ULTIMO_MES",       limit: 8,   default: 0, null: false
     t.integer "DEVOLUCIONES_ULTIMO_MES", limit: 8,   default: 0, null: false
-  end
-
-  create_table "v_resumen_vendedor", id: false, force: true do |t|
-    t.integer "ID_USUARIO",                   default: 0, null: false
-    t.string  "NOMBRE_USUARIO",   limit: 200,             null: false
-    t.string  "RUT_USUARIO",      limit: 15,              null: false
-    t.string  "CORREO_USUARIO",   limit: 150,             null: false
-    t.string  "TELEFONO_USUARIO", limit: 12
-    t.integer "EDAD",             limit: 8
-    t.integer "VENTAS",           limit: 8,   default: 0, null: false
-    t.integer "DEVOLUCIONES",     limit: 8,   default: 0, null: false
   end
 
   create_table "v_stock_insumo", id: false, force: true do |t|
