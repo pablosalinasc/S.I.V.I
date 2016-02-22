@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'not_found/index'
+
+  get 'restricted_access/index'
+
   devise_for :usuario, controllers: {registrations: 'registrations'}
   get 'welcome/index'
 

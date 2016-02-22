@@ -1,11 +1,16 @@
 class VResumenClienteController < ApplicationController
   before_action :set_v_resumen_cliente, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
-  respond_to :html
+  respond_to :html 
 
   def index
     @v_resumen_cliente = VResumenCliente.all
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
     respond_with(@v_resumen_cliente)
+    end
   end
 
   def show
