@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav">
             <% if usuario_signed_in? %> 
                 <li><%= link_to "Home", welcome_index_path %></li>
-              <% if current_usuario.ROL_USUARIO == 'A' %>
+              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
                 <li><%= link_to "Clientes", v_resumen_cliente_index_path %></li>
               <%end%>
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>

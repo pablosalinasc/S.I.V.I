@@ -391,8 +391,8 @@ INSERT INTO `sivi`.`venta`
 VALUES
 (1,1,2,sysdate(),'Efectivo',0,7680,true,2,1223),
 (1,1,3,sysdate(),'Cheque',0,9440,true,2,1226),
-(5,3,1,sysdate(),'Tarjeta',0,4800,true,2,1231),
-(4,2,1,sysdate(),'Efectivo',0,5000,true,2,1311);
+(5,3,1,sysdate(),'Tarjeta',0,4800,true,7,1231),
+(4,2,1,sysdate(),'Efectivo',0,5000,true,6,1311);
 
 INSERT INTO `sivi`.`detalle_venta`
 (`ID_VENTA`,
@@ -421,7 +421,7 @@ INSERT INTO `sivi`.`devolucion`
 `TIPO_DEVOLUCION`,
 `INSUMOS_DEFECTUOSOS_DEVOLUCION`)
 VALUES
-(1,1,1,1,sysdate(),2400,'DEVOLUCION DEL DINERO',true);
+(1,1,1,4,sysdate(),2400,'DEVOLUCION DEL DINERO',true);
 
 
 INSERT INTO `sivi`.`devolucion`
@@ -434,7 +434,7 @@ INSERT INTO `sivi`.`devolucion`
 `COMENTARIO_DEVOLUCION`,
 `INSUMOS_DEFECTUOSOS_DEVOLUCION`)
 VALUES
-(2,2,4,1,sysdate(),'REPOSICION INSUMOS','Al parecer hay una falla de fábrica',true);
+(2,2,4,4,sysdate(),'REPOSICION INSUMOS','Al parecer hay una falla de fábrica',true);
 
 INSERT INTO `sivi`.`devolucion`
 (`ID_VENTA`,
@@ -447,7 +447,7 @@ INSERT INTO `sivi`.`devolucion`
 `TIPO_DEVOLUCION`,
 `INSUMOS_DEFECTUOSOS_DEVOLUCION`)
 VALUES
-(3,3,5,1,sysdate(),400,2,'INSUMOS NUEVOS',false);
+(3,3,5,4,sysdate(),400,2,'INSUMOS NUEVOS',false);
 
 INSERT INTO `sivi`.`detalle_devolucion`
 (`ID_DEVOLUCION`,
