@@ -9,7 +9,7 @@ class VResumenClienteController < ApplicationController
     if current_usuario.ROL_USUARIO == 'B'
       redirect_to '/restricted_access/index'
     else
-    respond_with(@v_resumen_cliente)
+      respond_with(@v_resumen_cliente)
     end
   end
 
