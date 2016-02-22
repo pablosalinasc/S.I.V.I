@@ -6,7 +6,11 @@ class PropiedadController < ApplicationController
 
   def index
     @propiedad = Propiedad.all
-    respond_with(@propiedad)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@propiedad)
+    end
   end
 
   def show

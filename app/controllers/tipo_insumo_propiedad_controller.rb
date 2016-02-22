@@ -6,7 +6,11 @@ class TipoInsumoPropiedadController < ApplicationController
 
   def index
     @tipo_insumo_propiedad = TipoInsumoPropiedad.all
-    respond_with(@tipo_insumo_propiedad)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@tipo_insumo_propiedad)
+    end
   end
 
   def show

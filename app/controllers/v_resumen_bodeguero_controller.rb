@@ -6,7 +6,11 @@ class VResumenBodegueroController < ApplicationController
 
   def index
     @v_resumen_bodeguero = VResumenBodeguero.all
-    respond_with(@v_resumen_bodeguero)
+    if current_usuario.ROL_USUARIO == 'V'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@log)
+    end
   end
 
   def show

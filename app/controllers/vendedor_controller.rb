@@ -5,8 +5,12 @@ class VendedorController < ApplicationController
   respond_to :html
 
   def index
-    @vendedor = Vendedor.all
-    respond_with(@vendedor)
+    @vendedor = Vendedor.all    
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@vendedor)
+    end
   end
 
   def show

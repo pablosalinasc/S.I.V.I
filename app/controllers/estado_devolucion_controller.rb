@@ -6,7 +6,11 @@ class EstadoDevolucionController < ApplicationController
 
   def index
     @estado_devolucion = EstadoDevolucion.all
-    respond_with(@estado_devolucion)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@estado_devolucion)
+    end
   end
 
   def show

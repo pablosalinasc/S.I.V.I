@@ -6,7 +6,11 @@ class DetalleGuiaDeDespachoController < ApplicationController
 
   def index
     @detalle_guia_de_despacho = DetalleGuiaDeDespacho.all
-    respond_with(@detalle_guia_de_despacho)
+    if current_usuario.ROL_USUARIO == 'V'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@detalle_guia_de_despacho)
+    end
   end
 
   def show

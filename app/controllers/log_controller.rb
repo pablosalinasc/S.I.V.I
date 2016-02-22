@@ -6,7 +6,11 @@ class LogController < ApplicationController
 
   def index
     @log = Log.all
-    respond_with(@log)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@log)
+    end
   end
 
   def show

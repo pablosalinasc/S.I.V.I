@@ -7,7 +7,11 @@ class BodegueroController < ApplicationController
 
   def index
     @bodeguero = Bodeguero.all
-    respond_with(@bodeguero)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@bodeguero)
+    end
   end
 
   def show

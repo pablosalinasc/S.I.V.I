@@ -6,7 +6,11 @@ class ClienteController < ApplicationController
 
   def index
     @cliente = Cliente.all
-    respond_with(@cliente)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@cliente)
+    end
   end
 
   def show

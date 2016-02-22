@@ -6,7 +6,11 @@ class LocalController < ApplicationController
 
   def index
     @local = Local.all
-    respond_with(@local)
+    if current_usuario.ROL_USUARIO != 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@local)
+    end
   end
 
   def show

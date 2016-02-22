@@ -6,7 +6,11 @@ class DetalleCotizacionController < ApplicationController
 
   def index
     @detalle_cotizacion = DetalleCotizacion.all
-    respond_with(@detalle_cotizacion)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@detalle_cotizacion)
+    end
   end
 
   def show

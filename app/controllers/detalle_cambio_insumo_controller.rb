@@ -6,7 +6,11 @@ class DetalleCambioInsumoController < ApplicationController
 
   def index
     @detalle_cambio_insumo = DetalleCambioInsumo.all
-    respond_with(@detalle_cambio_insumo)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@detalle_cambio_insumo)
+    end
   end
 
   def show

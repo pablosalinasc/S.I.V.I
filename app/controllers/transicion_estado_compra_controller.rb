@@ -6,7 +6,11 @@ class TransicionEstadoCompraController < ApplicationController
 
   def index
     @transicion_estado_compra = TransicionEstadoCompra.all
-    respond_with(@transicion_estado_compra)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@transicion_estado_compra)
+    end
   end
 
   def show

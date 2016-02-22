@@ -1,7 +1,6 @@
 class VResumenClienteController < ApplicationController
   before_action :set_v_resumen_cliente, only: [:show, :edit, :update, :destroy]
   include Devise::Controllers::Helpers
-  include Devise::Controllers::Helpers
 
   respond_to :html 
 
