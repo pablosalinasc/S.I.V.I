@@ -2,7 +2,7 @@
   <div class="panel-heading"><h1>Lista de clientes</h1></div>
   <div class="panel-body" >
   <br><br>
-  <%= link_to 'Ingresar cliente', new_v_resumen_cliente_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;"%>
+  <%= link_to 'Ingresar cliente', new_v_resumen_cliente_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green;"%>
   <br><br>
   </div>
   <table class="table table-striped table-hover">
@@ -35,7 +35,7 @@
           <td><%= v_resumen_cliente.DEVOLUCIONES %></td>
           <td>
             <div class="btn-group" role="group" >
-            <%= link_to 'Mostrar', v_resumen_cliente, :class => "btn btn-primary" %>
+            <%= link_to 'Mostrar', v_resumen_cliente, :class => "btn btn-primary", :style=>"background-color:green" %>
             <%= link_to 'Editar', edit_v_resumen_cliente_path(v_resumen_cliente), :class => "btn btn-default" %>
             <%= link_to 'Destruir', v_resumen_cliente, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger"%>
             </div>

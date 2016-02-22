@@ -42,6 +42,6 @@ class VVentaController < ApplicationController
     end
 
     def v_venta_params
-      params.require(:v_venta).permit(:ID_VENTA, :NOMBRE_VENDEDOR, :NOMBRE_CLIENTE, :DIRECCION_LOCAL)
+      params.require(:v_venta).permit(current_usuario.ID_USUARIO, :ID_LOCAL, :ID_CLIENTE, :FECHA_VENTA, :FORMA_DE_PAGO_VENTA, :DESCUENTO_TOTAL_VENTA, :MONTO_TOTAL_VENTA,false,null,:NUMERO_BOLETA_VENTA )
     end
 end
