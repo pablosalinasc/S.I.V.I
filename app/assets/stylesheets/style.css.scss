@@ -1,16 +1,32 @@
 .colorFooter{
-background:#222322; color:white;
+	background:#222322; 
+	color:white;
+}
+.body{
+	background-color:lightgrey;
+	font-family: 'Roboto', sans-serif;
+
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #A4A4A4;
+}
+html {
+    position:relative;
+    min-height: 100%;
+}
+/*Normalize html and body elements,this style is just good to have*/
+ html, body {
+    margin:0;
+    padding:0;
+}
+.pageContentWrapper {
+    margin-bottom:220px;
+    /* Height of footer*/
+}
+.footer {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height:200px;
-}
-.body{
-background-color:lightgrey;
-font-family: 'Roboto', sans-serif;
-margin-bottom:200px;/* Height of footer*/
-}
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #A4A4A4;
+    height:220px;
 }
