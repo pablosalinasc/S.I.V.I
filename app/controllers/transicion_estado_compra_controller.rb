@@ -1,5 +1,6 @@
 class TransicionEstadoCompraController < ApplicationController
   before_action :set_transicion_estado_compra, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

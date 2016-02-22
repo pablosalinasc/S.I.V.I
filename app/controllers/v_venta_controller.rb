@@ -1,5 +1,6 @@
 class VVentaController < ApplicationController
   before_action :set_v_venta, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

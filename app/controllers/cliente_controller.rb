@@ -1,5 +1,6 @@
 class ClienteController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

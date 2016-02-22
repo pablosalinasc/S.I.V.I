@@ -1,5 +1,6 @@
 class VGuiaDespachoController < ApplicationController
   before_action :set_v_guia_despacho, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

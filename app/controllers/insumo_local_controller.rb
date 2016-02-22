@@ -1,5 +1,6 @@
 class InsumoLocalController < ApplicationController
   before_action :set_insumo_local, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

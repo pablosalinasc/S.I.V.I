@@ -1,5 +1,6 @@
 class CodigoProveedorController < ApplicationController
   before_action :set_codigo_proveedor, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

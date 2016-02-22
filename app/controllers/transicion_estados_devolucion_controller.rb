@@ -1,7 +1,6 @@
 class TransicionEstadosDevolucionController < ApplicationController
   before_action :set_transicion_estados_devolucion, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  include Devise::Controllers::Helpers
 
   def index
     @transicion_estados_devolucion = TransicionEstadosDevolucion.all

@@ -1,5 +1,6 @@
 class OrdenDeCompraController < ApplicationController
   before_action :set_orden_de_compra, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

@@ -1,5 +1,6 @@
 class GuiaDeDespachoController < ApplicationController
   before_action :set_guia_de_despacho, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

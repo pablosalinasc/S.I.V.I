@@ -1,5 +1,6 @@
 class GuiaLocalBodegueroController < ApplicationController
   before_action :set_guia_local_bodeguero, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

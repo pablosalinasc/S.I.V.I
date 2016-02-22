@@ -1,5 +1,6 @@
 class VResumenVendedorController < ApplicationController
   before_action :set_v_resumen_vendedor, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

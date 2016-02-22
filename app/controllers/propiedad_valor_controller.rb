@@ -1,5 +1,6 @@
 class PropiedadValorController < ApplicationController
   before_action :set_propiedad_valor, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

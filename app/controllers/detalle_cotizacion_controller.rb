@@ -1,5 +1,6 @@
 class DetalleCotizacionController < ApplicationController
   before_action :set_detalle_cotizacion, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 

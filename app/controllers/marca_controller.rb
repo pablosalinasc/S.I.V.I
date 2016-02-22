@@ -1,5 +1,6 @@
 class MarcaController < ApplicationController
   before_action :set_marca, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
