@@ -19,10 +19,27 @@
     			</a>
           <ul class="nav navbar-nav">
             <% if usuario_signed_in? %> 
-              <li><%= link_to "Inicio", welcome_index_path %></li>
+                <li><%= link_to "Home", welcome_index_path %></li>
+              <% if current_usuario.ROL_USUARIO == 'A' %>
+                <li><%= link_to "Clientes", venta_index_path %></li>
+              <%end%>
+              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
+                <li><%= link_to "Insumos", insumo_index_path %></li>
+              <%end%>
+              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'B' %>
+              <li><%= link_to "Inventario", insumo_index_path %></li>
+              <%end%>
+              <% if current_usuario.ROL_USUARIO == 'A' %>
+              <li><%= link_to "Personal", venta_index_path %></li>
+              <li><%= link_to "Locales", venta_index_path %></li>
+              <%end%>
+              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
               <li><%= link_to "Ventas", venta_index_path %></li>
-              <li><%= link_to "Compras", v_orden_de_compra_index_path %></li>
-              <li><%= link_to "Insumos", insumo_local_index_path %></li>
+              <li><%= link_to "Devoluciones", venta_index_path %></li>
+              <%end%>
+              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'B' %>
+              <li><%= link_to "Compra de insumos", v_orden_de_compra_index_path %></li>
+              <%end%>
               <li class="right"><%= link_to "Cerrar sesión", destroy_usuario_session_path, method: :delete %></li>
             <%else%>
               <li class="right"><%= link_to "Iniciar sesión", new_usuario_session_path %></li>

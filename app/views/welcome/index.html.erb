@@ -1,2 +1,10 @@
-<h1 center>S.I.V.I.</h1>
-<p>pero mira como están estos textos papá</p>
+<% if current_usuario.ROL_USUARIO == 'A' %>
+	<h1 align="center">Bienvenido Administrador</h1>
+	<br><br>
+<% elsif current_usuario.ROL_USUARIO == 'B' %> 
+	<h1 align="center">Bienvenido Bodeguero</h1>
+	<br><br>
+<% elsif current_usuario.ROL_USUARIO == 'V' %>
+	<h1 align="center">Bienvenido Vendedor</h1>
+	<br><br>
+<%end%>
