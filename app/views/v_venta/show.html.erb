@@ -3,23 +3,38 @@
   <div class="panel-body" >
 
 		<p id="notice"><%= notice %></p>
-
-
-		<p>
-		  <strong>Nombre vendedor:</strong>
-		  <%= @v_venta.NOMBRE_VENDEDOR %>
-		</p>
-
-		<p>
-		  <strong>Nombre cliente:</strong>
-		  <%= @v_venta.NOMBRE_CLIENTE %>
-		</p>
-
-		<p>
-		  <strong>Direccion local:</strong>
-		  <%= @v_venta.DIRECCION_LOCAL %>
-		</p>
-		<table class="table table-striped table-hover col-xs-6">
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Número de boleta</p>
+			  <p class="col-xs-2"><%= @v_venta.NUMERO_BOLETA_VENTA %></p>
+		</div>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Nombre vendedor</p>
+			  <p class="col-xs-2"><%= @v_venta.NOMBRE_VENDEDOR %></p>
+		</div>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Nombre cliente</p>
+			  <p class="col-xs-2"><%= @v_venta.NOMBRE_CLIENTE %></p>
+		</div>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Direccion local</p>
+			  <p class="col-xs-2"><%= @v_venta.DIRECCION_LOCAL %></p>
+		</div>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Monto total pagado</p>
+			  <p class="col-xs-2"><%= @v_venta.MONTO_TOTAL_VENTA %></p>
+		</div>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Fecha de realización</p>
+			  <p class="col-xs-2"><%= @v_venta.FECHA_VENTA %></p>
+		</div>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Forma de pago</p>
+			  <p class="col-xs-2"><%= @v_venta.FORMA_DE_PAGO_VENTA %></p>
+		</div>
+		<br>
+		<h4 style="font-weight: bold">Lista de insumos</h4>
+		<p><br>
+		<table class="table table-striped table-hover">
 		  <thead>
 		    <tr>
 		      <th>Linea venta</th>
