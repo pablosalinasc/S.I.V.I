@@ -1,11 +1,16 @@
 class VResumenBodegueroController < ApplicationController
   before_action :set_v_resumen_bodeguero, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @v_resumen_bodeguero = VResumenBodeguero.all
-    respond_with(@v_resumen_bodeguero)
+    if current_usuario.ROL_USUARIO == 'V'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@log)
+    end
   end
 
   def show

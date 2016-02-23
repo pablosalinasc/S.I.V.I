@@ -1,11 +1,16 @@
 class VDevolucionController < ApplicationController
   before_action :set_v_devolucion, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @v_devolucion = VDevolucion.all
-    respond_with(@v_devolucion)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@v_devolucion)
+    end
   end
 
   def show

@@ -1,11 +1,16 @@
 class DetalleCotizacionController < ApplicationController
   before_action :set_detalle_cotizacion, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @detalle_cotizacion = DetalleCotizacion.all
-    respond_with(@detalle_cotizacion)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@detalle_cotizacion)
+    end
   end
 
   def show

@@ -1,11 +1,16 @@
 class CodigoProveedorController < ApplicationController
   before_action :set_codigo_proveedor, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @codigo_proveedor = CodigoProveedor.all
-    respond_with(@codigo_proveedor)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@codigo_proveedor)
+    end
   end
 
   def show

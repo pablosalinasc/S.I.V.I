@@ -1,11 +1,16 @@
 class InsumoLocalController < ApplicationController
   before_action :set_insumo_local, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @insumo_local = InsumoLocal.all
-    respond_with(@insumo_local)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@insumo_local)
+    end
   end
 
   def show

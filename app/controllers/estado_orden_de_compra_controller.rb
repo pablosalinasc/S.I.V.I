@@ -1,11 +1,16 @@
 class EstadoOrdenDeCompraController < ApplicationController
   before_action :set_estado_orden_de_compra, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @estado_orden_de_compra = EstadoOrdenDeCompra.all
-    respond_with(@estado_orden_de_compra)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@estado_orden_de_compra)
+    end
   end
 
   def show

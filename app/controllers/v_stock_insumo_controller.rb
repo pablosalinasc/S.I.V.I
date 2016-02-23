@@ -1,11 +1,16 @@
 class VStockInsumoController < ApplicationController
   before_action :set_v_stock_insumo, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
-    @v_stock_insumo = VStockInsumo.all
-    respond_with(@v_stock_insumo)
+    @v_stock_insumo = VStockInsumo.all    
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@v_stock_insumo)
+    end
   end
 
   def show

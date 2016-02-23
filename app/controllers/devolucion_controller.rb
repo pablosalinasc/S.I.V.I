@@ -1,11 +1,16 @@
 class DevolucionController < ApplicationController
   before_action :set_devolucion, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @devolucion = Devolucion.all
-    respond_with(@devolucion)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@devolucion)
+    end
   end
 
   def show

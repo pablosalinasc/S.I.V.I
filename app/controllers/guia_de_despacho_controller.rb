@@ -1,11 +1,16 @@
 class GuiaDeDespachoController < ApplicationController
   before_action :set_guia_de_despacho, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @guia_de_despacho = GuiaDeDespacho.all
-    respond_with(@guia_de_despacho)
+    if current_usuario.ROL_USUARIO == 'V'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@guia_de_despacho)
+    end
   end
 
   def show

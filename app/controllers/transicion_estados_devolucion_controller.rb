@@ -1,11 +1,14 @@
 class TransicionEstadosDevolucionController < ApplicationController
   before_action :set_transicion_estados_devolucion, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  include Devise::Controllers::Helpers
 
   def index
     @transicion_estados_devolucion = TransicionEstadosDevolucion.all
-    respond_with(@transicion_estados_devolucion)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@transicion_estados_devolucion)
+    end
   end
 
   def show

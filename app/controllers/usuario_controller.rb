@@ -1,11 +1,16 @@
 class UsuarioController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @usuario = Usuario.all
-    respond_with(@usuario)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@usuario)
+    end
   end
 
   def show

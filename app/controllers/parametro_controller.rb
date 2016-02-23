@@ -1,11 +1,16 @@
 class ParametroController < ApplicationController
   before_action :set_parametro, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
-    @parametro = Parametro.all
-    respond_with(@parametro)
+    @parametro = Parametro.all    
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@parametro)
+    end
   end
 
   def show

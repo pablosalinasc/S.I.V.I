@@ -1,11 +1,16 @@
 class ProveedorController < ApplicationController
   before_action :set_proveedor, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @proveedor = Proveedor.all
-    respond_with(@proveedor)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@proveedor)
+    end
   end
 
   def show

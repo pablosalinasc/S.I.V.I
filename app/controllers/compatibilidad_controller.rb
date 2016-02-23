@@ -1,11 +1,16 @@
 class CompatibilidadController < ApplicationController
   before_action :set_compatibilidad, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
-  def index
+  def index    
     @compatibilidad = Compatibilidad.all
-    respond_with(@compatibilidad)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@compatibilidad)
+    end
   end
 
   def show

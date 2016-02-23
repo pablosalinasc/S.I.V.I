@@ -1,11 +1,16 @@
 class VGuiaDespachoController < ApplicationController
   before_action :set_v_guia_despacho, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @v_guia_despacho = VGuiaDespacho.all
-    respond_with(@v_guia_despacho)
+    if current_usuario.ROL_USUARIO == 'V'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@v_guia_despacho)
+    end
   end
 
   def show

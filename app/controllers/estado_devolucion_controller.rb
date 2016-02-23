@@ -1,11 +1,16 @@
 class EstadoDevolucionController < ApplicationController
   before_action :set_estado_devolucion, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @estado_devolucion = EstadoDevolucion.all
-    respond_with(@estado_devolucion)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@estado_devolucion)
+    end
   end
 
   def show

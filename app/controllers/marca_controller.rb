@@ -1,11 +1,16 @@
 class MarcaController < ApplicationController
   before_action :set_marca, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
-    @marca = Marca.all
-    respond_with(@marca)
+    @marca = Marca.all    
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@marca)
+    end
   end
 
   def show

@@ -1,11 +1,16 @@
 class PropiedadValorController < ApplicationController
   before_action :set_propiedad_valor, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @propiedad_valor = PropiedadValor.all
-    respond_with(@propiedad_valor)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@propiedad_valor)
+    end
   end
 
   def show

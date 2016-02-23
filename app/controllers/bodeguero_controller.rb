@@ -1,11 +1,17 @@
 class BodegueroController < ApplicationController
   before_action :set_bodeguero, only: [:show, :edit, :update, :destroy]
+  
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @bodeguero = Bodeguero.all
-    respond_with(@bodeguero)
+    if current_usuario.ROL_USUARIO != 'A'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@bodeguero)
+    end
   end
 
   def show

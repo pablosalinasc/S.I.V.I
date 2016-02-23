@@ -1,11 +1,16 @@
 class GuiaLocalBodegueroController < ApplicationController
   before_action :set_guia_local_bodeguero, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @guia_local_bodeguero = GuiaLocalBodeguero.all
-    respond_with(@guia_local_bodeguero)
+    if current_usuario.ROL_USUARIO == 'V'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@guia_local_bodeguero)
+    end
   end
 
   def show

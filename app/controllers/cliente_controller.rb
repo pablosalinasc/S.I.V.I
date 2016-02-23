@@ -1,11 +1,16 @@
 class ClienteController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @cliente = Cliente.all
-    respond_with(@cliente)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@cliente)
+    end
   end
 
   def show

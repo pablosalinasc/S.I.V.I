@@ -1,13 +1,19 @@
 class VVentaController < ApplicationController
   before_action :set_v_venta, only: [:show, :edit, :update, :destroy]
+
   before_action :set_detalle_venta, only: [:show, :edit, :update, :destroy]
 
+  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @v_venta = VVenta.all
-    respond_with(@v_venta)
+    if current_usuario.ROL_USUARIO == 'B'
+      redirect_to '/restricted_access/index'
+    else
+      respond_with(@v_venta)
+    end
   end
 
   def show
