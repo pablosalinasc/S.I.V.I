@@ -15,5 +15,26 @@
   <%= @v_stock_insumo.STOCK_INSUMO_LOCAL %>
 </p>
 
-<%= link_to 'Edit', edit_v_stock_insumo_path(@v_stock_insumo) %> |
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre propiedad</th>
+      <th>Valor</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_stock_insumo.each do |v_stock_insumo| %>
+      <tr>
+        <%# if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
+          <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
+          <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
+        <%# end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% #= link_to 'Edit', edit_v_stock_insumo_path(@v_stock_insumo) %>
 <%= link_to 'Back', v_stock_insumo_index_path %>

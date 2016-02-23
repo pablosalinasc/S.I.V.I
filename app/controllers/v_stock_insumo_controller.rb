@@ -5,9 +5,11 @@ class VStockInsumoController < ApplicationController
   respond_to :html
 
   def index
-    @v_stock_insumo = VStockInsumo.all  
+    @bodeguero = Bodeguero.find_by ID_BODEGUERO: current_usuario.ID_USUARIO
+    @v_stock_insumo = VStockInsumo.all
+    @user = current_usuario
     if usuario_signed_in?  
-      if current_usuario.ROL_USUARIO != 'A'
+      if current_usuario.ROL_USUARIO != 'B'
         redirect_to '/restricted_access/index'
       else
         respond_with(@v_stock_insumo)
@@ -17,6 +19,7 @@ class VStockInsumoController < ApplicationController
   end
 
   def show
+    @propiedad = Propiedad.all
     respond_with(@v_stock_insumo)
   end
 

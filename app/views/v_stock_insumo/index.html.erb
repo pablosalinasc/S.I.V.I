@@ -1,11 +1,11 @@
-<h1>Listing v_stock_insumo</h1>
+<h1>Lista de Insumos en bodega</h1>
 
-<table class="table table-striped table-hover">
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Id insumo</th>
-      <th>Direccion local</th>
-      <th>Stock insumo local</th>
+      <th>Nombre insumo</th>
+      <th>Stock insumo</th>
+      <th>Precio Insumo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,12 +13,12 @@
   <tbody>
     <% @v_stock_insumo.each do |v_stock_insumo| %>
       <tr>
-        <td><%= v_stock_insumo.ID_INSUMO %></td>
-        <td><%= v_stock_insumo.DIRECCION_LOCAL %></td>
-        <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
-        <td><%= link_to 'Show', v_stock_insumo %></td>
-        <td><%= link_to 'Edit', edit_v_stock_insumo_path(v_stock_insumo) %></td>
-        <td><%= link_to 'Destroy', v_stock_insumo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
+          <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
+          <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
+          <td><%= v_stock_insumo.PRECIO_INSUMO %></td>
+          <td><%= link_to 'Detalles', v_stock_insumo %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New V stock insumo', new_v_stock_insumo_path %>
+<% # link_to 'New V stock insumo', new_v_stock_insumo_path %>
