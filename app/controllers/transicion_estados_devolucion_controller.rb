@@ -4,10 +4,13 @@ class TransicionEstadosDevolucionController < ApplicationController
 
   def index
     @transicion_estados_devolucion = TransicionEstadosDevolucion.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@transicion_estados_devolucion)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@transicion_estados_devolucion)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

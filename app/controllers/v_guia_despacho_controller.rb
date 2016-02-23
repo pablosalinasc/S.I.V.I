@@ -6,10 +6,13 @@ class VGuiaDespachoController < ApplicationController
 
   def index
     @v_guia_despacho = VGuiaDespacho.all
-    if current_usuario.ROL_USUARIO == 'V'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@v_guia_despacho)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'V'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@v_guia_despacho)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

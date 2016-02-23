@@ -6,10 +6,13 @@ class ParametroController < ApplicationController
 
   def index
     @parametro = Parametro.all    
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@parametro)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@parametro)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

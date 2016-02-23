@@ -6,10 +6,13 @@ class VResumenLocalController < ApplicationController
 
   def index
     @v_resumen_local = VResumenLocal.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@v_resumen_local)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@v_resumen_local)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

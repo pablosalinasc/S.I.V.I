@@ -6,10 +6,13 @@ class OrdenDeCompraController < ApplicationController
 
   def index
     @orden_de_compra = OrdenDeCompra.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@orden_de_compra)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@orden_de_compra)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

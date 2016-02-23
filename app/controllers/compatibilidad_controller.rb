@@ -6,10 +6,14 @@ class CompatibilidadController < ApplicationController
 
   def index    
     @compatibilidad = Compatibilidad.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@compatibilidad)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@compatibilidad)
+      end
+    else redirect_to '/restricted_access/index'
+
     end
   end
 

@@ -6,10 +6,13 @@ class PropiedadValorController < ApplicationController
 
   def index
     @propiedad_valor = PropiedadValor.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@propiedad_valor)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@propiedad_valor)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

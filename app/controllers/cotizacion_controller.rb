@@ -6,10 +6,14 @@ class CotizacionController < ApplicationController
 
   def index
     @cotizacion = Cotizacion.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@cotizacion)
+    if usuario_signed_in?
+
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@cotizacion)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

@@ -6,10 +6,13 @@ class VResumenClienteController < ApplicationController
 
   def index
     @v_resumen_cliente = VResumenCliente.all
-    if current_usuario.ROL_USUARIO == 'B'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@v_resumen_cliente)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'B'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@v_resumen_cliente)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

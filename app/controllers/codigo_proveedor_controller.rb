@@ -6,10 +6,13 @@ class CodigoProveedorController < ApplicationController
 
   def index
     @codigo_proveedor = CodigoProveedor.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@codigo_proveedor)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@codigo_proveedor)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

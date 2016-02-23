@@ -6,10 +6,13 @@ class InsumoController < ApplicationController
 
   def index
     @insumo = Insumo.all
-    if current_usuario.ROL_USUARIO == 'B'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@insumo)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'B'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@insumo)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

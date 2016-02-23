@@ -6,10 +6,13 @@ class GuiaLocalBodegueroController < ApplicationController
 
   def index
     @guia_local_bodeguero = GuiaLocalBodeguero.all
-    if current_usuario.ROL_USUARIO == 'V'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@guia_local_bodeguero)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'V'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@guia_local_bodeguero)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

@@ -6,10 +6,13 @@ class VProveedorController < ApplicationController
 
   def index
     @v_proveedor = VProveedor.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@v_proveedor)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@v_proveedor)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

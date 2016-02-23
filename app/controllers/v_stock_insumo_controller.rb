@@ -5,11 +5,14 @@ class VStockInsumoController < ApplicationController
   respond_to :html
 
   def index
-    @v_stock_insumo = VStockInsumo.all    
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@v_stock_insumo)
+    @v_stock_insumo = VStockInsumo.all  
+    if usuario_signed_in?  
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@v_stock_insumo)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

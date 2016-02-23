@@ -9,10 +9,13 @@ class VVentaController < ApplicationController
 
   def index
     @v_venta = VVenta.all
-    if current_usuario.ROL_USUARIO == 'B'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@v_venta)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'B'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@v_venta)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

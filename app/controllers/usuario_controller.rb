@@ -6,10 +6,13 @@ class UsuarioController < ApplicationController
 
   def index
     @usuario = Usuario.all
-    if current_usuario.ROL_USUARIO != 'A'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@usuario)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO != 'A'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@usuario)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

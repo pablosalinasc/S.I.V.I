@@ -6,10 +6,13 @@ class DetalleGuiaDeDespachoController < ApplicationController
 
   def index
     @detalle_guia_de_despacho = DetalleGuiaDeDespacho.all
-    if current_usuario.ROL_USUARIO == 'V'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@detalle_guia_de_despacho)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'V'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@detalle_guia_de_despacho)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 

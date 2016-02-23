@@ -6,10 +6,13 @@ class DetalleVentaController < ApplicationController
 
   def index
     @detalle_venta = DetalleVenta.all
-    if current_usuario.ROL_USUARIO == 'B'
-      redirect_to '/restricted_access/index'
-    else
-      respond_with(@detalle_venta)
+    if usuario_signed_in?
+      if current_usuario.ROL_USUARIO == 'B'
+        redirect_to '/restricted_access/index'
+      else
+        respond_with(@detalle_venta)
+      end
+    else redirect_to '/restricted_access/index'
     end
   end
 
