@@ -1,4 +1,4 @@
-<div class="col-xs-12 container" >
+
   <%= form_for(@v_venta) do |f| %>
     <% if @v_venta.errors.any? %>
       <div id="error_explanation">
@@ -29,5 +29,3 @@
     </div>
           <%= link_to 'Volver', v_venta_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
   <% end %>
-</div>
-<br><br>

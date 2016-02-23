@@ -1,0 +1,35 @@
+<h1>Listing v_detalle_venta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id venta</th>
+      <th>Linea venta</th>
+      <th>Nombre unico insumo</th>
+      <th>Cantidad venta</th>
+      <th>Precio venta</th>
+      <th>Descuento venta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_detalle_venta.each do |v_detalle_venta| %>
+      <tr>
+        <td><%= v_detalle_venta.ID_VENTA %></td>
+        <td><%= v_detalle_venta.LINEA_VENTA %></td>
+        <td><%= v_detalle_venta.NOMBRE_UNICO_INSUMO %></td>
+        <td><%= v_detalle_venta.CANTIDAD_VENTA %></td>
+        <td><%= v_detalle_venta.PRECIO_VENTA %></td>
+        <td><%= v_detalle_venta.DESCUENTO_VENTA %></td>
+        <td><%= link_to 'Show', v_detalle_venta %></td>
+        <td><%= link_to 'Edit', edit_v_detalle_venta_path(v_detalle_venta) %></td>
+        <td><%= link_to 'Destroy', v_detalle_venta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V detalle venta', new_v_detalle_venta_path %>

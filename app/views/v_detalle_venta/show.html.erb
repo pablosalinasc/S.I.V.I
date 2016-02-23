@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id venta:</strong>
+  <%= @v_detalle_venta.ID_VENTA %>
+</p>
+
+<p>
+  <strong>Linea venta:</strong>
+  <%= @v_detalle_venta.LINEA_VENTA %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @v_detalle_venta.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<p>
+  <strong>Cantidad venta:</strong>
+  <%= @v_detalle_venta.CANTIDAD_VENTA %>
+</p>
+
+<p>
+  <strong>Precio venta:</strong>
+  <%= @v_detalle_venta.PRECIO_VENTA %>
+</p>
+
+<p>
+  <strong>Descuento venta:</strong>
+  <%= @v_detalle_venta.DESCUENTO_VENTA %>
+</p>
+
+<%= link_to 'Edit', edit_v_detalle_venta_path(@v_detalle_venta) %> |
+<%= link_to 'Back', v_detalle_venta_index_path %>

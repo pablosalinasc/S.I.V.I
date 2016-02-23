@@ -1,24 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Detalle venta</h1></div>
+  <div class="panel-body" >
 
-<p>
-  <strong>Id venta:</strong>
-  <%= @v_venta.ID_VENTA %>
-</p>
+		<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre vendedor:</strong>
-  <%= @v_venta.NOMBRE_VENDEDOR %>
-</p>
 
-<p>
-  <strong>Nombre cliente:</strong>
-  <%= @v_venta.NOMBRE_CLIENTE %>
-</p>
+		<p>
+		  <strong>Nombre vendedor:</strong>
+		  <%= @v_venta.NOMBRE_VENDEDOR %>
+		</p>
 
-<p>
-  <strong>Direccion local:</strong>
-  <%= @v_venta.DIRECCION_LOCAL %>
-</p>
+		<p>
+		  <strong>Nombre cliente:</strong>
+		  <%= @v_venta.NOMBRE_CLIENTE %>
+		</p>
 
-<%= link_to 'Edit', edit_v_venta_path(@v_venta) %> |
-<%= link_to 'Back', v_venta_index_path %>
+		<p>
+		  <strong>Direccion local:</strong>
+		  <%= @v_venta.DIRECCION_LOCAL %>
+		</p>
+		<table class="table table-striped table-hover col-xs-6">
+		  <thead>
+		    <tr>
+		      <th>Linea venta</th>
+		      <th>Nombre insumo</th>
+		      <th>Cantidad venta</th>
+		      <th>Precio venta</th>
+		      <th>Descuento venta</th>
+		      <th colspan="3"></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @v_detalle_venta.each do |v_detalle_venta| %>
+		      <tr>
+		      	<% if v_detalle_venta.ID_VENTA == @v_venta.ID_VENTA %>
+			        <td><%= v_detalle_venta.LINEA_VENTA %></td>
+			        <td><%= v_detalle_venta.NOMBRE_UNICO_INSUMO %></td>
+			        <td><%= v_detalle_venta.CANTIDAD_VENTA %></td>
+			        <td><%= v_detalle_venta.PRECIO_VENTA %></td>
+			        <td><%= v_detalle_venta.DESCUENTO_VENTA %></td>
+		        <%end%>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+		<br><br>
+		  <div class="btn-group" role="group" >
+				<%= link_to 'Edit', edit_v_venta_path(@v_venta), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+				<%= link_to 'Back', v_venta_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+			</div>
+	</div>
+</div>

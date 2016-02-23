@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :v_detalle_venta
+
   get 'not_found/index'
 
   get 'restricted_access/index'

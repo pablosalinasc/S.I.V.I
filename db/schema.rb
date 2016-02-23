@@ -283,6 +283,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "last_sign_in_ip"
   end
 
+  create_table "v_detalle_venta", id: false, force: true do |t|
+    t.integer "ID_VENTA",                        null: false
+    t.integer "LINEA_VENTA",                     null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "CANTIDAD_VENTA",                  null: false
+    t.integer "PRECIO_VENTA",                    null: false
+    t.integer "DESCUENTO_VENTA",                 null: false
+  end
+
   create_table "v_devolucion", id: false, force: true do |t|
     t.integer  "ID_DEVOLUCION",                              default: 0, null: false
     t.integer  "ID_VENTA",                                               null: false
@@ -329,14 +338,14 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",               limit: 8
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150, default: ""
-    t.string  "PAIS_PROVEEDOR",             limit: 50,  default: ""
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100, default: ""
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200, default: ""
+    t.integer "ID_PROVEEDOR",                           default: 0
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150
+    t.string  "PAIS_PROVEEDOR",             limit: 50
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200
     t.string  "CORREO_PROVEEDOR",           limit: 100
-    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0,  null: false
-    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0,  null: false
+    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
+    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false
   end
 
   create_table "v_resumen_bodeguero", id: false, force: true do |t|
@@ -345,7 +354,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "RUT_USUARIO",      limit: 15,               null: false
     t.string  "CORREO_USUARIO",               default: "", null: false
     t.string  "TELEFONO_USUARIO", limit: 12
-    t.integer "EDAD",             limit: 8
+    t.integer "EDAD"
     t.integer "VENTAS",           limit: 8,   default: 0,  null: false
     t.integer "COMPRAS",          limit: 8,   default: 0,  null: false
   end
@@ -356,7 +365,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "RUT_CLIENTE",       limit: 15,              null: false
     t.string  "CORREO_CLIENTE",    limit: 150
     t.string  "TELEFONO_CLIENTE",  limit: 20
-    t.integer "EDAD",              limit: 8
+    t.integer "EDAD"
     t.float   "DESCUENTO_CLIENTE", limit: 24,              null: false
     t.integer "VENTAS",            limit: 8,   default: 0, null: false
     t.integer "DEVOLUCIONES",      limit: 8,   default: 0, null: false
@@ -377,22 +386,26 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "RUT_USUARIO",      limit: 15,               null: false
     t.string  "CORREO_USUARIO",               default: "", null: false
     t.string  "TELEFONO_USUARIO", limit: 12
-    t.integer "EDAD",             limit: 8
+    t.integer "EDAD"
     t.integer "VENTAS",           limit: 8,   default: 0,  null: false
     t.integer "DEVOLUCIONES",     limit: 8,   default: 0,  null: false
   end
 
   create_table "v_stock_insumo", id: false, force: true do |t|
-    t.integer "ID_INSUMO",                      null: false
+    t.integer "ID_INSUMO",                                  null: false
+    t.integer "ID_LOCAL",                       default: 0, null: false
     t.string  "DIRECCION_LOCAL",    limit: 200
-    t.integer "STOCK_INSUMO_LOCAL",             null: false
+    t.integer "STOCK_INSUMO_LOCAL",                         null: false
+    t.integer "PRECIO_INSUMO",                              null: false
   end
 
   create_table "v_venta", id: false, force: true do |t|
-    t.integer "ID_VENTA",                    default: 0, null: false
-    t.string  "NOMBRE_VENDEDOR", limit: 200,             null: false
-    t.string  "NOMBRE_CLIENTE",  limit: 200,             null: false
-    t.string  "DIRECCION_LOCAL", limit: 200
+    t.integer  "ID_VENTA",                        default: 0, null: false
+    t.integer  "NUMERO_BOLETA_VENTA",                         null: false
+    t.string   "NOMBRE_VENDEDOR",     limit: 200,             null: false
+    t.string   "NOMBRE_CLIENTE",      limit: 200,             null: false
+    t.string   "DIRECCION_LOCAL",     limit: 200
+    t.datetime "FECHA_VENTA",                                 null: false
   end
 
   create_table "vendedor", primary_key: "ID_VENDEDOR", force: true do |t|

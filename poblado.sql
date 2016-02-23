@@ -338,7 +338,6 @@ VALUES
 ('Maicol Mesa','15134135-4',19870222,'12345454','V','gerson.tapia@gmail.com',                '$2a$10$ex3PJ5qE5xjnbNibqxOZpeZ5NfdXaG/n4ErEje7yp6IFfT1Y9.R32', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Gerson Tapia','17134164-0',19861221,'12345678','B','maicol.mesa@gmail.com',                '$2a$10$2DYgOLH5yCCKuXMXIMfimORIpf8v2gdMZqm0154n6UXxWbNZT4c.C', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Samir Abdul','18342154-4',19980713,'45656767','B','samir.abdula@gmail.com',                '$2a$10$T4uXXIiiUrvKrmQhBeGXpO8lrjoEBZ6XOxkN7MgeRM1N.Lqmy9v4y', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1');
-#('Samir Abdul','18342154-4',19910606,'samir.abdula@gmail.com','','B');
 
 #Locales para cada usuario
 UPDATE `sivi`.`vendedor`
