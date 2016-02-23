@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id devolucion:</strong>
+  <%= @v_detalle_devolucion.ID_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Linea devolucion:</strong>
+  <%= @v_detalle_devolucion.LINEA_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @v_detalle_devolucion.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<p>
+  <strong>Cantidad productos:</strong>
+  <%= @v_detalle_devolucion.CANTIDAD_PRODUCTOS %>
+</p>
+
+<%= link_to 'Edit', edit_v_detalle_devolucion_path(@v_detalle_devolucion) %> |
+<%= link_to 'Back', v_detalle_devolucion_index_path %>

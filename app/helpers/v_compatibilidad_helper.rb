@@ -1,0 +1,2 @@
+module VCompatibilidadHelper
+end

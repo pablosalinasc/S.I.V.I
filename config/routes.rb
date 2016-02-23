@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :v_compatibilidad
+
+  resources :v_detalle_devolucion
+
   resources :v_detalle_venta
 
   get 'not_found/index'

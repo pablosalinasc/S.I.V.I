@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_INSUMO: 1
+  ID_MARCA: 1
+  NOMBRE_MARCA: MyString
+
+two:
+  ID_INSUMO: 1
+  ID_MARCA: 1
+  NOMBRE_MARCA: MyString

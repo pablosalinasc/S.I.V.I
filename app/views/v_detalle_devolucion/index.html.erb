@@ -1,0 +1,31 @@
+<h1>Listing v_detalle_devolucion</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id devolucion</th>
+      <th>Linea devolucion</th>
+      <th>Nombre unico insumo</th>
+      <th>Cantidad productos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_detalle_devolucion.each do |v_detalle_devolucion| %>
+      <tr>
+        <td><%= v_detalle_devolucion.ID_DEVOLUCION %></td>
+        <td><%= v_detalle_devolucion.LINEA_DEVOLUCION %></td>
+        <td><%= v_detalle_devolucion.NOMBRE_UNICO_INSUMO %></td>
+        <td><%= v_detalle_devolucion.CANTIDAD_PRODUCTOS %></td>
+        <td><%= link_to 'Show', v_detalle_devolucion %></td>
+        <td><%= link_to 'Edit', edit_v_detalle_devolucion_path(v_detalle_devolucion) %></td>
+        <td><%= link_to 'Destroy', v_detalle_devolucion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V detalle devolucion', new_v_detalle_devolucion_path %>

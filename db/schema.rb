@@ -283,6 +283,19 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "last_sign_in_ip"
   end
 
+  create_table "v_compatibildad", id: false, force: true do |t|
+    t.integer "ID_INSUMO",               null: false
+    t.integer "ID_MARCA",                null: false
+    t.string  "NOMBRE_MARCA", limit: 30, null: false
+  end
+
+  create_table "v_detalle_devolucion", id: false, force: true do |t|
+    t.integer "ID_DEVOLUCION",                   null: false
+    t.integer "LINEA_DEVOLUCION",                null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "CANTIDAD_PRODUCTOS",              null: false
+  end
+
   create_table "v_detalle_venta", id: false, force: true do |t|
     t.integer "ID_VENTA",                        null: false
     t.integer "LINEA_VENTA",                     null: false
@@ -335,6 +348,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "NOMBRE_PROVEEDOR",   limit: 150,             null: false
     t.datetime "FECHA_COTIZACION"
     t.string   "ESTADO_ACTUAL",      limit: 150
+  end
+
+  create_table "v_propiedad_valor", id: false, force: true do |t|
+    t.integer "ID_INSUMO",                    default: 0, null: false
+    t.integer "ID_PROPIEDAD",                 default: 0, null: false
+    t.string  "NOMBRE_PROPIEDAD", limit: 50,              null: false
+    t.string  "VALOR",            limit: 250,             null: false
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
@@ -405,6 +425,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "NOMBRE_VENDEDOR",     limit: 200,             null: false
     t.string   "NOMBRE_CLIENTE",      limit: 200,             null: false
     t.string   "DIRECCION_LOCAL",     limit: 200
+    t.integer  "MONTO_TOTAL_VENTA",                           null: false
+    t.string   "FORMA_DE_PAGO_VENTA", limit: 50,              null: false
+    t.boolean  "DESPACHADA_VENTA",                            null: false
     t.datetime "FECHA_VENTA",                                 null: false
   end
 
