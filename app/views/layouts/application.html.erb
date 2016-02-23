@@ -47,6 +47,7 @@
               <%end%>
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'B' %>
                 <li><%= link_to "Compra de insumos", v_orden_de_compra_index_path %></li>
+                <li><%= link_to "Guías de despacho", v_guia_despacho_index_path %></li>
               <%end%>
             <%end%>
           </ul>
