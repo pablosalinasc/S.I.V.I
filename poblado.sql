@@ -334,7 +334,7 @@ VALUES
 ('Pablo Salinas','18455374-0',19930222,'3598633','V','pablo.salinas.cabanas@gmail.com',      '$2a$10$458okPZcLA7On6yLy5SmGefNtBFyfCoKkbsLVk5fKKyEymzktrwhW', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Nelson Andrés Jerez','18540150-2',19930721,'12341234','B','nelson.jerez@usach.cl',         '$2a$10$3XdKTFDqiOs/oNpr9NfMTekC.qonuN.HAqFC6qfAMbPdERIacI6p2', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Jorge Cocio','16913123-4',19760911,'12345678','A',	'jorge.cocio@usach.cl',	             '$2a$10$MvbjHgK3rzrAZC94eiMfiOBROjTkU5cwfO2.ydG1LgVNIJmlXYR92', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Jeison Hernandez','13244221-0',18780211,'12341233','V','jeison.hernandez@gmail.com',       '$2a$10$u8dkcbYe/RSWZLJqfIR/duALfLYffAy2g.oW4eHcJr0QRrnkED5WS', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Jeison Hernandez','13244221-0',19780211,'12341233','V','jeison.hernandez@gmail.com',       '$2a$10$u8dkcbYe/RSWZLJqfIR/duALfLYffAy2g.oW4eHcJr0QRrnkED5WS', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Maicol Mesa','15134135-4',19870222,'12345454','V','gerson.tapia@gmail.com',                '$2a$10$ex3PJ5qE5xjnbNibqxOZpeZ5NfdXaG/n4ErEje7yp6IFfT1Y9.R32', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Gerson Tapia','17134164-0',19861221,'12345678','B','maicol.mesa@gmail.com',                '$2a$10$2DYgOLH5yCCKuXMXIMfimORIpf8v2gdMZqm0154n6UXxWbNZT4c.C', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
 ('Samir Abdul','18342154-4',19980713,'45656767','B','samir.abdula@gmail.com',                '$2a$10$T4uXXIiiUrvKrmQhBeGXpO8lrjoEBZ6XOxkN7MgeRM1N.Lqmy9v4y', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1');
