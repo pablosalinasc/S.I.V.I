@@ -1,6 +1,13 @@
-<h1>Listing usuario</h1>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Personal</h1></div>
 
-<table class="table table-striped table-hover">
+  <div class="panel-body" >
+    <br><br>
+    <%= link_to 'Agregar nuevo usuario', new_usuario_path, :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+    <br><br>
+  </div>
+
+  <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Nombre usuario</th>
@@ -9,7 +16,7 @@
       <th>Correo usuario</th>
       <th>Telefono usuario</th>
       <th>Rol usuario</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -22,14 +29,15 @@
         <td><%= usuario.email %></td>
         <td><%= usuario.TELEFONO_USUARIO %></td>
         <td><%= usuario.ROL_USUARIO %></td>
-        <td><%= link_to 'Show', usuario %></td>
-        <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="btn-group" role="group" >
+            <%= link_to 'Detalles',usuario, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>   
+            <%=  link_to 'Editar', edit_usuario_path(usuario), :class => "btn btn-default", :style=>"width:100px;" %>    
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Usuario', new_usuario_path %>
+</div>
