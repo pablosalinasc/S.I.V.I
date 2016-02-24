@@ -220,13 +220,14 @@ INSERT INTO `sivi`.`insumo`
 (
 `ID_TIPO_INSUMO`,
 `PRECIO_INSUMO`,
+`COMPATIBILIDAD_INSUMO`,
 `NOMBRE_UNICO_INSUMO`)
 VALUES
-(1,1200,'CD -R 8x Imation Pack10'),
-(1,2200,'CD +R 16x Verbatim Pack25'),
-(1,4800,'DVD -R 8x Verbatim Pack25'),
-(2,5000,'Tinta Color Digital-Transfer 100ml'),
-(2,2500,'Tinta Negro Digital-Transfer 100ml');
+(1,1200,false,'CD -R 8x Imation Pack10'),
+(1,2200,false,'CD +R 16x Verbatim Pack25'),
+(1,4800,false,'DVD -R 8x Verbatim Pack25'),
+(2,5000,true,'Tinta Color Digital-Transfer 100ml'),
+(2,2500,true,'Tinta Negro Digital-Transfer 100ml');
 
 INSERT INTO `sivi`.`propiedad_valor`
 (`ID_PROPIEDAD`,

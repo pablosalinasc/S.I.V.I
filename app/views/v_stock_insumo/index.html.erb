@@ -1,29 +1,29 @@
-<h1>Lista de Insumos en bodega</h1>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Lista de Insumos en bodega</h1></div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Nombre insumo</th>
-      <th>Stock insumo</th>
-      <th>Precio Insumo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @v_stock_insumo.each do |v_stock_insumo| %>
+  <table class="table table-striped table-hover">
+    <thead>
       <tr>
-        <% if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
-          <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
-          <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
-          <td><%= v_stock_insumo.PRECIO_INSUMO %></td>
-          <td><%= link_to 'Detalles', v_stock_insumo %></td>
-        <% end %>
+        <th>Nombre insumo</th>
+        <th>Stock insumo</th>
+        <th>Precio Insumo</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @v_stock_insumo.each do |v_stock_insumo| %>
+        <tr>
+          <% if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
+            <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
+            <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
+            <td><%= v_stock_insumo.PRECIO_INSUMO %></td>
+            <td><%= link_to 'Detalles', v_stock_insumo , :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<% # link_to 'New V stock insumo', new_v_stock_insumo_path %>
+  <br>
+</div>
