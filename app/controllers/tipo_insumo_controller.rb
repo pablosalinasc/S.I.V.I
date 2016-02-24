@@ -17,6 +17,7 @@ class TipoInsumoController < ApplicationController
   end
 
   def show
+    @insumo = Insumo.all
     respond_with(@tipo_insumo)
   end
 
