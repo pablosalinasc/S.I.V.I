@@ -39,12 +39,11 @@
                 <th>Despachada</th>
               <% else %>
                 <th>Por Despachar         
-                	
 
-                	<%= link_to "Despachar", 
-          edit_v_venta_path(@v_venta,  :DESPACHADA_VENTA => 0),
-          :method => :update, 
-          :confirm => "Are you sure?" %>
+					<%= form_for @v_venta do |t| %>
+						<%= t.hidden_field :DESPACHADA_VENTA, :value=>"1"%>
+						<%= t.submit "Despachar" %>
+					<% end %>
 
                 </th>
               <% end %>
