@@ -168,9 +168,10 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "guia_local_bodeguero", ["ID_GUIA_DESPACHO"], name: "FK_RELATIONSHIP_53", using: :btree
 
   create_table "insumo", primary_key: "ID_INSUMO", force: true do |t|
-    t.integer "ID_TIPO_INSUMO",                  null: false
-    t.integer "PRECIO_INSUMO",                   null: false
-    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "ID_TIPO_INSUMO",                    null: false
+    t.integer "PRECIO_INSUMO",                     null: false
+    t.boolean "COMPATIBILIDAD_INSUMO",             null: false
+    t.string  "NOMBRE_UNICO_INSUMO",   limit: 100, null: false
   end
 
   add_index "insumo", ["ID_TIPO_INSUMO"], name: "FK_RELATIONSHIP_13", using: :btree
@@ -298,6 +299,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "DESCUENTO_CAMBIO",                null: false
   end
 
+  create_table "v_detalle_compra", id: false, force: true do |t|
+    t.integer "ID_COMPRA",                       null: false
+    t.integer "LINEA_COMPRA",                    null: false
+    t.integer "ID_PROVEEDOR",                    null: false
+    t.integer "ID_INSUMO",                       null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
+    t.integer "CANTIDAD_COMPRA",                 null: false
+    t.float   "PRECIO_COMPRA",       limit: 24,  null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+  end
+
   create_table "v_detalle_devolucion", id: false, force: true do |t|
     t.integer "ID_DEVOLUCION",                   null: false
     t.integer "LINEA_DEVOLUCION",                null: false
@@ -367,14 +379,14 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",               limit: 8
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150, default: ""
-    t.string  "PAIS_PROVEEDOR",             limit: 50,  default: ""
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100, default: ""
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200, default: ""
+    t.integer "ID_PROVEEDOR",                           default: 0
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150
+    t.string  "PAIS_PROVEEDOR",             limit: 50
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200
     t.string  "CORREO_PROVEEDOR",           limit: 100
-    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0,  null: false
-    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0,  null: false
+    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
+    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false
   end
 
   create_table "v_resumen_bodeguero", id: false, force: true do |t|
@@ -421,12 +433,13 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_stock_insumo", id: false, force: true do |t|
-    t.integer "ID_INSUMO",                                   null: false
-    t.integer "ID_LOCAL",                        default: 0, null: false
-    t.string  "DIRECCION_LOCAL",     limit: 200
-    t.integer "STOCK_INSUMO_LOCAL",                          null: false
-    t.integer "PRECIO_INSUMO",                               null: false
-    t.string  "NOMBRE_UNICO_INSUMO", limit: 100,             null: false
+    t.integer "ID_INSUMO",                                     null: false
+    t.integer "ID_LOCAL",                          default: 0, null: false
+    t.string  "DIRECCION_LOCAL",       limit: 200
+    t.integer "STOCK_INSUMO_LOCAL",                            null: false
+    t.integer "PRECIO_INSUMO",                                 null: false
+    t.string  "NOMBRE_UNICO_INSUMO",   limit: 100,             null: false
+    t.boolean "COMPATIBILIDAD_INSUMO",                         null: false
   end
 
   create_table "v_venta", id: false, force: true do |t|
@@ -435,6 +448,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "NOMBRE_VENDEDOR",     limit: 200,             null: false
     t.string   "NOMBRE_CLIENTE",      limit: 200,             null: false
     t.string   "DIRECCION_LOCAL",     limit: 200
+    t.integer  "ID_LOCAL",                        default: 0, null: false
     t.integer  "MONTO_TOTAL_VENTA",                           null: false
     t.string   "FORMA_DE_PAGO_VENTA", limit: 50,              null: false
     t.boolean  "DESPACHADA_VENTA",                            null: false

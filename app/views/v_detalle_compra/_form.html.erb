@@ -1,0 +1,49 @@
+<%= form_for(@v_detalle_compra) do |f| %>
+  <% if @v_detalle_compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_detalle_compra.errors.count, "error") %> prohibited this v_detalle_compra from being saved:</h2>
+
+      <ul>
+      <% @v_detalle_compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_COMPRA %><br>
+    <%= f.number_field :ID_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :LINEA_COMPRA %><br>
+    <%= f.number_field :LINEA_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_INSUMO %><br>
+    <%= f.number_field :ID_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :CODIGO_INSUMO %><br>
+    <%= f.text_field :CODIGO_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :CANTIDAD_COMPRA %><br>
+    <%= f.number_field :CANTIDAD_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :PRECIO_COMPRA %><br>
+    <%= f.text_field :PRECIO_COMPRA %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_UNICO_INSUMO %><br>
+    <%= f.text_field :NOMBRE_UNICO_INSUMO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<h1>Listing v_detalle_compra</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id compra</th>
+      <th>Linea compra</th>
+      <th>Id proveedor</th>
+      <th>Id insumo</th>
+      <th>Codigo insumo</th>
+      <th>Cantidad compra</th>
+      <th>Precio compra</th>
+      <th>Nombre unico insumo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_detalle_compra.each do |v_detalle_compra| %>
+      <tr>
+        <td><%= v_detalle_compra.ID_COMPRA %></td>
+        <td><%= v_detalle_compra.LINEA_COMPRA %></td>
+        <td><%= v_detalle_compra.ID_PROVEEDOR %></td>
+        <td><%= v_detalle_compra.ID_INSUMO %></td>
+        <td><%= v_detalle_compra.CODIGO_INSUMO %></td>
+        <td><%= v_detalle_compra.CANTIDAD_COMPRA %></td>
+        <td><%= v_detalle_compra.PRECIO_COMPRA %></td>
+        <td><%= v_detalle_compra.NOMBRE_UNICO_INSUMO %></td>
+        <td><%= link_to 'Show', v_detalle_compra %></td>
+        <td><%= link_to 'Edit', edit_v_detalle_compra_path(v_detalle_compra) %></td>
+        <td><%= link_to 'Destroy', v_detalle_compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V detalle compra', new_v_detalle_compra_path %>

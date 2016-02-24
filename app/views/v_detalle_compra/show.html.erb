@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id compra:</strong>
+  <%= @v_detalle_compra.ID_COMPRA %>
+</p>
+
+<p>
+  <strong>Linea compra:</strong>
+  <%= @v_detalle_compra.LINEA_COMPRA %>
+</p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @v_detalle_compra.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Id insumo:</strong>
+  <%= @v_detalle_compra.ID_INSUMO %>
+</p>
+
+<p>
+  <strong>Codigo insumo:</strong>
+  <%= @v_detalle_compra.CODIGO_INSUMO %>
+</p>
+
+<p>
+  <strong>Cantidad compra:</strong>
+  <%= @v_detalle_compra.CANTIDAD_COMPRA %>
+</p>
+
+<p>
+  <strong>Precio compra:</strong>
+  <%= @v_detalle_compra.PRECIO_COMPRA %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @v_detalle_compra.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_v_detalle_compra_path(@v_detalle_compra) %> |
+<%= link_to 'Back', v_detalle_compra_index_path %>
