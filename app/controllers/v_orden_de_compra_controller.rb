@@ -18,6 +18,7 @@ class VOrdenDeCompraController < ApplicationController
   end
 
   def show
+    @user = current_usuario
     respond_with(@v_orden_de_compra)
   end
 
