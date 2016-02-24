@@ -19,6 +19,8 @@ class VOrdenDeCompraController < ApplicationController
 
   def show
     @user = current_usuario
+    @v_detalle_compra = VDetalleCompra.all
+    @v_guia_de_despacho = VGuiaDespacho.all
     respond_with(@v_orden_de_compra)
   end
 

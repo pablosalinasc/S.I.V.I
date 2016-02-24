@@ -1,54 +1,5 @@
 <p id="notice"><%= notice %></p> 
 
-<p>
-  <strong>Id compra:</strong>
-  <%= @v_orden_de_compra.ID_COMPRA %>
-</p>
-
-<p>
-  <strong>Id proveedor:</strong>
-  <%= @v_orden_de_compra.ID_PROVEEDOR %>
-</p>
-
-<p>
-  <strong>Id cotizacion:</strong>
-  <%= @v_orden_de_compra.ID_COTIZACION %>
-</p>
-
-<p>
-  <strong>Id estado compra:</strong>
-  <%= @v_orden_de_compra.ID_ESTADO_COMPRA %>
-</p>
-
-<p>
-  <strong>Fecha compra:</strong>
-  <%= @v_orden_de_compra.FECHA_COMPRA %>
-</p>
-
-<p>
-  <strong>Monto total compra:</strong>
-  <%= @v_orden_de_compra.MONTO_TOTAL_COMPRA %>
-</p>
-
-<p>
-  <strong>Nombre proveedor:</strong>
-  <%= @v_orden_de_compra.NOMBRE_PROVEEDOR %>
-</p>
-
-<p>
-  <strong>Fecha cotizacion:</strong>
-  <%= @v_orden_de_compra.FECHA_COTIZACION %>
-</p>
-
-<p>
-  <strong>Estado actual:</strong>
-  <%= @v_orden_de_compra.ESTADO_ACTUAL %>
-</p>
-
-<%= link_to 'Edit', edit_v_orden_de_compra_path(@v_orden_de_compra) %> |
-<%= link_to 'Back', v_orden_de_compra_index_path %>
-
-
 <div class="panel panel-default">
   <div class="panel-heading"><h1>Detalle Orden de compra</h1></div>
   <div class="panel-body" >
@@ -90,16 +41,84 @@
       </thead>
 
       <tbody>
+
+        <% @v_detalle_compra.each do |v_detalle_compra| %>
+          <tr>
+            <% if v_detalle_compra.ID_COMPRA == @v_orden_de_compra.ID_COMPRA %>
+              <th> <%= v_detalle_compra.NOMBRE_UNICO_INSUMO %></th>
+              <th> <%= v_detalle_compra.CODIGO_INSUMO %></th>
+              <th> <%= v_detalle_compra.CANTIDAD_COMPRA %></th>
+              <th> <%= v_detalle_compra.PRECIO_COMPRA %></th>
+              <th> 0 </th>
+            <% end %>
+          </tr>
+        <% end %>
         
       </tbody>
+
     </table>
 
-    <br><br>
+    <br>
+    <h4 style="font-weight: bold">Guía de Despacho</h4>
+    <p><br>
+
+    <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Número orden de compra</th>
+        <th>Fecha de salida</th>
+        <th>Fecha de recepcion</th>
+        <th>Tipo de movimiento</th>
+        <% if current_usuario.ROL_USUARIO!='B'%>
+          <th>Nombre bodeguero encargado</th>
+          <th>Destino despacho</th>
+        <%end%>
+        <th>Nombre proveedor</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @v_guia_de_despacho.each do |v_guia_de_despacho| %>
+        <tr>
+        <% if v_guia_de_despacho.ID_COMPRA == @v_orden_de_compra.ID_COMPRA %>
+
+            <td><%= v_guia_de_despacho.ID_COMPRA %></td>
+            <td><%= v_guia_de_despacho.FECHA_SALIDA_GUIA %></td>
+            <td><%= v_guia_de_despacho.FECHA_RECEPCION_GUIA %></td>
+            <td><%= v_guia_de_despacho.TIPO_MOVIMIENTO_GUIA %></td>
+            <% if current_usuario.ROL_USUARIO!='B'%>
+              <td><%= v_guia_de_despacho.NOMBRE_BODEGUERO_ENCARGADO %></td>
+              <%if v_guia_de_despacho.DESPACHO_LOCAL_GUIA == true %>
+                <td><%= v_guia_de_despacho.LOCAL_DESPACHO %></td>
+              <%else%>
+                <td><%= v_guia_de_despacho.DESTINO_GUIA %></td>
+              <%end%>
+            <%end%>
+            <td><%= v_guia_de_despacho.NOMBRE_PROVEEDOR %></td>
+            <td>
+              <div class="btn-group" role="group" >
+              <%= link_to 'Detalle', v_guia_de_despacho, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+              <% if current_usuario.ROL_USUARIO == 'A'%>
+                <%= link_to 'Editar', edit_v_guia_de_despacho_path(v_guia_despacho), :class => "btn btn-default", :style=>"width:100px;" %>
+              <%end%>
+              </div>
+            </td>
+
+          <% end -%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+    <br>
       <div class="btn-group" role="group" >
-        <% if @user.ROL_USUARIO != 'B' %>
-        <%= link_to 'Editar', edit_v_venta_path(@v_venta), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-      <% end %>       
-        <%= link_to 'Volver', v_venta_index_path, :class => "btn btn-default", :style=>"width:100px;" %>    
+        <% if @user.ROL_USUARIO == 'A' %>
+          <%= link_to 'Editar', edit_v_orden_de_compra_path(@v_orden_de_compra), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+        <% end %>
+        <%= link_to 'Volver', v_orden_de_compra_index_path, :class => "btn btn-default", :style=>"width:100px;"  %>    
       </div>
   </div>
 </div>
+
+
