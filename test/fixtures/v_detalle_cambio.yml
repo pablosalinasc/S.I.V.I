@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ID_DEVOLUCION: 1
+  LINEA_CAMBIO: 1
+  NOMBRE_UNICO_INSUMO: MyString
+  CANTIDAD_CAMBIO: 1
+  PRECIO_CAMBIO: 1
+  DESCUENTO_CAMBIO: 1
+
+two:
+  ID_DEVOLUCION: 1
+  LINEA_CAMBIO: 1
+  NOMBRE_UNICO_INSUMO: MyString
+  CANTIDAD_CAMBIO: 1
+  PRECIO_CAMBIO: 1
+  DESCUENTO_CAMBIO: 1

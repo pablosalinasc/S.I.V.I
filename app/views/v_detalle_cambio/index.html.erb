@@ -1,0 +1,35 @@
+<h1>Listing v_detalle_cambio</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id devolucion</th>
+      <th>Linea cambio</th>
+      <th>Nombre unico insumo</th>
+      <th>Cantidad cambio</th>
+      <th>Precio cambio</th>
+      <th>Descuento cambio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_detalle_cambio.each do |v_detalle_cambio| %>
+      <tr>
+        <td><%= v_detalle_cambio.ID_DEVOLUCION %></td>
+        <td><%= v_detalle_cambio.LINEA_CAMBIO %></td>
+        <td><%= v_detalle_cambio.NOMBRE_UNICO_INSUMO %></td>
+        <td><%= v_detalle_cambio.CANTIDAD_CAMBIO %></td>
+        <td><%= v_detalle_cambio.PRECIO_CAMBIO %></td>
+        <td><%= v_detalle_cambio.DESCUENTO_CAMBIO %></td>
+        <td><%= link_to 'Show', v_detalle_cambio %></td>
+        <td><%= link_to 'Edit', edit_v_detalle_cambio_path(v_detalle_cambio) %></td>
+        <td><%= link_to 'Destroy', v_detalle_cambio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New V detalle cambio', new_v_detalle_cambio_path %>

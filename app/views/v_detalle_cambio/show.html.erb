@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id devolucion:</strong>
+  <%= @v_detalle_cambio.ID_DEVOLUCION %>
+</p>
+
+<p>
+  <strong>Linea cambio:</strong>
+  <%= @v_detalle_cambio.LINEA_CAMBIO %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @v_detalle_cambio.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<p>
+  <strong>Cantidad cambio:</strong>
+  <%= @v_detalle_cambio.CANTIDAD_CAMBIO %>
+</p>
+
+<p>
+  <strong>Precio cambio:</strong>
+  <%= @v_detalle_cambio.PRECIO_CAMBIO %>
+</p>
+
+<p>
+  <strong>Descuento cambio:</strong>
+  <%= @v_detalle_cambio.DESCUENTO_CAMBIO %>
+</p>
+
+<%= link_to 'Edit', edit_v_detalle_cambio_path(@v_detalle_cambio) %> |
+<%= link_to 'Back', v_detalle_cambio_index_path %>

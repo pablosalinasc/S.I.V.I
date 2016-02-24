@@ -283,10 +283,19 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "last_sign_in_ip"
   end
 
-  create_table "v_compatibildad", id: false, force: true do |t|
+  create_table "v_compatibilidad", id: false, force: true do |t|
     t.integer "ID_INSUMO",               null: false
     t.integer "ID_MARCA",                null: false
     t.string  "NOMBRE_MARCA", limit: 30, null: false
+  end
+
+  create_table "v_detalle_cambio", id: false, force: true do |t|
+    t.integer "ID_DEVOLUCION",                   null: false
+    t.integer "LINEA_CAMBIO",                    null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "CANTIDAD_CAMBIO",                 null: false
+    t.integer "PRECIO_CAMBIO",                   null: false
+    t.integer "DESCUENTO_CAMBIO",                null: false
   end
 
   create_table "v_detalle_devolucion", id: false, force: true do |t|

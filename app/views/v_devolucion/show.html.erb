@@ -32,32 +32,68 @@
         <p class="col-xs-2"><%= @v_devolucion.FECHA_DEVOLUCION %></p>
     </div>
     <br>
-    <h4 style="font-weight: bold">Lista de insumos devueltos</h4>
-    <table class="table table-striped table-hover table-bordered">
-      <thead>
-        <tr>
-          <th>Linea devolución</th>
-          <th>Nombre insumo</th>
-          <th>Cantidad</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @v_detalle_devolucion.each do |v_detalle_devolucion| %>
+    <div class="row">
+      <div class="col-md-6">
+      <h4 style="font-weight: bold">Lista de insumos devueltos</h4>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
           <tr>
-            <% if v_detalle_devolucion.ID_DEVOLUCION == @v_devolucion.ID_DEVOLUCION %>
-              <td><%= v_detalle_devolucion.LINEA_DEVOLUCION %></td>
-              <td><%= v_detalle_devolucion.NOMBRE_UNICO_INSUMO %></td>
-              <td><%= v_detalle_devolucion.CANTIDAD_PRODUCTOS %></td>
-            <%end%>
+            <th>Linea devolución</th>
+            <th>Nombre insumo</th>
+            <th>Cantidad de insumos</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @v_detalle_devolucion.each do |v_detalle_devolucion| %>
+            <tr>
+              <% if v_detalle_devolucion.ID_DEVOLUCION == @v_devolucion.ID_DEVOLUCION %>
+                <td><%= v_detalle_devolucion.LINEA_DEVOLUCION %></td>
+                <td><%= v_detalle_devolucion.NOMBRE_UNICO_INSUMO %></td>
+                <td><%= v_detalle_devolucion.CANTIDAD_PRODUCTOS %></td>
+              <%end%>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+      <% if @v_devolucion.TIPO_DEVOLUCION == 'INSUMOS NUEVOS'%>
+        <div class="col-md-6">
+        <h4 style="font-weight: bold">Lista de insumos a cambiar</h4>
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Linea cambio</th>
+              <th>Nombre insumo</th>
+              <th>Cantidad de insumos</th>
+              <th>Precio unitario</th>
+              <th>Descuento unitario</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @v_detalle_cambio.each do |v_detalle_cambio| %>
+              <tr>
+                <% if v_detalle_cambio.ID_DEVOLUCION == @v_devolucion.ID_DEVOLUCION %>
+                  <td><%= v_detalle_cambio.LINEA_CAMBIO %></td>
+                  <td><%= v_detalle_cambio.NOMBRE_UNICO_INSUMO %></td>
+                  <td><%= v_detalle_cambio.CANTIDAD_CAMBIO %></td>
+                  <td><%= v_detalle_cambio.PRECIO_CAMBIO %></td>
+                  <td><%= v_detalle_cambio.DESCUENTO_CAMBIO %></td>
+                <%end%>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        </div>
+      <%end%>
+    </div>
     <br><br>
-    <div class="btn-group" role="group" >
-      <%= link_to 'Edit', edit_v_devolucion_path(@v_devolucion), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-      <%= link_to 'Back', v_devolucion_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+    <div class="row">
+      <div class="col-xs-2 btn-group" role="group" >
+        <%= link_to 'Editar', edit_v_devolucion_path(@v_devolucion), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+        <%= link_to 'Volver', v_devolucion_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+      </div>
     </div>
   </div>
 </div>

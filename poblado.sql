@@ -466,7 +466,7 @@ INSERT INTO `sivi`.`detalle_cambio_insumo`
 `CANTIDAD_CAMBIO`,
 `DESCUENTO_CAMBIO`)
 VALUES
-(3,1,2,2200,2,2);
+(3,1,2,2200,2,0);
 
 
 
