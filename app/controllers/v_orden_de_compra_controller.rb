@@ -6,6 +6,7 @@ class VOrdenDeCompraController < ApplicationController
 
   def index
     @v_orden_de_compra = VOrdenDeCompra.all
+    @user = current_usuario
     if usuario_signed_in?
       if current_usuario.ROL_USUARIO == 'V'
         redirect_to '/restricted_access/index'

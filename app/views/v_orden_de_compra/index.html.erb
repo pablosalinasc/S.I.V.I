@@ -1,36 +1,28 @@
-<h1>Listing v_orden_de_compra</h1>
+<h1>Órdenes de compra</h1>
+
+<br>
 
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Id compra</th>
-      <th>Id proveedor</th>
-      <th>Id cotizacion</th>
-      <th>Id estado compra</th>
-      <th>Fecha compra</th>
-      <th>Monto total compra</th>
       <th>Nombre proveedor</th>
+      <th>Monto total compra</th>
       <th>Fecha cotizacion</th>
+      <th>Fecha compra</th>
       <th>Estado actual</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @v_orden_de_compra.each do |v_orden_de_compra| %>
       <tr>
-        <td><%= v_orden_de_compra.ID_COMPRA %></td>
-        <td><%= v_orden_de_compra.ID_PROVEEDOR %></td>
-        <td><%= v_orden_de_compra.ID_COTIZACION %></td>
-        <td><%= v_orden_de_compra.ID_ESTADO_COMPRA %></td>
-        <td><%= v_orden_de_compra.FECHA_COMPRA %></td>
-        <td><%= v_orden_de_compra.MONTO_TOTAL_COMPRA %></td>
         <td><%= v_orden_de_compra.NOMBRE_PROVEEDOR %></td>
+        <td><%= v_orden_de_compra.MONTO_TOTAL_COMPRA.to_i %></td>
         <td><%= v_orden_de_compra.FECHA_COTIZACION %></td>
+        <td><%= v_orden_de_compra.FECHA_COMPRA %></td>
         <td><%= v_orden_de_compra.ESTADO_ACTUAL %></td>
-        <td><%= link_to 'Show', v_orden_de_compra %></td>
-        <td><%= link_to 'Edit', edit_v_orden_de_compra_path(v_orden_de_compra) %></td>
-        <td><%= link_to 'Destroy', v_orden_de_compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', v_orden_de_compra, :class => "btn btn-primary", :style=> "color:white;background-color:green;" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New V orden de compra', new_v_orden_de_compra_path %>
+<% if @user.ROL_USUARIO == 'A' %>
+  <%= link_to 'New V orden de compra', new_v_orden_de_compra_path %>
+<% end %>
