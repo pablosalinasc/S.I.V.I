@@ -9,16 +9,13 @@ class VStockInsumoController < ApplicationController
     @v_stock_insumo = VStockInsumo.all
     @user = current_usuario
     if usuario_signed_in?  
-      if current_usuario.ROL_USUARIO != 'B'
-        redirect_to '/restricted_access/index'
-      else
-        respond_with(@v_stock_insumo)
-      end
+      respond_with(@v_stock_insumo)
     else redirect_to '/restricted_access/index'
     end
   end
 
   def show
+    @v_stock = VStockInsumo.all
     @v_propiedad_valor = VPropiedadValor.all
     @v_compatibilidad = VCompatibilidad.all
     respond_with(@v_stock_insumo)

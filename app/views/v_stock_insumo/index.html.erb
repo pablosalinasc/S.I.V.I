@@ -1,25 +1,49 @@
 <div class="panel panel-default">
-  <div class="panel-heading"><h1>Lista de Insumos en bodega</h1></div>
+  <div class="panel-heading">
+  <%if current_usuario.ROL_USUARIO=='B'%>
+  <h1>Lista de Insumos en bodega</h1>
+  <%else%>
+  <h1>Lista de Insumos</h1>
+  <%end%>
+  </div>
 
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Nombre insumo</th>
-        <th>Stock insumo</th>
-        <th>Precio Insumo</th>
-        <th colspan="3"></th>
+        <% if current_usuario.ROL_USUARIO == 'B'%>
+          <th>Nombre</th>
+          <th>Stock</th>
+          <th>Precio</th>
+          <th colspan="1"></th>
+        <%else%>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Tipo insumo</th>
+          <th colspan="1"></th>
+        <%end%>
       </tr>
     </thead>
 
     <tbody>
+      <% insumo = 0 %>
       <% @v_stock_insumo.each do |v_stock_insumo| %>
         <tr>
-          <% if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
-            <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
-            <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
-            <td><%= v_stock_insumo.PRECIO_INSUMO %></td>
-            <td><%= link_to 'Detalles', v_stock_insumo , :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %></td>
-          <% end %>
+          <% if current_usuario.ROL_USUARIO == 'B'%>
+            <% if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
+              <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
+              <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
+              <td><%= v_stock_insumo.PRECIO_INSUMO %></td>
+              <td><%= link_to 'Detalles', v_stock_insumo , :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %></td>
+            <% end %>
+          <%else%>
+            <% if insumo != v_stock_insumo.ID_INSUMO %>
+              <% insumo = v_stock_insumo.ID_INSUMO %>
+              <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
+              <td><%= v_stock_insumo.PRECIO_INSUMO %></td>
+              <td><%= v_stock_insumo.NOMBRE_INSUMO %></td>
+              <td><%= link_to 'Detalles', v_stock_insumo , :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %></td>
+            <%end%>
+          <%end%>
         </tr>
       <% end %>
     </tbody>

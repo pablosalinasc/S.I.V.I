@@ -29,10 +29,8 @@
           <td><%= v_resumen_cliente.VENTAS %></td>
           <td>
             <div class="btn-group" role="group" >
-            <%= link_to 'Mostrar', v_resumen_cliente, :class => "btn btn-primary", :style=>"background-color:green" %>
-            <%= link_to 'Editar', edit_v_resumen_cliente_path(v_resumen_cliente), :class => "btn btn-default" %>
-            <% if current_usuario.ROL_USUARIO == 'A' %><%= link_to 'Destruir', v_resumen_cliente, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger"%><%end%>
-            </div>
+            <%= link_to 'Mostrar', v_resumen_cliente, :class => "btn btn-primary", :style=>"background-color:green;width:100px;" %>
+            <%= link_to 'Editar', edit_v_resumen_cliente_path(v_resumen_cliente), :class => "btn btn-default", :style=>"width:100px;" %>
           </td>
         </tr>
       <% end %>

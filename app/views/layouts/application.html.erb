@@ -32,7 +32,7 @@
                 <li><%= link_to "Clientes", v_resumen_cliente_index_path %></li>
               <%end%>
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
-                <li><%= link_to "Insumos", insumo_index_path %></li>
+                <li><%= link_to "Insumos", v_stock_insumo_index_path %></li>
               <%end%>
               <% if current_usuario.ROL_USUARIO == 'A' %>
                 <li><%= link_to "Tipo Insumos", tipo_insumo_index_path %></li>
