@@ -21,9 +21,7 @@
         <% end %>
         <th>Monto total</th>
         <th>Fecha venta</th>
-        <% if @user.ROL_USUARIO == 'B' %>
-          <th>Estado</th>
-        <% end %>
+        <th>Estado</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -31,31 +29,47 @@
     <tbody>
       <% @v_venta.each do |v_venta| %>
         <tr>
-          <% if @user.ROL_USUARIO != 'B' %>
-            <td><%= v_venta.NUMERO_BOLETA_VENTA %></td>
-          <% end %>  
-          <td><%= v_venta.NOMBRE_VENDEDOR %></td>
-          <td><%= v_venta.NOMBRE_CLIENTE %></td>
-          <% if @user.ROL_USUARIO != 'B' %>
-            <td><%= v_venta.DIRECCION_LOCAL %></td>
-          <% end %>
-          <td><%= v_venta.MONTO_TOTAL_VENTA %></td>
-          <td><%= v_venta.FECHA_VENTA %></td>
           <% if @user.ROL_USUARIO == 'B' %>
-              <% if v_venta.DESPACHADA_VENTA %>
-                <th>Despachada</th>
-              <% else %>
-                <th>Por Despachar</th>
-              <% end %>
-          <% end %>
-          <td>
-            <div class="btn-group" role="group" >
-              <%= link_to 'Detalles', v_venta, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-              <% if @user.ROL_USUARIO != 'B' %>
-                <%= link_to 'Editar', edit_v_venta_path(v_venta), :class => "btn btn-default", :style=>"width:100px;" %>
-              <% end %>
-            </div>
-          </td>
+            <% if @bodeguero.ID_LOCAL == v_venta.ID_LOCAL %>
+              <td><%= v_venta.NOMBRE_VENDEDOR %></td>
+              <td><%= v_venta.NOMBRE_CLIENTE %></td>
+              <td><%= v_venta.MONTO_TOTAL_VENTA %></td>
+              <td><%= v_venta.FECHA_VENTA %></td>
+                <% if v_venta.DESPACHADA_VENTA %>
+                  <th>Despachada</th>
+                <% else %>
+                  <th>Por Despachar</th>
+                <% end %>
+              <td>
+                <div class="btn-group" role="group" >
+                  <%= link_to 'Detalle', v_venta, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+                  <% if @user.ROL_USUARIO != 'B' %>
+                    <%= link_to 'Editar', edit_v_venta_path(v_venta), :class => "btn btn-default", :style=>"width:100px;" %>
+                  <% end %>
+                </div>
+              </td>
+            <%end%>
+          <%else%>
+            <td><%= v_venta.NUMERO_BOLETA_VENTA %></td>
+            <td><%= v_venta.NOMBRE_VENDEDOR %></td>
+            <td><%= v_venta.NOMBRE_CLIENTE %></td>
+            <td><%= v_venta.DIRECCION_LOCAL %></td>
+            <td><%= v_venta.MONTO_TOTAL_VENTA %></td>
+            <td><%= v_venta.FECHA_VENTA %></td>
+            <% if v_venta.DESPACHADA_VENTA %>
+              <th>Despachada</th>
+            <% else %>
+              <th>Por Despachar</th>
+            <% end %>
+            <td>
+              <div class="btn-group" role="group" >
+                <%= link_to 'Detalle', v_venta, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+                <% if @user.ROL_USUARIO != 'B' %>
+                  <%= link_to 'Editar', edit_v_venta_path(v_venta), :class => "btn btn-default", :style=>"width:100px;" %>
+                <% end %>
+              </div>
+            </td>
+          <%end%>
         </tr>
       <% end %>
     </tbody>

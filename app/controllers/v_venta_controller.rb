@@ -6,16 +6,15 @@ class VVentaController < ApplicationController
   respond_to :html
 
   def index
+    if current_usuario.ROL_USUARIO == 'B'
+      @bodeguero = Bodeguero.find_by ID_BODEGUERO: current_usuario.ID_USUARIO
+    end
     @v_venta = VVenta.all
     @user = current_usuario
 
     if usuario_signed_in?
-      #if current_usuario.ROL_USUARIO == 'B'
-      #  redirect_to '/restricted_access/index'
-      #else
         respond_with(@v_venta)
-      #end
-    #else redirect_to '/restricted_access/index'
+    else redirect_to '/restricted_access/index'
     end
   end
 
