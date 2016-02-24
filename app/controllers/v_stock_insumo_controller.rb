@@ -19,7 +19,8 @@ class VStockInsumoController < ApplicationController
   end
 
   def show
-    @propiedad = Propiedad.all
+    @v_propiedad_valor = VPropiedadValor.all
+    @v_compatibilidad = VCompatibilidad.all
     respond_with(@v_stock_insumo)
   end
 

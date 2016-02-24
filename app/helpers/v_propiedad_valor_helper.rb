@@ -1,0 +1,2 @@
+module VPropiedadValorHelper
+end

@@ -367,14 +367,14 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",                           default: 0
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150
-    t.string  "PAIS_PROVEEDOR",             limit: 50
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200
+    t.integer "ID_PROVEEDOR",               limit: 8
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150, default: ""
+    t.string  "PAIS_PROVEEDOR",             limit: 50,  default: ""
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100, default: ""
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200, default: ""
     t.string  "CORREO_PROVEEDOR",           limit: 100
-    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
-    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false
+    t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0,  null: false
+    t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0,  null: false
   end
 
   create_table "v_resumen_bodeguero", id: false, force: true do |t|
@@ -421,11 +421,12 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_stock_insumo", id: false, force: true do |t|
-    t.integer "ID_INSUMO",                                  null: false
-    t.integer "ID_LOCAL",                       default: 0, null: false
-    t.string  "DIRECCION_LOCAL",    limit: 200
-    t.integer "STOCK_INSUMO_LOCAL",                         null: false
-    t.integer "PRECIO_INSUMO",                              null: false
+    t.integer "ID_INSUMO",                                   null: false
+    t.integer "ID_LOCAL",                        default: 0, null: false
+    t.string  "DIRECCION_LOCAL",     limit: 200
+    t.integer "STOCK_INSUMO_LOCAL",                          null: false
+    t.integer "PRECIO_INSUMO",                               null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100,             null: false
   end
 
   create_table "v_venta", id: false, force: true do |t|

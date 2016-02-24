@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id insumo:</strong>
+  <%= @v_propiedad_valor.ID_INSUMO %>
+</p>
+
+<p>
+  <strong>Id propiedad:</strong>
+  <%= @v_propiedad_valor.ID_PROPIEDAD %>
+</p>
+
+<p>
+  <strong>Nombre propiedad:</strong>
+  <%= @v_propiedad_valor.NOMBRE_PROPIEDAD %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @v_propiedad_valor.VALOR %>
+</p>
+
+<%= link_to 'Edit', edit_v_propiedad_valor_path(@v_propiedad_valor) %> |
+<%= link_to 'Back', v_propiedad_valor_index_path %>

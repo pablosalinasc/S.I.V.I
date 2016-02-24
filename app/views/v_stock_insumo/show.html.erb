@@ -1,40 +1,60 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Id insumo:</strong>
-  <%= @v_stock_insumo.ID_INSUMO %>
+  <strong>Insumo:</strong>
+  <%= @v_stock_insumo.NOMBRE_UNICO_INSUMO %>
 </p>
 
 <p>
-  <strong>Direccion local:</strong>
-  <%= @v_stock_insumo.DIRECCION_LOCAL %>
+  <strong>Precio:</strong>
+  <%= @v_stock_insumo.PRECIO_INSUMO %>
 </p>
 
-<p>
-  <strong>Stock insumo local:</strong>
-  <%= @v_stock_insumo.STOCK_INSUMO_LOCAL %>
-</p>
+<br>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Nombre propiedad</th>
-      <th>Valor</th>
+      <th><strong>Nombre propiedad</strong></th>
+      <th><strong>Valor</strong></th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @v_stock_insumo.each do |v_stock_insumo| %>
+    <% @v_propiedad_valor.each do |v_propiedad_valor| %>
       <tr>
-        <%# if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
-          <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
-          <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
-        <%# end %>
+        <% if v_propiedad_valor.ID_INSUMO == @v_stock_insumo.ID_INSUMO %>
+          <td><%= v_propiedad_valor.NOMBRE_PROPIEDAD %></td>
+          <td><%= v_propiedad_valor.VALOR %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><strong>Compatibildad</strong></th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @v_compatibilidad.each do |v_compatibilidad| %>
+      <tr>
+        <% if v_compatibilidad.ID_INSUMO == @v_stock_insumo.ID_INSUMO %>
+          <td><%= v_compatibilidad.NOMBRE_MARCA %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <% #= link_to 'Edit', edit_v_stock_insumo_path(@v_stock_insumo) %>
 <%= link_to 'Back', v_stock_insumo_index_path %>

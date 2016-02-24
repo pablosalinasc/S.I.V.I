@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :v_propiedad_valor
+
+  resources :v_compatibilidad
+
   resources :v_detalle_cambio
 
   resources :v_compatibilidad
