@@ -7,19 +7,21 @@ class VVentaController < ApplicationController
 
   def index
     @v_venta = VVenta.all
+    @user = current_usuario
 
     if usuario_signed_in?
-      if current_usuario.ROL_USUARIO == 'B'
-        redirect_to '/restricted_access/index'
-      else
+      #if current_usuario.ROL_USUARIO == 'B'
+      #  redirect_to '/restricted_access/index'
+      #else
         respond_with(@v_venta)
-      end
-    else redirect_to '/restricted_access/index'
+      #end
+    #else redirect_to '/restricted_access/index'
     end
   end
 
   def show
-    @v_detalle_venta = VDetalleVenta.all
+    @v_detalle_venta = VDetalleVenta.all    
+    @user = current_usuario
     respond_with(@v_venta,@v_detalle_venta)
   end
 

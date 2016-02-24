@@ -41,8 +41,8 @@
                 <li><%= link_to "Personal", usuario_index_path %></li>
                 <li><%= link_to "Locales", local_index_path %></li>
               <%end%>
-              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
-                <li><%= link_to "Ventas", v_venta_index_path %></li>
+              <li><%= link_to "Ventas", v_venta_index_path %></li>
+              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>                
                 <li><%= link_to "Devoluciones", v_devolucion_index_path %></li>
               <%end%>
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'B' %>

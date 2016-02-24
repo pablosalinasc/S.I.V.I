@@ -31,13 +31,35 @@
 			  <p class="col-xs-2" style="font-weight: bold;">Forma de pago</p>
 			  <p class="col-xs-2"><%= @v_venta.FORMA_DE_PAGO_VENTA %></p>
 		</div>
+		<% if @user.ROL_USUARIO == 'B' %>
+			<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Estado</p>
+			  <p class="col-xs-2">
+			  <% if @v_venta.DESPACHADA_VENTA %>
+                <th>Despachada</th>
+              <% else %>
+                <th>Por Despachar         
+                	
+
+                	<%= link_to "Despachar", 
+          edit_v_venta_path(@v_venta,  :DESPACHADA_VENTA => 0),
+          :method => :update, 
+          :confirm => "Are you sure?" %>
+
+                </th>
+              <% end %>
+			  </p>
+			</div>
+		<% end %>
 		<br>
 		<h4 style="font-weight: bold">Lista de insumos</h4>
 		<p><br>
 		<table class="table table-striped table-hover table-bordered">
 		  <thead>
 		    <tr>
-		      <th>Linea venta</th>
+		      <% if @user.ROL_USUARIO != 'B' %>
+		      	<th>Linea venta</th>
+		      <% end %>
 		      <th>Nombre insumo</th>
 		      <th>Cantidad venta</th>
 		      <th>Precio venta</th>
@@ -49,7 +71,9 @@
 		    <% @v_detalle_venta.each do |v_detalle_venta| %>
 		      <tr>
 		      	<% if v_detalle_venta.ID_VENTA == @v_venta.ID_VENTA %>
-			        <td><%= v_detalle_venta.LINEA_VENTA %></td>
+		      		<% if @user.ROL_USUARIO != 'B' %>
+			        	<td><%= v_detalle_venta.LINEA_VENTA %></td>
+			        <% end %>
 			        <td><%= v_detalle_venta.NOMBRE_UNICO_INSUMO %></td>
 			        <td><%= v_detalle_venta.CANTIDAD_VENTA %></td>
 			        <td><%= v_detalle_venta.PRECIO_VENTA %></td>
@@ -61,8 +85,10 @@
 		</table>
 		<br><br>
 		  <div class="btn-group" role="group" >
+		  	<% if @user.ROL_USUARIO != 'B' %>
 				<%= link_to 'Edit', edit_v_venta_path(@v_venta), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-				<%= link_to 'Back', v_venta_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+			<% end %>				
+				<%= link_to 'Back', v_venta_index_path, :class => "btn btn-default", :style=>"width:100px;" %>		
 			</div>
 	</div>
 </div>
