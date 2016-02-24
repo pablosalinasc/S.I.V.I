@@ -17,7 +17,8 @@ class VDevolucionController < ApplicationController
   end
 
   def show
-    respond_with(@v_devolucion)
+    @v_detalle_devolucion = VDetalleDevolucion.all
+    respond_with(@v_devolucion,@v_detalle_devolucion)
   end
 
   def new

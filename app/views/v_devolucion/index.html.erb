@@ -1,53 +1,45 @@
-<h1>Listing v_devolucion</h1>
-
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Id devolucion</th>
-      <th>Id venta</th>
-      <th>Id local</th>
-      <th>Id vendedor</th>
-      <th>Id estado devolucion</th>
-      <th>Fecha devolucion</th>
-      <th>Monto cambio</th>
-      <th>Cant insumos nuevos devolucion</th>
-      <th>Tipo devolucion</th>
-      <th>Comentario devolucion</th>
-      <th>Insumos defectuosos devolucion</th>
-      <th>Nombre vendedor</th>
-      <th>Nombre cliente</th>
-      <th>Estado actual</th>
-      <th>Direccion local</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @v_devolucion.each do |v_devolucion| %>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Lista de devoluciones</h1></div>
+  <div class="panel-body" >
+    <br><br>
+    <%= link_to 'Ingresar Venta', new_v_devolucion_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+    <br><br>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
       <tr>
-        <td><%= v_devolucion.ID_DEVOLUCION %></td>
-        <td><%= v_devolucion.ID_VENTA %></td>
-        <td><%= v_devolucion.ID_LOCAL %></td>
-        <td><%= v_devolucion.ID_VENDEDOR %></td>
-        <td><%= v_devolucion.ID_ESTADO_DEVOLUCION %></td>
-        <td><%= v_devolucion.FECHA_DEVOLUCION %></td>
-        <td><%= v_devolucion.MONTO_CAMBIO %></td>
-        <td><%= v_devolucion.CANT_INSUMOS_NUEVOS_DEVOLUCION %></td>
-        <td><%= v_devolucion.TIPO_DEVOLUCION %></td>
-        <td><%= v_devolucion.COMENTARIO_DEVOLUCION %></td>
-        <td><%= v_devolucion.INSUMOS_DEFECTUOSOS_DEVOLUCION %></td>
-        <td><%= v_devolucion.NOMBRE_VENDEDOR %></td>
-        <td><%= v_devolucion.NOMBRE_CLIENTE %></td>
-        <td><%= v_devolucion.ESTADO_ACTUAL %></td>
-        <td><%= v_devolucion.DIRECCION_LOCAL %></td>
-        <td><%= link_to 'Show', v_devolucion %></td>
-        <td><%= link_to 'Edit', edit_v_devolucion_path(v_devolucion) %></td>
-        <td><%= link_to 'Destroy', v_devolucion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Dirección Local</th>
+        <th>Nombre Vendedor</th>
+        <th>Nombre Cliente</th>
+        <th>Tipo de devolución</th>
+        <th>Estado insumos</th>
+        <th>Fecha de ingreso</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @v_devolucion.each do |v_devolucion| %>
+        <tr>
+          <td><%= v_devolucion.DIRECCION_LOCAL %></td>
+          <td><%= v_devolucion.NOMBRE_VENDEDOR %></td>
+          <td><%= v_devolucion.NOMBRE_CLIENTE %></td>
+          <td><%= v_devolucion.TIPO_DEVOLUCION %></td>
+          <% if v_devolucion.INSUMOS_DEFECTUOSOS_DEVOLUCION==true %>
+            <td>Defectuosos</td>
+          <%else%>
+            <td>No Defectusos</td>
+          <%end%>
+          <td><%= v_devolucion.FECHA_DEVOLUCION %></td>
+          <td>
+            <div class="btn-group" role="group" >
+            <%= link_to 'Mostrar', v_devolucion, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+            <%= link_to 'Editar', edit_v_devolucion_path(v_devolucion), :class => "btn btn-default", :style=>"width:100px;" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New V devolucion', new_v_devolucion_path %>
+  <br>
