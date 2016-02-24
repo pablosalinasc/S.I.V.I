@@ -1,49 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Datos Cliente</h1></div>
+  <div class="panel-body" >
 
-<p>
-  <strong>Id cliente:</strong>
-  <%= @v_resumen_cliente.ID_CLIENTE %>
-</p>
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Nombre</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.NOMBRE_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">RUT</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.RUT_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Correo</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.CORREO_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Teléfono</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.TELEFONO_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Edad</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.EDAD %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Descuento</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.DESCUENTO_CLIENTE*100 %>%</p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Cantidad de ventas realizar</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.VENTAS %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Cantidad de devoluciones realizadas</p>
+        <p class="col-xs-2"><%= @v_resumen_cliente.DEVOLUCIONES %></p>
+    </div>
 
-<p>
-  <strong>Nombre cliente:</strong>
-  <%= @v_resumen_cliente.NOMBRE_CLIENTE %>
-</p>
-
-<p>
-  <strong>Rut cliente:</strong>
-  <%= @v_resumen_cliente.RUT_CLIENTE %>
-</p>
-
-<p>
-  <strong>Correo cliente:</strong>
-  <%= @v_resumen_cliente.CORREO_CLIENTE %>
-</p>
-
-<p>
-  <strong>Telefono cliente:</strong>
-  <%= @v_resumen_cliente.TELEFONO_CLIENTE %>
-</p>
-
-<p>
-  <strong>Edad:</strong>
-  <%= @v_resumen_cliente.EDAD %>
-</p>
-
-<p>
-  <strong>Descuento cliente:</strong>
-  <%= @v_resumen_cliente.DESCUENTO_CLIENTE %>
-</p>
-
-<p>
-  <strong>Ventas:</strong>
-  <%= @v_resumen_cliente.VENTAS %>
-</p>
-
-<p>
-  <strong>Devoluciones:</strong>
-  <%= @v_resumen_cliente.DEVOLUCIONES %>
-</p>
-
-<%= link_to 'Edit', edit_v_resumen_cliente_path(@v_resumen_cliente) %> |
-<%= link_to 'Back', v_resumen_cliente_index_path %>
+    <br><br>
+      <div class="btn-group" role="group" >
+        <% if current_usuario.ROL_USUARIO != 'B' %>
+        <%= link_to 'Editar', edit_v_resumen_cliente_path(@v_resumen_cliente), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+        <% end %>       
+        <%= link_to 'Volver', v_resumen_cliente_index_path, :class => "btn btn-default", :style=>"width:100px;" %>    
+      </div>
+  </div>
+</div>

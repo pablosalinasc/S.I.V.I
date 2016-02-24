@@ -79,8 +79,8 @@
 			        <% end %>
 			        <td><%= v_detalle_venta.NOMBRE_UNICO_INSUMO %></td>
 			        <td><%= v_detalle_venta.CANTIDAD_VENTA %></td>
-			        <td><%= v_detalle_venta.PRECIO_VENTA %></td>
-			        <td><%= v_detalle_venta.DESCUENTO_VENTA %></td>
+			        <td>$<%= v_detalle_venta.PRECIO_VENTA %></td>
+			        <td>$<%= v_detalle_venta.DESCUENTO_VENTA %></td>
 		        <%end%>
 		      </tr>
 		    <% end %>
@@ -89,8 +89,8 @@
 		<br><br>
 		  <div class="btn-group" role="group" >
 		  	<% if @user.ROL_USUARIO != 'B' %>
-				<%= link_to 'Editar', edit_v_venta_path(@v_venta), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-			<% end %>				
+					<%= link_to 'Editar', edit_v_venta_path(@v_venta), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+				<% end %>				
 				<%= link_to 'Volver', v_venta_index_path, :class => "btn btn-default", :style=>"width:100px;" %>		
 			</div>
 	</div>
