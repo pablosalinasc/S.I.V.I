@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :v_detalle_guia
+
   resources :v_detalle_compra
 
   resources :v_propiedad_valor

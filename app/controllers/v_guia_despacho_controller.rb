@@ -17,7 +17,8 @@ class VGuiaDespachoController < ApplicationController
   end
 
   def show
-    respond_with(@v_guia_despacho)
+    @v_detalle_guia = VDetalleGuia.all
+    respond_with(@v_guia_despacho,@v_detalle_guia)
   end
 
   def new

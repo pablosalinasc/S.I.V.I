@@ -317,6 +317,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "CANTIDAD_PRODUCTOS",              null: false
   end
 
+  create_table "v_detalle_guia", id: false, force: true do |t|
+    t.integer "ID_GUIA_DESPACHO",                null: false
+    t.integer "LINEA_GUIA",                      null: false
+    t.integer "ID_PROVEEDOR",                    null: false
+    t.integer "ID_INSUMO",                       null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
+    t.integer "CANTIDAD_GUIA",                   null: false
+    t.float   "PRECIO_GUIA",         limit: 24,  null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+  end
+
   create_table "v_detalle_venta", id: false, force: true do |t|
     t.integer "ID_VENTA",                        null: false
     t.integer "LINEA_VENTA",                     null: false

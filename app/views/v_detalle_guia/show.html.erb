@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id guia despacho:</strong>
+  <%= @v_detalle_guia.ID_GUIA_DESPACHO %>
+</p>
+
+<p>
+  <strong>Linea guia:</strong>
+  <%= @v_detalle_guia.LINEA_GUIA %>
+</p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @v_detalle_guia.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Id insumo:</strong>
+  <%= @v_detalle_guia.ID_INSUMO %>
+</p>
+
+<p>
+  <strong>Codigo insumo:</strong>
+  <%= @v_detalle_guia.CODIGO_INSUMO %>
+</p>
+
+<p>
+  <strong>Cantidad guia:</strong>
+  <%= @v_detalle_guia.CANTIDAD_GUIA %>
+</p>
+
+<p>
+  <strong>Precio guia:</strong>
+  <%= @v_detalle_guia.PRECIO_GUIA %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @v_detalle_guia.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_v_detalle_guia_path(@v_detalle_guia) %> |
+<%= link_to 'Back', v_detalle_guia_index_path %>

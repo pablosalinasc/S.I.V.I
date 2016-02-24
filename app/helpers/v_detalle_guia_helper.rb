@@ -1,0 +1,2 @@
+module VDetalleGuiaHelper
+end
