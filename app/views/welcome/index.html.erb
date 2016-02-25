@@ -1,10 +1,56 @@
-<% if current_usuario.ROL_USUARIO == 'A' %>
-	<h1 align="center">Bienvenido Administrador</h1>
+<div class="panel panel-default">
+	<div class="panel-heading"><h1 align=" left">Bienvenido <%= current_usuario.NOMBRE_USUARIO %></h1></div>
 	<br><br>
-<% elsif current_usuario.ROL_USUARIO == 'B' %> 
-	<h1 align="center">Bienvenido Bodeguero</h1>
-	<br><br>
-<% elsif current_usuario.ROL_USUARIO == 'V' %>
-	<h1 align="center">Bienvenido Vendedor</h1>
-	<br><br>
-<%end%>
+	<div class="panel-body">
+	<% if current_usuario.ROL_USUARIO == 'A' %>
+		<div class="row">
+			<div class="col-xs-6">
+				<span class="glyphicon glyphicon-home col-xs-2" style="color:green;font-size: 50px;"></span>
+				<h3 class="col-xs-10" style="height:50px;padding-left: 20px;padding-bottom:10px;font-weight: bold;">Información</h3>
+				<p class="col-xs-offset-2">Recuerde que debe atender las dudas del personal.</p>
+				<p class="col-xs-offset-2">Recuerde que debe comprar stock para cada tienda.</p>
+			</div>
+		</div>
+		<br><br>
+		<br>
+	<% elsif current_usuario.ROL_USUARIO == 'B' %> 
+		<div class="row">
+			<div class="col-xs-6">
+				<span class="glyphicon glyphicon-home col-xs-2" style="color:green;font-size: 50px;"></span>
+				<h3 class="col-xs-10" style="height:50px;padding-left: 20px;padding-bottom:10px;font-weight: bold;">Información</h3>
+				<p class="col-xs-offset-2">Recuerde mantener actualizada su información personal.</p>
+				<p class="col-xs-offset-2">Realize el despacho de las ventas con la mayor prontitud posible.</p>
+				<p class="col-xs-offset-2">El Debe realizar inventario periódicamente.</p>
+				<p class="col-xs-offset-2">En caso de alguna situación anómala debe informar a sus superiores a la brevedad.</p>
+			</div>
+			<div class="col-xs-4">
+				<span class="glyphicon glyphicon-exclamation-sign col-xs-2" style="color:green;font-size: 50px;"></span>
+				<h3 class="col-xs-10" style="height:50px;padding-left: 20px;font-weight: bold;">Resumen</h3>
+				<div class="row"><h3 class="col-xs-offset-2 col-xs-1" style="margin-top: 0px;"><%=@v_resumen_bodeguero.VENTAS%></h3><p class="col-xs-8"> ventas despachadas</p></div>
+				<div class="row"><h3 class="col-xs-offset-2 col-xs-1" style="margin-top: 0px;"><%=@v_resumen_bodeguero.COMPRAS%></h3><p class="col-xs-8"> devoluciones despachadas</p></div>
+			</div>
+		</div>
+
+		<br><br>
+	<% elsif current_usuario.ROL_USUARIO == 'V' %>
+		<div class="row">
+			<div class="col-xs-6">
+				<span class="glyphicon glyphicon-home col-xs-2" style="color:green;font-size: 50px;"></span>
+				<h3 class="col-xs-10" style="height:50px;padding-left: 20px;padding-bottom:10px;font-weight: bold;">Información</h3>
+				<p class="col-xs-offset-2">Recuerde mantener actualizada su información personal.</p>
+				<p class="col-xs-offset-2">Recuerde que debe ofrecer insumos que tengan stock.</p>
+				<p class="col-xs-offset-2">El cliente siempre tiene la razón.</p>
+				<p class="col-xs-offset-2">Debe revisar la causa de los insumos defectuosos.</p>
+				<p class="col-xs-offset-2">En caso de alguna situación anómala debe informar a sus superiores a la brevedad.</p>
+			</div>
+			<div class="col-xs-4">
+				<span class="glyphicon glyphicon-exclamation-sign col-xs-2" style="color:green;font-size: 50px;"></span>
+				<h3 class="col-xs-10" style="height:50px;padding-left: 20px;font-weight: bold;">Resumen</h3>
+				<div class="row"><h3 class="col-xs-offset-2 col-xs-1" style="margin-top: 0px;"><%=@v_resumen_vendedor.VENTAS%></h3><p class="col-xs-8"> ventas realizadas</p></div>
+				<div class="row"><h3 class="col-xs-offset-2 col-xs-1" style="margin-top: 0px;"><%=@v_resumen_vendedor.DEVOLUCIONES%></h3><p class="col-xs-8"> devoluciones realizadas</p></div>
+			</div>
+		</div>
+		<br><br>
+	<%end%>
+	</div>
+</div>
