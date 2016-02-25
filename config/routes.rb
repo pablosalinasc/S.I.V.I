@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'compra_insumos/index'
+
   resources :v_detalle_guia
 
   resources :v_detalle_compra

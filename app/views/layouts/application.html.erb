@@ -48,8 +48,11 @@
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>                
                 <li><%= link_to "Devoluciones", v_devolucion_index_path %></li>
               <%end%>
-              <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'B' %>
-                <li><%= link_to "Compra de insumos", v_orden_de_compra_index_path %></li>
+              <%if current_usuario.ROL_USUARIO == 'A'%>
+                <li><%= link_to "Compra de insumos", compra_insumos_index_path %></li>
+              <%end%>
+              <% if current_usuario.ROL_USUARIO == 'B' %>
+                <li><%= link_to "Órdenes de compra", v_orden_de_compra_index_path %></li>
                 <li><%= link_to "Guías de despacho", v_guia_despacho_index_path %></li>
               <%end%>
             <%end%>

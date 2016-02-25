@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><h1>Compra de insumos</h1></div>
+	<div class="panel-body">
+		<%= link_to proveedor_index_path, :action => 'go' do %>
+			<div class="col-xs-3">
+				<span class="glyphicon glyphicon-globe" aria-hidden="true" style="font-size: 80px;"></span>
+				<h3>Proveedores</h3>
+			</div>
+		<%end%>
+		<%= link_to cotizacion_index_path, :action => 'go' do %>
+			<div class="col-xs-3">
+				<span class="glyphicon glyphicon-list" aria-hidden="true" style="font-size: 80px;"></span>
+				<h3>Cotizaciones</h3>
+			</div>
+		<%end%>
+		<%= link_to v_orden_de_compra_index_path, :action => 'go' do %>
+			<div class="col-xs-3">
+				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="font-size: 80px;"></span>
+				<h3>Órdenes de compra</h3>
+			</div>
+		<% end %>
+		<%= link_to v_guia_despacho_index_path, :action => 'go' do %>
+			<div class="col-xs-3">
+				<span class="glyphicon glyphicon-book" aria-hidden="true" style="font-size: 80px;"></span>
+				<h3>Guía de despacho</h3>
+			</div>
+		<%end%>
+	</div>
+</div>
