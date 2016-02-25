@@ -28,7 +28,15 @@
         <td><%= usuario.FECHA_NACIMIENTO_USUARIO %></td>
         <td><%= usuario.email %></td>
         <td><%= usuario.TELEFONO_USUARIO %></td>
-        <td><%= usuario.ROL_USUARIO %></td>
+        <td>
+          <% if usuario.ROL_USUARIO == 'B' %>
+            Bodeguero
+          <% elsif usuario.ROL_USUARIO == 'V'%>
+            Vendedor
+          <% else %>
+            Administrador
+          <% end %>
+        </td>
         <td>
           <div class="btn-group" role="group" >
             <%= link_to 'Detalles',usuario, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>   
