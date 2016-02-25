@@ -1,34 +1,65 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre usuario:</strong>
-  <%= @usuario.NOMBRE_USUARIO %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Personal</h1></div>
 
-<p>
-  <strong>Rut usuario:</strong>
-  <%= @usuario.RUT_USUARIO %>
-</p>
+    <% if @usuario.ROL_USUARIO == 'B' %>
+      <% @v_resumen_bodeguero.each do |v_resumen_bodeguero| %>
+        <% if @usuario.ID_USUARIO == v_resumen_bodeguero.ID_USUARIO %>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Nombre usuario</th>
+                <th>Rol usuario</th>
+                <th>Ventas</th>
+                <th>Compras</th>
+                <th colspan="1"></th>
+              </tr>
+            </thead>
 
-<p>
-  <strong>Fecha nacimiento usuario:</strong>
-  <%= @usuario.FECHA_NACIMIENTO_USUARIO %>
-</p>
+            <tbody>
+                <tr>
+                  <td><%= v_resumen_bodeguero.NOMBRE_USUARIO %></td>
+                  <td>Bodeguero</td>
+                  <td><%= v_resumen_bodeguero.VENTAS %></td>
+                  <td><%= v_resumen_bodeguero.COMPRAS %></td>
+                </tr>
+            </tbody>
+          </table>
+          <br>
+        <% end -%>
+      <% end -%>
+    <% end -%>
 
-<p>
-  <strong>Correo usuario:</strong>
-  <%= @usuario.email %>
-</p>
+    <% if @usuario.ROL_USUARIO == 'V' %>
+      <% @v_resumen_vendedor.each do |v_resumen_vendedor| %>
+        <% if @usuario.ID_USUARIO == v_resumen_vendedor.ID_USUARIO %>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Nombre usuario</th>
+                <th>Rol usuario</th>
+                <th>Ventas</th>
+                <th>Devoluciones</th>
+                <th colspan="1"></th>
+              </tr>
+            </thead>
 
-<p>
-  <strong>Telefono usuario:</strong>
-  <%= @usuario.TELEFONO_USUARIO %>
-</p>
+            <tbody>
+                <tr>
+                  <td><%= v_resumen_vendedor.NOMBRE_USUARIO %></td>
+                  <td>Vendedor</td>
+                  <td><%= v_resumen_vendedor.VENTAS %></td>
+                  <td><%= v_resumen_vendedor.DEVOLUCIONES %></td>
+                </tr>
+            </tbody>
+          </table>
+          <br>
+        <% end -%>
+      <% end -%>
+    <% end -%>
 
-<p>
-  <strong>Rol usuario:</strong>
-  <%= @usuario.ROL_USUARIO %>
-</p>
-
-<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
-<%= link_to 'Back', usuario_index_path %>
+</div>
+<br><br><br>
+<%= link_to 'Back', usuario_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+<br><br><br>

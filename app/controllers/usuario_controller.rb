@@ -17,6 +17,9 @@ class UsuarioController < ApplicationController
   end
 
   def show
+    @user = current_usuario
+    @v_resumen_bodeguero = VResumenBodeguero.all
+    @v_resumen_vendedor = VResumenVendedor.all
     respond_with(@usuario)
   end
 
