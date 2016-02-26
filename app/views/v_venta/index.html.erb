@@ -33,7 +33,7 @@
             <% if @bodeguero.ID_LOCAL == v_venta.ID_LOCAL %>
               <td><%= v_venta.NOMBRE_VENDEDOR %></td>
               <td><%= v_venta.NOMBRE_CLIENTE %></td>
-              <td><%= v_venta.MONTO_TOTAL_VENTA %></td>
+              <td>$<%= v_venta.MONTO_TOTAL_VENTA %></td>
               <td><%= v_venta.FECHA_VENTA %></td>
                 <% if v_venta.DESPACHADA_VENTA %>
                   <th>Despachada</th>
@@ -44,7 +44,7 @@
                 <div class="btn-group" role="group" >
                   <%= link_to 'Detalle', v_venta, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
                   <% if @user.ROL_USUARIO != 'B' %>
-                    <%= link_to 'Editar', edit_v_venta_path(v_venta), :class => "btn btn-default", :style=>"width:100px;" %>
+                    <%= link_to 'Editar', edit_v_venta_path(venta), :class => "btn btn-default", :style=>"width:100px;" %>
                   <% end %>
                 </div>
               </td>

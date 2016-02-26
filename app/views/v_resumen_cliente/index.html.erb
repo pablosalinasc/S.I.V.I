@@ -19,12 +19,12 @@
     </thead>
 
     <tbody>
-      <% @v_resumen_cliente.each do |v_resumen_cliente| %>
+      <% @cliente.each do |cliente| %>
         <tr>
           <td><%= v_resumen_cliente.NOMBRE_CLIENTE %></td>
           <td><%= v_resumen_cliente.RUT_CLIENTE %></td>
           <td><%= v_resumen_cliente.CORREO_CLIENTE %></td>
-          <td><%= v_resumen_cliente.EDAD %></td>
+          <td><%= v_resumen_cliente.EDAD %> años</td>
           <td><%= v_resumen_cliente.DESCUENTO_CLIENTE*100 %>%</td>
           <td><%= v_resumen_cliente.VENTAS %></td>
           <td>

@@ -1,0 +1,56 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Detalle Cotización</h1></div>
+  <div class="panel-body" >
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Nombre proveedor</p>
+        <p class="col-xs-2"><%= @v_cotizacion.NOMBRE_PROVEEDOR %></p>
+    </div>
+        <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Monto total</p>
+        <p class="col-xs-2">$<%= @v_cotizacion.MONTO_TOTAL_COTIZACION %></p>
+    </div>
+      <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Fecha de ingreso</p>
+        <p class="col-xs-2"><%= @v_cotizacion.FECHA_COTIZACION %></p>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+      <h4 style="font-weight: bold">Lista de insumos cotizados</h4>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Linea cotización</th>
+            <th>Código del proveedor</th>
+            <th>Nombre insumo</th>
+            <th>Cantidad (unidades)</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @v_detalle_cotizacion.each do |v_detalle_cotizacion| %>
+            <tr>
+              <% if v_detalle_cotizacion.ID_COTIZACION == @v_cotizacion.ID_COTIZACION %>
+                <td><%= v_detalle_cotizacion.LINEA_COTIZACION %></td>
+                <td><%= v_detalle_cotizacion.CODIGO_INSUMO %></td>
+                <td><%= v_detalle_cotizacion.NOMBRE_UNICO_INSUMO %></td>
+                <td><%= v_detalle_cotizacion.CANTIDAD_COTIZACION %></td>
+                <td>$<%= v_detalle_cotizacion.PRECIO_COTIZACION %></td>
+              <%end%>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+   <br><br>
+    <div class="row">
+      <div class="col-xs-2 btn-group" role="group" >
+        <%= link_to 'Editar', edit_v_cotizacion_path(@v_cotizacion), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+        <%= link_to 'Volver', v_cotizacion_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

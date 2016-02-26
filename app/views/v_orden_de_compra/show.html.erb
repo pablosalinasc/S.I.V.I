@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <p class="col-xs-2" style="font-weight: bold;">Monto Total</p>
-        <p class="col-xs-2"><%= @v_orden_de_compra.MONTO_TOTAL_COMPRA.to_i %></p>
+        <p class="col-xs-2">$<%= @v_orden_de_compra.MONTO_TOTAL_COMPRA.to_i %></p>
     </div>
     <div class="row">
       <p class="col-xs-2" style="font-weight: bold;">Estado</p>
@@ -48,7 +48,7 @@
               <th> <%= v_detalle_compra.NOMBRE_UNICO_INSUMO %></th>
               <th> <%= v_detalle_compra.CODIGO_INSUMO %></th>
               <th> <%= v_detalle_compra.CANTIDAD_COMPRA %></th>
-              <th> <%= v_detalle_compra.PRECIO_COMPRA %></th>
+              <th> $<%= v_detalle_compra.PRECIO_COMPRA %></th>
               <th> 0 </th>
             <% end %>
           </tr>

@@ -1,5 +1,8 @@
 <h1>Listing cotizacion</h1>
 
+
+<%= link_to 'Ingresar cotización', new_cotizacion_path %>
+
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -16,14 +19,12 @@
         <td><%= cotizacion.ID_PROVEEDOR %></td>
         <td><%= cotizacion.FECHA_COTIZACION %></td>
         <td><%= cotizacion.MONTO_TOTAL_COTIZACION %></td>
-        <td><%= link_to 'Show', cotizacion %></td>
-        <td><%= link_to 'Edit', edit_cotizacion_path(cotizacion) %></td>
-        <td><%= link_to 'Destroy', cotizacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalle', cotizacion %></td>
+        <td><%= link_to 'Editar', edit_cotizacion_path(cotizacion) %></td>
+        <td><%= link_to 'Eliminar', cotizacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Cotizacion', new_cotizacion_path %>

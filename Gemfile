@@ -33,6 +33,8 @@ gem 'autoprefixer-rails'
 
 gem 'composite_primary_keys', '=7.0.15'
 
+gem "cocoon"
+
 gem 'devise'
 # Use unicorn as the app server
 # gem 'unicorn'

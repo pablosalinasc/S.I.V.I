@@ -1,7 +1,7 @@
 <%= form_for(@cliente) do |f| %>
   <% if @cliente.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+      <h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this v_resumen_cliente from being saved:</h2>
 
       <ul>
       <% @cliente.errors.full_messages.each do |message| %>
@@ -12,30 +12,39 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :NOMBRE_CLIENTE %><br>
-    <%= f.text_field :NOMBRE_CLIENTE %>
+    <%= f.label :NOMBRE_CLIENTE, "Nombre *" %><br>
+    <%= f.text_field :NOMBRE_CLIENTE, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :RUT_CLIENTE %><br>
-    <%= f.text_field :RUT_CLIENTE %>
+    <%= f.label :RUT_CLIENTE , "RUT *" %><br>
+    <%= f.text_field :RUT_CLIENTE, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :CORREO_CLIENTE %><br>
-    <%= f.text_field :CORREO_CLIENTE %>
+    <%= f.label :CORREO_CLIENTE, "Correo" %><br>
+    <%= f.text_field :CORREO_CLIENTE, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :TELEFONO_CLIENTE %><br>
-    <%= f.text_field :TELEFONO_CLIENTE %>
+    <%= f.label :TELEFONO_CLIENTE, "Teléfono" %><br>
+    <%= f.text_field :TELEFONO_CLIENTE, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :FECHA_NACIMIENTO_CLIENTE %><br>
-    <%= f.datetime_select :FECHA_NACIMIENTO_CLIENTE %>
+    <%= f.label :FECHA_NACIMIENTO_CLIENTE, "Fecha de nacimiento *" %><br>
+    <%= f.date_field :FECHA_NACIMIENTO_CLIENTE, :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :DESCUENTO_CLIENTE %><br>
-    <%= f.text_field :DESCUENTO_CLIENTE %>
-  </div>
+  <% if current_usuario.ROL_USUARIO == 'A'%>
+    <div class="field">
+      <%= f.label :DESCUENTO_CLIENTE, "Descuento *" %><br>
+      <%= f.number_field :DESCUENTO_CLIENTE,:min => 0 ,:max => 0.2, :step => 0.05, :class => "form-control"%>
+    </div>
+  <%else%>
+    <div class="field">
+      <%= f.label :DESCUENTO_CLIENTE, "Descuento *" %><br>
+      <%= f.text_field :DESCUENTO_CLIENTE,:min => 0 ,:min => 0.1 , :step => 0.05, :class => "form-control" %>
+    </div>
+  <%end%>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingresar Cliente", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', cliente_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

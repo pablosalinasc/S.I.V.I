@@ -1,0 +1,23 @@
+<%= form_for(@local) do |f| %>
+  <% if @local.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@local.errors.count, "error") %> prohibited this local from being saved:</h2>
+
+      <ul>
+      <% @local.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :DIRECCION_LOCAL %><br>
+    <%= f.text_field :DIRECCION_LOCAL , :class => "form-control"%>
+  </div>
+  <br><br>
+  <div class="actions">
+    <%= f.submit "Actualizar local" ,:class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+  </div>
+    <%= link_to 'Volver', local_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+<% end %>

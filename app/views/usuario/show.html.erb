@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <div class="panel panel-default">
-  <div class="panel-heading"><h1>Personal</h1></div>
+  <div class="panel-heading"><h1>Detalle Personal</h1></div>
+  <div class="panel-body">
+    <p id="notice"><%= notice %></p>
 
     <% if @usuario.ROL_USUARIO == 'B' %>
       <% @v_resumen_bodeguero.each do |v_resumen_bodeguero| %>
@@ -11,8 +11,8 @@
               <tr>
                 <th>Nombre usuario</th>
                 <th>Rol usuario</th>
-                <th>Ventas</th>
-                <th>Compras</th>
+                <th>Ventas despachadas</th>
+                <th>Compras almacenadas</th>
                 <th colspan="1"></th>
               </tr>
             </thead>
@@ -39,8 +39,8 @@
               <tr>
                 <th>Nombre usuario</th>
                 <th>Rol usuario</th>
-                <th>Ventas</th>
-                <th>Devoluciones</th>
+                <th>Ventas realizadas</th>
+                <th>Devoluciones realizadas</th>
                 <th colspan="1"></th>
               </tr>
             </thead>
@@ -58,8 +58,8 @@
         <% end -%>
       <% end -%>
     <% end -%>
-
+    <br>
+    <%= link_to 'Volver', usuario_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
+    <br>
+  </div>
 </div>
-<br><br><br>
-<%= link_to 'Back', usuario_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
-<br><br><br>

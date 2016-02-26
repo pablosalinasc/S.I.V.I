@@ -13,9 +13,11 @@
 
   <div class="field">
     <%= f.label :DIRECCION_LOCAL %><br>
-    <%= f.text_field :DIRECCION_LOCAL %>
+    <%= f.text_field :DIRECCION_LOCAL , :class => "form-control"%>
   </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingresar local" ,:class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', local_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

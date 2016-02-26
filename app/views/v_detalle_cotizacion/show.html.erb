@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id cotizacion:</strong>
+  <%= @v_detalle_cotizacion.ID_COTIZACION %>
+</p>
+
+<p>
+  <strong>Linea cotizacion:</strong>
+  <%= @v_detalle_cotizacion.LINEA_COTIZACION %>
+</p>
+
+<p>
+  <strong>Id proveedor:</strong>
+  <%= @v_detalle_cotizacion.ID_PROVEEDOR %>
+</p>
+
+<p>
+  <strong>Id insumo:</strong>
+  <%= @v_detalle_cotizacion.ID_INSUMO %>
+</p>
+
+<p>
+  <strong>Codigo insumo:</strong>
+  <%= @v_detalle_cotizacion.CODIGO_INSUMO %>
+</p>
+
+<p>
+  <strong>Cantidad cotizacion:</strong>
+  <%= @v_detalle_cotizacion.CANTIDAD_COTIZACION %>
+</p>
+
+<p>
+  <strong>Precio cotizacion:</strong>
+  <%= @v_detalle_cotizacion.PRECIO_COTIZACION %>
+</p>
+
+<p>
+  <strong>Nombre unico insumo:</strong>
+  <%= @v_detalle_cotizacion.NOMBRE_UNICO_INSUMO %>
+</p>
+
+<%= link_to 'Edit', edit_v_detalle_cotizacion_path(@v_detalle_cotizacion) %> |
+<%= link_to 'Back', v_detalle_cotizacion_index_path %>

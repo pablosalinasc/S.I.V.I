@@ -1,34 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Datos Cliente</h1></div>
+  <div class="panel-body" >
 
-<p>
-  <strong>Nombre cliente:</strong>
-  <%= @cliente.NOMBRE_CLIENTE %>
-</p>
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Nombre</p>
+        <p class="col-xs-2"><%= @cliente.NOMBRE_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">RUT</p>
+        <p class="col-xs-2"><%= @cliente.RUT_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Correo</p>
+        <p class="col-xs-2"><%= @cliente.CORREO_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Teléfono</p>
+        <p class="col-xs-2"><%= @cliente.TELEFONO_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Fecha de nacimiento</p>
+        <p class="col-xs-2"><%= @cliente.FECHA_NACIMIENTO_CLIENTE %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Descuento</p>
+        <p class="col-xs-2"><%= @cliente.DESCUENTO_CLIENTE*100 %>%</p>
+    </div>
 
-<p>
-  <strong>Rut cliente:</strong>
-  <%= @cliente.RUT_CLIENTE %>
-</p>
-
-<p>
-  <strong>Correo cliente:</strong>
-  <%= @cliente.CORREO_CLIENTE %>
-</p>
-
-<p>
-  <strong>Telefono cliente:</strong>
-  <%= @cliente.TELEFONO_CLIENTE %>
-</p>
-
-<p>
-  <strong>Fecha nacimiento cliente:</strong>
-  <%= @cliente.FECHA_NACIMIENTO_CLIENTE %>
-</p>
-
-<p>
-  <strong>Descuento cliente:</strong>
-  <%= @cliente.DESCUENTO_CLIENTE %>
-</p>
-
-<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
-<%= link_to 'Back', cliente_index_path %>
+    <br><br>
+      <div class="btn-group" role="group" >
+        <% if current_usuario.ROL_USUARIO != 'B' %>
+        <%= link_to 'Editar', edit_cliente_path(@cliente), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+        <% end %>       
+        <%= link_to 'Volver', cliente_index_path, :class => "btn btn-default", :style=>"width:100px;" %>    
+      </div>
+  </div>
+</div>

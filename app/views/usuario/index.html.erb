@@ -3,7 +3,7 @@
 
   <div class="panel-body" >
     <br><br>
-    <%= link_to 'Agregar nuevo usuario', new_usuario_path, :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+    <%= link_to 'Agregar nuevo empleado', new_usuario_path, :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
     <br><br>
   </div>
 
@@ -39,7 +39,9 @@
         </td>
         <td>
           <div class="btn-group" role="group" >
+            <%if usuario.ROL_USUARIO!='A'%>
             <%= link_to 'Detalles',usuario, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>   
+            <%end%>
             <%=  link_to 'Editar', edit_usuario_path(usuario), :class => "btn btn-default", :style=>"width:100px;" %>    
           </div>
         </td>

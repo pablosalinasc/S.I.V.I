@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Detalle Insumo</h1></div>
+  <div class="panel-body" >
 
-<p>
-  <strong>Nombre marca:</strong>
-  <%= @marca.NOMBRE_MARCA %>
-</p>
+	<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_marca_path(@marca) %> |
-<%= link_to 'Back', marca_index_path %>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Nombre marca:</p>
+        <p class="col-xs-3"><%= @marca.NOMBRE_MARCA %></p>
+    </div>
+    <div class="row">
+      <div class="btn-group" role="group" >
+        <%= link_to 'Volver', v_stock_insumo_index_path, :class => "btn btn-default col-xs-2", :style=>"padding-left:20px;width:100px;" %>
+      </div>
+    </div>
+</div>

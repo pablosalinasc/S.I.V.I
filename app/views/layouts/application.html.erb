@@ -29,7 +29,7 @@
             <% if usuario_signed_in? %> 
                 <li><%= link_to "Home", welcome_index_path %></li>
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
-                <li><%= link_to "Clientes", v_resumen_cliente_index_path %></li>
+                <li><%= link_to "Clientes", cliente_index_path %></li>
               <%end%>
               <% if current_usuario.ROL_USUARIO == 'A' or current_usuario.ROL_USUARIO == 'V' %>
                 <li><%= link_to "Insumos", v_stock_insumo_index_path %></li>

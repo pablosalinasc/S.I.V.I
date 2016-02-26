@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Lista de cotizaciones</h1></div>
+  <div class="panel-body" >
+    <br><br>
+      <%= link_to 'Ingresar Cotización', new_v_cotizacion_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+      <br><br>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Número de cotización</th>
+            <th>Nombre proveedor</th>
+            <th>Fecha</th>
+            <th>Monto total</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @v_cotizacion.each do |v_cotizacion| %>
+            <tr>
+              <td><%= v_cotizacion.ID_COTIZACION %></td>
+              <td><%= v_cotizacion.NOMBRE_PROVEEDOR %></td>
+              <td><%= v_cotizacion.FECHA_COTIZACION %></td>
+              <td><%= v_cotizacion.MONTO_TOTAL_COTIZACION %></td>
+              <td>
+                <div class="btn-group" role="group" >
+                  <%= link_to 'Detalle', v_cotizacion, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+                  <%= link_to 'Editar', edit_v_cotizacion_path(v_cotizacion), :class => "btn btn-default", :style=>"width:100px;" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <br>
+    <% if current_usuario.ROL_USUARIO == 'A'%>
+      <%= link_to 'Volver', compra_insumos_index_path, :class => "btn btn-default", :style=>"width:100px;"%>
+    <%end%>
+    <br>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<%= form_for(@venta) do |f| %>
+  <% if @venta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venta.errors.count, "error") %> prohibited this v_venta from being saved:</h2>
+
+      <ul>
+      <% @venta.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_CLIENTE, "Cliente" %><br>
+    <%= f.collection_select :ID_CLIENTE, Cliente.all, :id, :NOMBRE_CLIENTE%>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :FORMA_DE_PAGO_VENTA, "Forma de pago *" %><br>
+    <%= f.text_field :FORMA_DE_PAGO_VENTA, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :NUMERO_BOLETA_VENTA, "Número de boleta *" %><br>
+    <%= f.text_field :NUMERO_BOLETA_VENTA, :class => "form-control" %>
+  </div>
+  <br><br>
+  <h3>Detalle venta</h3>
+  <%= f.fields_for :DetalleVenta do |builder|%>
+    <fieldset>
+      <div class=" panel panel-default col-xs-6" align="left" style="padding:0px;">
+        <br><br>
+        <div class="panel-body">
+          <div class="row">
+            <%= builder.label :LINEA_VENTA, "Línea de detalle *", :class=>"col-xs-6"%>
+            <%= builder.text_field :LINEA_VENTA %>
+          </div>
+          <div class="row">
+            <%= builder.label :ID_INSUMO, "Insumo *", :class=>"col-xs-6"%>
+            <%= builder.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO %>
+          </div>
+          <div class="row">
+            <%= builder.label :CANTIDAD_VENTA, "Cantidad de unidades *", :class=>"col-xs-6"%>
+            <%= builder.number_field :CANTIDAD_VENTA ,:min => 1 %>
+          </div>
+          <div class="row">
+            <%= f.hidden_field :_destroy%>
+            <% link_to "Eliminar", '#', class: "remove_fields" %>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  <%end%>
+  <!--<br><br>
+  < link_to_add_fields "Agregar detalle", f, :DetalleVenta >-->
+  <br><br>
+  <div class="actions">
+    <%= f.submit "Actualizar venta", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+  </div>
+    <%= link_to 'Volver', v_venta_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+<% end %>

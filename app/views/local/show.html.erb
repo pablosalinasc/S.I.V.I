@@ -1,9 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Detalle Local</h1></div>
+  <div class="panel-body" >
 
-<p>
-  <strong>Direccion local:</strong>
-  <%= @local.DIRECCION_LOCAL %>
-</p>
+		<p id="notice"><%= notice %></p>
+		<div class="row">
+			  <p class="col-xs-2" style="font-weight: bold;">Dirección</p>
+			  <p class="col-xs-2"><%= @local.DIRECCION_LOCAL  %></p>
+		</div>
 
-<%= link_to 'Edit', edit_local_path(@local) %> |
-<%= link_to 'Back', local_index_path %>
+		<br><br>
+		  <div class="btn-group" role="group" >
+		  	<% if current_usuario.ROL_USUARIO != 'B' %>
+					<%= link_to 'Editar', edit_local_path(@local), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+				<% end %>				
+				<%= link_to 'Volver', local_index_path, :class => "btn btn-default", :style=>"width:100px;" %>		
+			</div>
+	</div>
+</div>

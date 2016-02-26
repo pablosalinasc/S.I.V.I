@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h1>Detalle venta</h1></div>
+  <div class="panel-body" >
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Nombre</p>
+        <p class="col-xs-2"><%=  @proveedor.NOMBRE_PROVEEDOR %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">País</p>
+        <p class="col-xs-2"><%= @proveedor.PAIS_PROVEEDOR %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Ciudad</p>
+        <p class="col-xs-2"><%= @proveedor.CIUDAD_PROVEEDOR %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Dirección</p>
+        <p class="col-xs-2"><%= @proveedor.DIRECCION_PROVEEDOR %></p>
+    </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Correo</p>
+        <p class="col-xs-2"><%= @proveedor.CORREO_PROVEEDOR %></p>
+    </div>
 
-<p>
-  <strong>Nombre proveedor:</strong>
-  <%= @proveedor.NOMBRE_PROVEEDOR %>
-</p>
-
-<p>
-  <strong>Pais proveedor:</strong>
-  <%= @proveedor.PAIS_PROVEEDOR %>
-</p>
-
-<p>
-  <strong>Ciudad proveedor:</strong>
-  <%= @proveedor.CIUDAD_PROVEEDOR %>
-</p>
-
-<p>
-  <strong>Direccion proveedor:</strong>
-  <%= @proveedor.DIRECCION_PROVEEDOR %>
-</p>
-
-<p>
-  <strong>Correo proveedor:</strong>
-  <%= @proveedor.CORREO_PROVEEDOR %>
-</p>
-
-<%= link_to 'Edit', edit_proveedor_path(@proveedor) %> |
-<%= link_to 'Back', proveedor_index_path %>
+    <br><br>
+      <div class="btn-group" role="group" >
+          <%= link_to 'Editar',  edit_proveedor_path(@proveedor), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+        <%= link_to 'Volver', proveedor_index_path, :class => "btn btn-default", :style=>"width:100px;" %>    
+      </div>
+  </div>
+</div>

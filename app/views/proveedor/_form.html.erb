@@ -12,26 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :NOMBRE_PROVEEDOR %><br>
-    <%= f.text_field :NOMBRE_PROVEEDOR %>
+    <%= f.label :NOMBRE_PROVEEDOR, "Nombre *" %><br>
+    <%= f.text_field :NOMBRE_PROVEEDOR, :class => "form-control"  %>
   </div>
   <div class="field">
-    <%= f.label :PAIS_PROVEEDOR %><br>
-    <%= f.text_field :PAIS_PROVEEDOR %>
+    <%= f.label :PAIS_PROVEEDOR, "País *" %><br>
+    <%= f.text_field :PAIS_PROVEEDOR, :class => "form-control"  %>
   </div>
   <div class="field">
-    <%= f.label :CIUDAD_PROVEEDOR %><br>
-    <%= f.text_field :CIUDAD_PROVEEDOR %>
+    <%= f.label :CIUDAD_PROVEEDOR, "Ciudad *" %><br>
+    <%= f.text_field :CIUDAD_PROVEEDOR, :class => "form-control"  %>
   </div>
   <div class="field">
-    <%= f.label :DIRECCION_PROVEEDOR %><br>
-    <%= f.text_field :DIRECCION_PROVEEDOR %>
+    <%= f.label :DIRECCION_PROVEEDOR, "Dirección *" %><br>
+    <%= f.text_field :DIRECCION_PROVEEDOR, :class => "form-control"  %>
   </div>
   <div class="field">
-    <%= f.label :CORREO_PROVEEDOR %><br>
-    <%= f.text_field :CORREO_PROVEEDOR %>
+    <%= f.label :CORREO_PROVEEDOR, "Correo electronico"  %><br>
+    <%= f.text_field :CORREO_PROVEEDOR, :class => "form-control"  %>
   </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingresar proveedor", :class => "col-xs-4 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', proveedor_index_path , :class => "col-xs-4 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

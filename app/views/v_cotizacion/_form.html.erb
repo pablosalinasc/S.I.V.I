@@ -1,0 +1,32 @@
+<%= form_for(@v_cotizacion) do |f| %>
+  <% if @v_cotizacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_cotizacion.errors.count, "error") %> prohibited this v_cotizacion from being saved:</h2>
+
+      <ul>
+      <% @v_cotizacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_COTIZACION %><br>
+    <%= f.datetime_select :FECHA_COTIZACION %>
+  </div>
+  <div class="field">
+    <%= f.label :MONTO_TOTAL_COTIZACION %><br>
+    <%= f.text_field :MONTO_TOTAL_COTIZACION %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_PROVEEDOR %><br>
+    <%= f.text_field :NOMBRE_PROVEEDOR %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

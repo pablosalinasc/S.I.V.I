@@ -6,7 +6,6 @@
       <%= link_to 'Ingresar guía de despacho', new_v_guia_despacho_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
     <%end%>
     <br><br>
-  </div>
   <table class="table table-striped table-hover">
     <thead>
       <tr>
@@ -51,6 +50,10 @@
       <% end %>
     </tbody>
   </table>
-
   <br>
+  <% if current_usuario.ROL_USUARIO == 'A'%>
+    <%= link_to 'Volver', compra_insumos_index_path, :class => "btn btn-default", :style=>"width:100px;"%>
+  <%end%>
+  <br>
+  </div>
 </div>

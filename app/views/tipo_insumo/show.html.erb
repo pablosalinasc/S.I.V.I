@@ -39,7 +39,7 @@
               <tr>
                 <% if @tipo_insumo.ID_TIPO_INSUMO == insumo.ID_TIPO_INSUMO %>
                   <td><%= insumo.NOMBRE_UNICO_INSUMO %></td>
-                  <td><%= insumo.PRECIO_INSUMO %></td>
+                  <td>$<%= insumo.PRECIO_INSUMO %></td>
                 <% end %>
               </tr>
             <% end %>

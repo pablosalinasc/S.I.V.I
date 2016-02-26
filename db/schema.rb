@@ -290,6 +290,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "NOMBRE_MARCA", limit: 30, null: false
   end
 
+  create_table "v_cotizacion", id: false, force: true do |t|
+    t.integer  "ID_COTIZACION",                      default: 0, null: false
+    t.integer  "ID_PROVEEDOR",                                   null: false
+    t.datetime "FECHA_COTIZACION"
+    t.float    "MONTO_TOTAL_COTIZACION", limit: 24
+    t.string   "NOMBRE_PROVEEDOR",       limit: 150,             null: false
+  end
+
   create_table "v_detalle_cambio", id: false, force: true do |t|
     t.integer "ID_DEVOLUCION",                   null: false
     t.integer "LINEA_CAMBIO",                    null: false
@@ -307,6 +315,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "CODIGO_INSUMO",       limit: 32,  null: false
     t.integer "CANTIDAD_COMPRA",                 null: false
     t.float   "PRECIO_COMPRA",       limit: 24,  null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+  end
+
+  create_table "v_detalle_cotizacion", id: false, force: true do |t|
+    t.integer "ID_COTIZACION",                   null: false
+    t.integer "LINEA_COTIZACION",                null: false
+    t.integer "ID_PROVEEDOR",                    null: false
+    t.integer "ID_INSUMO",                       null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
+    t.integer "CANTIDAD_COTIZACION",             null: false
+    t.float   "PRECIO_COTIZACION",   limit: 24,  null: false
     t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
   end
 
@@ -451,6 +470,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "PRECIO_INSUMO",                                 null: false
     t.string  "NOMBRE_UNICO_INSUMO",   limit: 100,             null: false
     t.boolean "COMPATIBILIDAD_INSUMO",                         null: false
+    t.string  "NOMBRE_INSUMO",         limit: 100,             null: false
   end
 
   create_table "v_venta", id: false, force: true do |t|

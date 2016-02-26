@@ -12,10 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :NOMBRE_MARCA %><br>
-    <%= f.text_field :NOMBRE_MARCA %>
+    <%= f.label :NOMBRE_MARCA "Nombre de la marca *" %><br>
+    <%= f.text_field :NOMBRE_MARCA, :class => "form-control" %>
   </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingresar marca", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', marca_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>
