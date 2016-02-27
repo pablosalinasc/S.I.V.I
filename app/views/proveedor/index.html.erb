@@ -27,7 +27,7 @@
               <div class="btn-group" role="group" >
                 <%= link_to 'Detalle', proveedor, :class => "btn btn-primary", :style=> "color:white;background-color:green;" %>
                 <%= link_to 'Editar', edit_proveedor_path(proveedor), :class => "btn btn-default" %>
-                <%= link_to 'Eliminar', proveedor, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger"  %>
+                <%= link_to 'Desactivar', proveedor, method: :delete, data: { confirm: '¿Esta seguro?'}, :class => "btn btn-danger"  %>
               </div>
             </td>
           </tr>

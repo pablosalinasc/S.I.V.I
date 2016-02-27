@@ -34,9 +34,10 @@ class VentaController < ApplicationController
     respond_with(@venta)
   end
 
-  def update
+  def update #se activa en caso de actualise un dato
     @venta.update(venta_params)
-    respond_with(@venta)
+    redirect_to v_venta_index_path
+    #respond_with(@venta)
   end
 
   def destroy

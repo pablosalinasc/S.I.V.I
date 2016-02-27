@@ -42,10 +42,10 @@
         	<div class="col-xs-2">
           	<p>Por Despachar</p>
           </div> 
-          <% if @user.ROL_USUARIO == 'B' %>
+          <% if @user.ROL_USUARIO != 'V' %>
 	          <div class="col-xs-2">
-	        		<%= form_for @v_venta do |t| %>
-								<%= t.hidden_field :DESPACHADA_VENTA, :value=>"1"%>
+	        		<%= form_for @venta do |t| %>
+								<%= t.hidden_field :DESPACHADA_VENTA, :value=>"true"%>
 								<%= t.submit "Despachar", :class => "btn btn-primary", :style=> "color:white;background-color:green;" %>
 							<% end %>
 	  				</div>

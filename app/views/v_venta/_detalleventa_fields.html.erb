@@ -1,0 +1,23 @@
+<fieldset>
+  <div class=" panel panel-default col-xs-6" align="left" style="padding:0px;">
+    <br><br>
+    <div class="panel-body">
+      <div class="row">
+        <%= f.label :LINEA_VENTA, "Línea de detalle *", :class=>"col-xs-6"%>
+        <%= f.text_field :LINEA_VENTA %>
+      </div>
+      <div class="row">
+        <%= f.label :ID_INSUMO, "Insumo *", :class=>"col-xs-6"%>
+        <%= f.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO %>
+      </div>
+      <div class="row">
+        <%= f.label :CANTIDAD_VENTA, "Cantidad de unidades *", :class=>"col-xs-6"%>
+        <%= f.number_field :CANTIDAD_VENTA ,:min => 1 %>
+      </div>
+      <div class="row">
+        <%= f.hidden_field :_destroy%>
+        <% link_to "Eliminar", '#', class: "remove_fields" %>
+      </div>
+    </div>
+  </div>
+</fieldset>

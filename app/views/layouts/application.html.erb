@@ -58,7 +58,7 @@
             <%end%>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <% if usuario_signed_in? %> 
+            <% if usuario_signed_in? %>
               <li><%= link_to "Cerrar sesión", destroy_usuario_session_path, method: :delete %></li>
             <%else%>
               <li><%= link_to "Iniciar sesión", new_usuario_session_path %></li>
@@ -68,13 +68,17 @@
     	</div>
     </nav>
 
-
-      <!--<div class="col-xs-6 col-xs-offset-2 alert alert-danger alert"><p class="notice"><%= alert %></p></div>
-      <div class="col-xs-6 col-xs-offset-2 alert alert-success notice"><p class="notice"><%= notice %></p></div>
-    	-->
     <div class="pageContentWrapper">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="row">
+        <div class="col-xs-12" align="center">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+          <!--
+          <div class="col-xs-4 alert alert-success"><p class="notice"><%= notice %></p></div>
+          <div class="col-xs-4 alert-danger alert"><p class="alert"><%= alert %></p></div>-->
+        </div>
+      </div>
       <%= yield %>
     </div>
     

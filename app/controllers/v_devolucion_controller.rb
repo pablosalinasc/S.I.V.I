@@ -31,14 +31,14 @@ class VDevolucionController < ApplicationController
   end
 
   def create
-    @v_devolucion = VDevolucion.new(v_devolucion_params)
-    @v_devolucion.save
+    @devolucion = Devolucion.new(devolucion_params)
+    @devolucion.save
     respond_with(@v_devolucion)
   end
 
   def update
-    @v_devolucion.update(v_devolucion_params)
-    respond_with(@v_devolucion)
+    @devolucion.update(devolucion_params)
+    respond_with(@devolucion)
   end
 
   def destroy
@@ -48,10 +48,16 @@ class VDevolucionController < ApplicationController
 
   private
     def set_v_devolucion
+      @devolucion = Devolucion.find(params[:id])
       @v_devolucion = VDevolucion.find(params[:id])
     end
 
     def v_devolucion_params
       params.require(:v_devolucion).permit(:ID_DEVOLUCION, :ID_VENTA, :ID_LOCAL, :ID_VENDEDOR, :ID_ESTADO_DEVOLUCION, :FECHA_DEVOLUCION, :MONTO_CAMBIO, :CANT_INSUMOS_NUEVOS_DEVOLUCION, :TIPO_DEVOLUCION, :COMENTARIO_DEVOLUCION, :INSUMOS_DEFECTUOSOS_DEVOLUCION, :NOMBRE_VENDEDOR, :NOMBRE_CLIENTE, :ESTADO_ACTUAL, :DIRECCION_LOCAL)
     end
+
+    def devolucion_params
+      params.require(:devolucion).permit(:ID_VENTA, :ID_LOCAL, :ID_VENDEDOR, :ID_ESTADO_DEVOLUCION, :FECHA_DEVOLUCION, :MONTO_CAMBIO, :CANT_INSUMOS_NUEVOS_DEVOLUCION, :TIPO_DEVOLUCION, :COMENTARIO_DEVOLUCION, :INSUMOS_DEFECTUOSOS_DEVOLUCION)
+    end
+
 end

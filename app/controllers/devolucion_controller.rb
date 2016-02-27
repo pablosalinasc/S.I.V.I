@@ -37,7 +37,7 @@ class DevolucionController < ApplicationController
 
   def update
     @devolucion.update(devolucion_params)
-    respond_with(@devolucion)
+    redirect_to v_devolucion_index_path
   end
 
   def destroy

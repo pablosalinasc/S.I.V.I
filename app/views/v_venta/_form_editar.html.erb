@@ -27,32 +27,10 @@
   <br><br>
   <h3>Detalle venta</h3>
   <%= f.fields_for :DetalleVenta do |builder|%>
-    <fieldset>
-      <div class=" panel panel-default col-xs-6" align="left" style="padding:0px;">
-        <br><br>
-        <div class="panel-body">
-          <div class="row">
-            <%= builder.label :LINEA_VENTA, "Línea de detalle *", :class=>"col-xs-6"%>
-            <%= builder.text_field :LINEA_VENTA %>
-          </div>
-          <div class="row">
-            <%= builder.label :ID_INSUMO, "Insumo *", :class=>"col-xs-6"%>
-            <%= builder.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO %>
-          </div>
-          <div class="row">
-            <%= builder.label :CANTIDAD_VENTA, "Cantidad de unidades *", :class=>"col-xs-6"%>
-            <%= builder.number_field :CANTIDAD_VENTA ,:min => 1 %>
-          </div>
-          <div class="row">
-            <%= f.hidden_field :_destroy%>
-            <% link_to "Eliminar", '#', class: "remove_fields" %>
-          </div>
-        </div>
-      </div>
-    </fieldset>
+    <%= render 'detalleventa_fields', f: builder %>
   <%end%>
-  <!--<br><br>
-  < link_to_add_fields "Agregar detalle", f, :DetalleVenta >-->
+  <br><br>
+  <%= link_to_add_fields "Agregar detalle", f, :DetalleVenta %>
   <br><br>
   <div class="actions">
     <%= f.submit "Actualizar venta", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>

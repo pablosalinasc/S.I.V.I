@@ -31,6 +31,19 @@
         <p class="col-xs-2" style="font-weight: bold;">Fecha de ingreso</p>
         <p class="col-xs-2"><%= @v_devolucion.FECHA_DEVOLUCION %></p>
     </div>
+    <div class="row">
+        <p class="col-xs-2" style="font-weight: bold;">Estado actual</p>
+        <p class="col-xs-2" style="font-weight: bold"><%= @v_devolucion.ESTADO_ACTUAL %></p>
+        <% if (current_usuario.ROL_USUARIO != 'V' and @v_devolucion.ID_ESTADO_DEVOLUCION==3) %>
+          <div class="col-xs-2">
+            <%= form_for @devolucion do |t| %>
+              <%= t.hidden_field :ID_ESTADO_DEVOLUCION, :value=>'4'%>
+              <%= t.submit "Despachar", :class => "btn btn-primary", :style=> "color:white;background-color:green;" %>
+            <% end %>
+          </div>
+        <%end%>
+    </div>
+
     <br>
     <div class="row">
       <div class="col-md-6">
@@ -43,7 +56,6 @@
             <th>Cantidad de insumos</th>
           </tr>
         </thead>
-
         <tbody>
           <% @v_detalle_devolucion.each do |v_detalle_devolucion| %>
             <tr>

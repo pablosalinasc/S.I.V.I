@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :FECHA_NACIMIENTO_USUARIO, "Fecha de nacimiento *" %><br>
-    <%= f.date_select :FECHA_NACIMIENTO_USUARIO, :class => "form-control" %>
+    <%= f.date_field :FECHA_NACIMIENTO_USUARIO, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :email , "Correo electrónico *"%><br>
@@ -37,7 +37,7 @@
   </div>
   <br><br>
   <div class="actions">
-    <%= f.submit "Ingresar usuario", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+    <%= f.submit "Ingresar usuario", :class => "col-xs-4 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
-    <%= link_to 'Volver', usuario_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+    <%= link_to 'Volver', usuario_index_path , :class => "col-xs-4 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>
