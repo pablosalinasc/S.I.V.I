@@ -20,7 +20,7 @@ class VVentaController < ApplicationController
   end
 
   def show
-    @venta = Venta.all
+    @ventas = Venta.all
     @v_detalle_venta = VDetalleVenta.all
     @user = current_usuario
     respond_with(@v_venta,@v_detalle_venta)

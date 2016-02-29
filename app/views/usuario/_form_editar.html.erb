@@ -32,8 +32,9 @@
     <%= f.text_field :TELEFONO_USUARIO, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :ROL_USUARIO, "" %><br>
-    <%= f.text_field :ROL_USUARIO, :class => "form-control" %>
+    <%roles={"Vendedor"=>"V","Bodeguero"=>"B","Administrador"=>"A"}%>
+    <%= f.label :ROL_USUARIO, "Rol de usuario" %><br>
+    <%= f.select :ROL_USUARIO,roles, :class => "form-control", :include_blank => true  %>
   </div>
   <br><br>
   <div class="actions">

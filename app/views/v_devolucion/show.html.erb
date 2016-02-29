@@ -103,7 +103,7 @@
     <br><br>
     <div class="row">
       <div class="col-xs-2 btn-group" role="group" >
-            <% @devolucion.each do |devolucion|%>
+            <% @devoluciones.each do |devolucion|%>
               <%if devolucion.ID_DEVOLUCION==@v_devolucion.ID_DEVOLUCION%>
                   <%= link_to 'Editar', edit_devolucion_path(devolucion), :class => "btn btn-default", :style=>"width:100px;" %>
               <%end%>

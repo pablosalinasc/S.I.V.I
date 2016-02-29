@@ -6,5 +6,7 @@ class Venta < ActiveRecord::Base
 	belongs_to :Vendedor, :foreign_key => "ID_VENDEDOR"
 	belongs_to :Cliente, :foreign_key => "ID_CLIENTE"
 	self.primary_keys = :ID_VENTA
-	accepts_nested_attributes_for :DetalleVenta, allow_destroy: true
+	accepts_nested_attributes_for :DetalleVenta, allow_destroy: true,reject_if: :all_blank
+	validates :NUMERO_BOLETA_VENTA, uniqueness: true
+
 end

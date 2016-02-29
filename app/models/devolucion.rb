@@ -5,5 +5,5 @@ class Devolucion < ActiveRecord::Base
 	belongs_to :EstadoDevolucion, :foreign_key => "ID_ESTADO_DEVOLUCION"
 	has_many :DetalleDevolucion, :foreign_key => "ID_DEVOLUCION"
 	has_many :DetalleCambioInsumo, :foreign_key => "ID_DEVOLUCION"
-	accepts_nested_attributes_for :DetalleDevolucion, allow_destroy: true
+	accepts_nested_attributes_for :DetalleDevolucion, allow_destroy: true,reject_if: :all_blank
 end

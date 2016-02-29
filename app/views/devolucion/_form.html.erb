@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :ID_VENDEDOR, "Vendedor *" %><br>
-    <%= f.collection_select :ID_VENDEDOR, Vendedor.all, :id, :ID_VENDEDOR, :include_blank => true %>
+    <%= f.collection_select :ID_VENDEDOR, Usuario.where(ROL_USUARIO: 'V'), :id, :NOMBRE_USUARIO, :include_blank => true ,:name => 'ID_VENDEDOR'%>
   </div>
   <div class="field">
     <%= f.label :FECHA_DEVOLUCION, "Fecha de realización *" %><br>
-    <%= f.datetime_field :FECHA_DEVOLUCION, :class => "form-control"  %>
+    <%= f.date_field :FECHA_DEVOLUCION, :class => "form-control"  %>
   </div>
   <div class="field">
     <%= f.label :MONTO_CAMBIO, "Monto *" %><br>
@@ -80,7 +80,7 @@
   <br><br>
   <div class="row">
     <div class="actions">
-      <%= f.submit "Ingresar venta", :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;color:white;background-color:green" %>
+      <%= f.submit "Ingresar devolución", :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;color:white;background-color:green" %>
     </div>
       <%= link_to 'Volver', v_devolucion_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
   </div>

@@ -89,7 +89,7 @@
 		<br><br>
 		  <div class="btn-group" role="group" >
 		  	<% if @user.ROL_USUARIO != 'B' %>
-            <% @venta.each do |venta|%>
+            <% @ventas.each do |venta|%>
               <%if venta.ID_VENTA==@v_venta.ID_VENTA%>
                   <%= link_to 'Editar', edit_venta_path(venta), :class => "btn btn-default", :style=>"width:100px;" %>
               <%end%>

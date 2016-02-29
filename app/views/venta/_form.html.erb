@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :ID_VENDEDOR , "Vendedor *" %><br>
-    <%= f.collection_select :ID_VENDEDOR, Vendedor.all, :id, :ID_VENDEDOR, :include_blank => true %>
+    <%= f.collection_select :ID_VENDEDOR, Usuario.where(ROL_USUARIO: 'V'), :id, :NOMBRE_USUARIO, :include_blank => true ,:name => 'ID_VENDEDOR'%>
   </div>
   <div class="field">
     <%= f.label :ID_LOCAL, "Local *" %><br>
@@ -25,11 +25,12 @@
   </div>
   <div class="field">
     <%= f.label :FECHA_VENTA, "Fecha de realización *" %><br>
-    <%= f.datetime_field :FECHA_VENTA, :class => "form-control" %>
+    <%= f.date_field :FECHA_VENTA, :class => "form-control" %>
   </div>
   <div class="field">
+    <% tipos= {"EFECTIVO"=>"EFECTIVO","CHEQUE"=>"CHEQUE","TARJETA"=>"TARJETA"}%>
     <%= f.label :FORMA_DE_PAGO_VENTA, "Forma de pago *" %><br>
-    <%= f.text_field :FORMA_DE_PAGO_VENTA, :class => "form-control" %>
+    <%= f.select :FORMA_DE_PAGO_VENTA,tipos, :class => "form-control", :include_blank => true  %>
   </div>
   <div class="field">
     <%= f.label :DESCUENTO_TOTAL_VENTA, "Descuento Total *" %><br>
@@ -48,26 +49,26 @@
     <div class="row">
       <div class=" panel panel-default col-xs-8" style="padding:0px;">
         <br><br>
-        <div class="panel-body">
+        <div class="panel-body" style="padding-left:30px;">
           <div class="row">
-            <%= detalle_venta.label :LINEA_VENTA, "Línea de detalle *", :class=>"col-xs-6"%>
-            <%= detalle_venta.text_field :LINEA_VENTA, :class => "form-control", :min=>1 %>
+            <%= detalle_venta.label :LINEA_VENTA, "Línea de detalle *"%>
+            <%= detalle_venta.text_field :LINEA_VENTA, :min=>1 %>
           </div>
           <div class="row">
-            <%= detalle_venta.label :ID_INSUMO, "Insumo *", :class=>"col-xs-6"%>
+            <%= detalle_venta.label :ID_INSUMO, "Insumo *"%>
             <%= detalle_venta.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO, :include_blank => true %>
           </div>
           <div class="row">
-            <%= detalle_venta.label :CANTIDAD_VENTA, "Cantidad de unidades *", :class=>"col-xs-6"%>
-            <%= detalle_venta.number_field :CANTIDAD_VENTA, :class => "form-control" ,:min => 1 %>
+            <%= detalle_venta.label :CANTIDAD_VENTA, "Cantidad de unidades *"%>
+            <%= detalle_venta.number_field :CANTIDAD_VENTA ,:min => 1 %>
           </div>
           <div class="row">
-            <%= detalle_venta.label :PRECIO_VENTA, "Precio *", :class=>"col-xs-6"%>
-            <%= detalle_venta.number_field :PRECIO_VENTA, :class => "form-control" ,:min => 0 %>
+            <%= detalle_venta.label :PRECIO_VENTA, "Precio *"%>
+            <%= detalle_venta.number_field :PRECIO_VENTA,:min => 0 %>
           </div>
           <div class="row">
-            <%= detalle_venta.label :DESCUENTO_VENTA, "Descuento *", :class=>"col-xs-6"%>
-            <%= detalle_venta.number_field :DESCUENTO_VENTA, :class => "form-control" ,:min => 1 %>
+            <%= detalle_venta.label :DESCUENTO_VENTA, "Descuento *"%>
+            <%= detalle_venta.number_field :DESCUENTO_VENTA ,:min => 0 %>
           </div>
           <div class="row">
             <%= detalle_venta.hidden_field :_destroy%>

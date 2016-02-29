@@ -56,6 +56,6 @@ class DevolucionController < ApplicationController
     def devolucion_params
       params.require(:devolucion).permit(:ID_VENTA, :ID_LOCAL, :ID_VENDEDOR, :ID_ESTADO_DEVOLUCION, :FECHA_DEVOLUCION,
       :MONTO_CAMBIO, :CANT_INSUMOS_NUEVOS_DEVOLUCION, :TIPO_DEVOLUCION, :COMENTARIO_DEVOLUCION, :INSUMOS_DEFECTUOSOS_DEVOLUCION,
-      DetalleDevolucion_attributes: [:ID_DEVOLUCION, :LINEA_DEVOLUCION, :ID_INSUMO, :CANTIDAD_DEVOLUCION, :_destroy])
+      DetalleDevolucion_attributes: [:ID_DEVOLUCION, :LINEA_DEVOLUCION, :ID_INSUMO, :CANTIDAD_PRODUCTOS, :_destroy])
     end
 end
