@@ -9,7 +9,7 @@
     <div class="panel-body" >
       <br>
       <% if current_usuario.ROL_USUARIO == 'A'%>
-      <%= link_to 'Ingresar Insumo', new_v_stock_insumo_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+      <%= link_to 'Ingresar Insumo', new_insumo_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
       <%= link_to 'Marcas de impresora', marca_index_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;"%>
       <%end%>
       <br><br>

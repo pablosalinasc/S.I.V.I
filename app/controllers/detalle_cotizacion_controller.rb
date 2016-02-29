@@ -1,19 +1,11 @@
 class DetalleCotizacionController < ApplicationController
   before_action :set_detalle_cotizacion, only: [:show, :edit, :update, :destroy]
-  include Devise::Controllers::Helpers
 
   respond_to :html
 
   def index
     @detalle_cotizacion = DetalleCotizacion.all
-    if usuario_signed_in?
-      if current_usuario.ROL_USUARIO == 'B'
-        redirect_to '/restricted_access/index'
-      else
-        respond_with(@detalle_cotizacion)
-      end
-    else redirect_to '/restricted_access/index'
-    end
+    respond_with(@detalle_cotizacion)
   end
 
   def show
@@ -50,6 +42,6 @@ class DetalleCotizacionController < ApplicationController
     end
 
     def detalle_cotizacion_params
-      params.require(:detalle_cotizacion).permit(:ID_COTIZACION, :LINEA_COTIZACION, :ID_PROVEEDOR, :ID_INSUMO, :CODIGO_INSUMO, :CANTIDAD_COTIZACION, :PRECIO_COTIZACION)
+      params.require(:detalle_cotizacion).permit(:ID_COTIZACION, :LINEA_COTIZACION, :ID_CODIGO_PROVEEDOR, :CANTIDAD_COTIZACION, :PRECIO_COTIZACION)
     end
 end

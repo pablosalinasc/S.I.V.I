@@ -12,26 +12,41 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :ID_PROVEEDOR %><br>
-    <%= f.number_field :ID_PROVEEDOR %>
+    <%= f.label :ID_PROVEEDOR, "Proveedor *" %><br>
+    <%= f.collection_select :ID_PROVEEDOR, Proveedor.all, :id, :NOMBRE_PROVEEDOR %><br>
   </div>
   <div class="field">
-    <%= f.label :ID_COTIZACION %><br>
-    <%= f.number_field :ID_COTIZACION %>
+    <%= f.label :ID_COTIZACION, "Número de cotización" %><br>
+    <%= f.collection_select :ID_COTIZACION, Cotizacion.all, :id, :ID_COTIZACION %><br>
   </div>
   <div class="field">
-    <%= f.label :ID_ESTADO_COMPRA %><br>
-    <%= f.number_field :ID_ESTADO_COMPRA %>
+    <%= f.label :FECHA_COMPRA, "Fecha emisión" %><br>
+    <%= f.datetime_field :FECHA_COMPRA, :class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label :FECHA_COMPRA %><br>
-    <%= f.datetime_select :FECHA_COMPRA %>
+    <%= f.label :MONTO_TOTAL_COMPRA, "Monto total" %><br>
+    <%= f.text_field :MONTO_TOTAL_COMPRA, :class => "form-control"  %>
   </div>
-  <div class="field">
-    <%= f.label :MONTO_TOTAL_COMPRA %><br>
-    <%= f.text_field :MONTO_TOTAL_COMPRA %>
-  </div>
+  <h3> Detalle Órden de compra </h3>
+  <%= f.fields_for :DetalleOrdenDeCompra, include_id: false do |detalle_orden_de_compra|%>
+    <div class="row">
+      <div class="fields panel panel-default col-xs-4" style="margin-left:20px;">
+        <div class="panel-body">
+        <%= detalle_orden_de_compra.label :LINEA_COMPRA, "Linea de detalle"%><br>
+        <%= detalle_orden_de_compra.number_field :LINEA_COMPRA, :class => "form-control" %><br>
+        <%= detalle_orden_de_compra.label :ID_CODIGO_PROVEEDOR, "Código Insumo"%><br>
+        <%= detalle_orden_de_compra.collection_select :ID_CODIGO_PROVEEDOR , CodigoProveedor.all, :id, :CODIGO_INSUMO %><br>
+        <%= detalle_orden_de_compra.label :CANTIDAD_COMPRA, "Cantidad de unidades"%><br>
+        <%= detalle_orden_de_compra.number_field :CANTIDAD_COMPRA, :class => "form-control" %><br>
+        <%= detalle_orden_de_compra.label :PRECIO_COMPRA, "Precio"%><br>
+        <%= detalle_orden_de_compra.number_field :PRECIO_COMPRA, :class => "form-control" %><br>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingreso órden de compra", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', v_cotizacion_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

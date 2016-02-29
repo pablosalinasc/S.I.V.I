@@ -16,7 +16,7 @@
   </div>
   <div class="field">
     <%= f.label :FECHA_COTIZACION %><br>
-    <%= f.datetime_select :FECHA_COTIZACION %>
+    <%= f.date_field :FECHA_COTIZACION %>
   </div>
   <div class="field">
     <%= f.label :MONTO_TOTAL_COTIZACION %><br>
@@ -26,6 +26,19 @@
     <%= f.label :NOMBRE_PROVEEDOR %><br>
     <%= f.text_field :NOMBRE_PROVEEDOR %>
   </div>
+  <h2> Detalle cotización </h2>
+  <%= f.fields_for :DetalleCotizacion do |detalle_cotizacion| %>
+    <div>
+      <div class="fields">
+        <%=detalle_cotizacion.label :LINEA_DEVOLUCION, "Linea de detalle"%><br>
+        <%= detalle_cotizacion.number_field :LINEA_DEVOLUCION%>
+        <%=detalle_cotizacion.label :ID_INSUMO, "Linea de detalle"%><br>
+        <%= detalle_cotizacion.number_field :ID_INSUMO%>
+        <%=detalle_cotizacion.label :CANTIDAD_PRODUCTOS, "Linea de detalle"%><br>
+        <%= detalle_cotizacion.number_field :CANTIDAD_PRODUCTOS%>
+      </div>
+    </div>
+  <%end%>
   <div class="actions">
     <%= f.submit %>
   </div>

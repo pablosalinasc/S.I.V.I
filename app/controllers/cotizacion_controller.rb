@@ -23,21 +23,24 @@ class CotizacionController < ApplicationController
 
   def new
     @cotizacion = Cotizacion.new
+    @cotizacion.DetalleCotizacion.build
     respond_with(@cotizacion)
+
   end
 
   def edit
+    @cotizacion.DetalleCotizacion.build
   end
 
   def create
     @cotizacion = Cotizacion.new(cotizacion_params)
     @cotizacion.save
-    respond_with(@cotizacion)
+    redirect_to v_cotizacion_index_path
   end
 
   def update
     @cotizacion.update(cotizacion_params)
-    respond_with(@cotizacion)
+    redirect_to v_cotizacion_index_path
   end
 
   def destroy
@@ -51,6 +54,6 @@ class CotizacionController < ApplicationController
     end
 
     def cotizacion_params
-      params.require(:cotizacion).permit(:ID_PROVEEDOR, :FECHA_COTIZACION, :MONTO_TOTAL_COTIZACION)
+      params.require(:cotizacion).permit(:ID_COTIZACION,:ID_PROVEEDOR, :FECHA_COTIZACION, :MONTO_TOTAL_COTIZACION, DetalleCotizacion_attributes: [:ID_COTIZACION,:ID_CODIGO_PROVEEDOR,:LINEA_COTIZACION, :CANTIDAD_COTIZACION, :PRECIO_COTIZACION] )
     end
 end

@@ -12,46 +12,76 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :ID_VENDEDOR %><br>
-    <%= f.number_field :ID_VENDEDOR %>
+    <%= f.label :ID_VENDEDOR , "Vendedor *" %><br>
+    <%= f.collection_select :ID_VENDEDOR, Vendedor.all, :id, :ID_VENDEDOR, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :ID_LOCAL %><br>
-    <%= f.number_field :ID_LOCAL %>
+    <%= f.label :ID_LOCAL, "Local *" %><br>
+    <%= f.collection_select :ID_LOCAL, Local.all, :id, :DIRECCION_LOCAL, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :ID_CLIENTE %><br>
-    <%= f.number_field :ID_CLIENTE %>
+    <%= f.label :ID_CLIENTE, "Cliente" %><br>
+    <%= f.collection_select :ID_CLIENTE, Cliente.all, :id, :NOMBRE_CLIENTE, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :FECHA_VENTA %><br>
-    <%= f.datetime_select :FECHA_VENTA %>
+    <%= f.label :FECHA_VENTA, "Fecha de realización *" %><br>
+    <%= f.datetime_field :FECHA_VENTA, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :FORMA_DE_PAGO_VENTA %><br>
-    <%= f.text_field :FORMA_DE_PAGO_VENTA %>
+    <%= f.label :FORMA_DE_PAGO_VENTA, "Forma de pago *" %><br>
+    <%= f.text_field :FORMA_DE_PAGO_VENTA, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :DESCUENTO_TOTAL_VENTA %><br>
-    <%= f.number_field :DESCUENTO_TOTAL_VENTA %>
+    <%= f.label :DESCUENTO_TOTAL_VENTA, "Descuento Total *" %><br>
+    <%= f.number_field :DESCUENTO_TOTAL_VENTA, :class => "form-control",:min=>0 %>
   </div>
   <div class="field">
-    <%= f.label :MONTO_TOTAL_VENTA %><br>
-    <%= f.number_field :MONTO_TOTAL_VENTA %>
+    <%= f.label :MONTO_TOTAL_VENTA, "Monto total *" %><br>
+    <%= f.number_field :MONTO_TOTAL_VENTA, :class => "form-control" , :min=>0%>
   </div>
   <div class="field">
-    <%= f.label :DESPACHADA_VENTA %><br>
-    <%= f.check_box :DESPACHADA_VENTA %>
+    <%= f.label :NUMERO_BOLETA_VENTA, "Número de boleta *" %><br>
+    <%= f.number_field :NUMERO_BOLETA_VENTA, :class => "form-control", :min=>0 %>
   </div>
-  <div class="field">
-    <%= f.label :ID_BODEGUERO_DESPACHO %><br>
-    <%= f.number_field :ID_BODEGUERO_DESPACHO %>
-  </div>
-  <div class="field">
-    <%= f.label :NUMERO_BOLETA_VENTA %><br>
-    <%= f.number_field :NUMERO_BOLETA_VENTA %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <h3> Detalle Venta </h3>
+  <%= f.fields_for :DetalleVenta, include_id: false do |detalle_venta|%>
+    <div class="row">
+      <div class=" panel panel-default col-xs-8" style="padding:0px;">
+        <br><br>
+        <div class="panel-body">
+          <div class="row">
+            <%= detalle_venta.label :LINEA_VENTA, "Línea de detalle *", :class=>"col-xs-6"%>
+            <%= detalle_venta.text_field :LINEA_VENTA, :class => "form-control", :min=>1 %>
+          </div>
+          <div class="row">
+            <%= detalle_venta.label :ID_INSUMO, "Insumo *", :class=>"col-xs-6"%>
+            <%= detalle_venta.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO, :include_blank => true %>
+          </div>
+          <div class="row">
+            <%= detalle_venta.label :CANTIDAD_VENTA, "Cantidad de unidades *", :class=>"col-xs-6"%>
+            <%= detalle_venta.number_field :CANTIDAD_VENTA, :class => "form-control" ,:min => 1 %>
+          </div>
+          <div class="row">
+            <%= detalle_venta.label :PRECIO_VENTA, "Precio *", :class=>"col-xs-6"%>
+            <%= detalle_venta.number_field :PRECIO_VENTA, :class => "form-control" ,:min => 0 %>
+          </div>
+          <div class="row">
+            <%= detalle_venta.label :DESCUENTO_VENTA, "Descuento *", :class=>"col-xs-6"%>
+            <%= detalle_venta.number_field :DESCUENTO_VENTA, :class => "form-control" ,:min => 1 %>
+          </div>
+          <div class="row">
+            <%= detalle_venta.hidden_field :_destroy%>
+            <% link_to "Eliminar", '#', class: "remove_fields" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <br><br>
+  <div class="row">
+    <div class="actions">
+      <%= f.submit "Ingresar venta", :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;color:white;background-color:green" %>
+    </div>
+      <%= link_to 'Volver', v_venta_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
   </div>
 <% end %>

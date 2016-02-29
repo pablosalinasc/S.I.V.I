@@ -89,7 +89,11 @@
 		<br><br>
 		  <div class="btn-group" role="group" >
 		  	<% if @user.ROL_USUARIO != 'B' %>
-					<%= link_to 'Editar', edit_v_venta_path(@v_venta), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+            <% @venta.each do |venta|%>
+              <%if venta.ID_VENTA==@v_venta.ID_VENTA%>
+                  <%= link_to 'Editar', edit_venta_path(venta), :class => "btn btn-default", :style=>"width:100px;" %>
+              <%end%>
+            <%end%>
 				<% end %>				
 				<%= link_to 'Volver', v_venta_index_path, :class => "btn btn-default", :style=>"width:100px;" %>		
 			</div>

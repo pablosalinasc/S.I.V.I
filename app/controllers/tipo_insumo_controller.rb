@@ -23,10 +23,12 @@ class TipoInsumoController < ApplicationController
 
   def new
     @tipo_insumo = TipoInsumo.new
+    @tipo_insumo.TipoInsumoPropiedad.build
     respond_with(@tipo_insumo)
   end
 
   def edit
+    @tipo_insumo.TipoInsumoPropiedad.build
   end
 
   def create
@@ -51,6 +53,6 @@ class TipoInsumoController < ApplicationController
     end
 
     def tipo_insumo_params
-      params.require(:tipo_insumo).permit(:NOMBRE_INSUMO, :COMPATIBILIDAD_INSUMO)
+      params.require(:tipo_insumo).permit(:NOMBRE_INSUMO, :COMPATIBILIDAD_INSUMO, TipoInsumoPropiedad_attributes: [:ID_TIPO_INSUMO,:PRINCIPAL_PROPIEDAD,:ID_PROPIEDAD ])
     end
 end

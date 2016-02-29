@@ -1,0 +1,52 @@
+<%= form_for(@orden_de_compra) do |f| %>
+  <% if @orden_de_compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@orden_de_compra.errors.count, "error") %> prohibited this orden_de_compra from being saved:</h2>
+
+      <ul>
+      <% @orden_de_compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR, "Proveedor *" %><br>
+    <%= f.collection_select :ID_PROVEEDOR, Proveedor.all, :id, :NOMBRE_PROVEEDOR %><br>
+  </div>
+  <div class="field">
+    <%= f.label :ID_COTIZACION, "Número de cotización" %><br>
+    <%= f.collection_select :ID_COTIZACION, Cotizacion.all, :id, :ID_COTIZACION %><br>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_COMPRA, "Fecha emisión" %><br>
+    <%= f.datetime_field :FECHA_COMPRA, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :MONTO_TOTAL_COMPRA, "Monto total" %><br>
+    <%= f.text_field :MONTO_TOTAL_COMPRA , :class => "form-control" %>
+  </div>
+  <h3> Detalle Órden de compra </h3>
+  <%= f.fields_for :DetalleOrdenDeCompra, include_id: false do |detalle_orden_de_compra|%>
+    <div class="row">
+      <div class="fields panel panel-default col-xs-4" style="margin-left:20px;">
+        <div class="panel-body">
+        <%= detalle_orden_de_compra.label :LINEA_COMPRA, "Linea de detalle"%><br>
+        <%= detalle_orden_de_compra.number_field :LINEA_COMPRA , :class => "form-control" %><br>
+        <%= detalle_orden_de_compra.label :ID_CODIGO_PROVEEDOR, "Código Insumo"%><br>
+        <%= detalle_orden_de_compra.collection_select :ID_CODIGO_PROVEEDOR , CodigoProveedor.all, :id, :CODIGO_INSUMO %><br>
+        <%= detalle_orden_de_compra.label :CANTIDAD_COMPRA, "Cantidad de unidades"%><br>
+        <%= detalle_orden_de_compra.number_field :CANTIDAD_COMPRA , :class => "form-control" %><br>
+        <%= detalle_orden_de_compra.label :PRECIO_COMPRA, "Precio"%><br>
+        <%= detalle_orden_de_compra.number_field :PRECIO_COMPRA , :class => "form-control" %><br>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <br><br>
+  <div class="actions">
+    <%= f.submit "Actualizar órden de compra", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+  </div>
+    <%= link_to 'Volver', v_cotizacion_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+<% end %>

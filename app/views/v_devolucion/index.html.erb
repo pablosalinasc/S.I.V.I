@@ -2,7 +2,7 @@
   <div class="panel-heading"><h1>Lista de devoluciones</h1></div>
   <div class="panel-body" >
     <br><br>
-    <%= link_to 'Ingresar Devolución', new_v_devolucion_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+    <%= link_to 'Ingresar Devolución', new_devolucion_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
     <br><br>
   </div>
   <table class="table table-striped table-hover">
@@ -35,8 +35,12 @@
           <td><strong><%= v_devolucion.ESTADO_ACTUAL %></strong></td>
           <td>
             <div class="btn-group" role="group" >
-            <%= link_to 'Mostrar', v_devolucion, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-            <%= link_to 'Editar', edit_v_devolucion_path(v_devolucion), :class => "btn btn-default", :style=>"width:100px;" %>
+              <%= link_to 'Mostrar', v_devolucion, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+              <% @devolucion.each do |devolucion|%>
+                <%if devolucion.ID_DEVOLUCION==v_devolucion.ID_DEVOLUCION%>
+                    <%= link_to 'Editar', edit_devolucion_path(devolucion), :class => "btn btn-default", :style=>"width:100px;" %>
+                <%end%>
+              <%end%>
             </div>
           </td>
         </tr>

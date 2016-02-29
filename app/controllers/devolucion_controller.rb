@@ -23,16 +23,19 @@ class DevolucionController < ApplicationController
 
   def new
     @devolucion = Devolucion.new
+    @devolucion.DetalleDevolucion.build
     respond_with(@devolucion)
   end
 
   def edit
+    @devolucion.DetalleDevolucion.build
   end
 
   def create
     @devolucion = Devolucion.new(devolucion_params)
     @devolucion.save
-    respond_with(@devolucion)
+    redirect_to v_devolucion_index_path
+
   end
 
   def update
@@ -51,6 +54,8 @@ class DevolucionController < ApplicationController
     end
 
     def devolucion_params
-      params.require(:devolucion).permit(:ID_VENTA, :ID_LOCAL, :ID_VENDEDOR, :ID_ESTADO_DEVOLUCION, :FECHA_DEVOLUCION, :MONTO_CAMBIO, :CANT_INSUMOS_NUEVOS_DEVOLUCION, :TIPO_DEVOLUCION, :COMENTARIO_DEVOLUCION, :INSUMOS_DEFECTUOSOS_DEVOLUCION)
+      params.require(:devolucion).permit(:ID_VENTA, :ID_LOCAL, :ID_VENDEDOR, :ID_ESTADO_DEVOLUCION, :FECHA_DEVOLUCION,
+      :MONTO_CAMBIO, :CANT_INSUMOS_NUEVOS_DEVOLUCION, :TIPO_DEVOLUCION, :COMENTARIO_DEVOLUCION, :INSUMOS_DEFECTUOSOS_DEVOLUCION,
+      DetalleDevolucion_attributes: [:ID_DEVOLUCION, :LINEA_DEVOLUCION, :ID_INSUMO, :CANTIDAD_DEVOLUCION, :_destroy])
     end
 end

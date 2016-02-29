@@ -3,7 +3,7 @@
   <div class="panel-body">
     <br><br>
     <% if current_usuario.ROL_USUARIO=='A'%>
-      <%= link_to 'Ingresar guía de despacho', new_v_guia_despacho_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+      <%= link_to 'Ingresar guía de despacho', new_guia_de_despacho_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
     <%end%>
     <br><br>
   <table class="table table-striped table-hover">
@@ -42,7 +42,11 @@
             <div class="btn-group" role="group" >
             <%= link_to 'Detalle', v_guia_despacho, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
             <% if current_usuario.ROL_USUARIO == 'A'%>
-              <%= link_to 'Editar', edit_v_guia_despacho_path(v_guia_despacho), :class => "btn btn-default", :style=>"width:100px;" %>
+              <% @guia_despacho.each do |guia_despacho|%>
+                <%if guia_despacho.ID_GUIA_DESPACHO==v_guia_despacho.ID_GUIA_DESPACHO%>
+                    <%= link_to 'Editar', edit_guia_de_despacho_path(guia_despacho), :class => "btn btn-default", :style=>"width:100px;" %>
+                <%end%>
+              <%end%>
             <%end%>
             </div>
           </td>

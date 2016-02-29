@@ -3,7 +3,7 @@
   <% if @user.ROL_USUARIO != 'B' %>
     <div class="panel-body" >
       <br><br>
-      <%= link_to 'Ingresar Venta', new_v_venta_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+      <%= link_to 'Ingresar Venta', new_venta_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
       <br><br>
     </div>
   <% end %>
@@ -43,9 +43,6 @@
               <td>
                 <div class="btn-group" role="group" >
                   <%= link_to 'Detalle', v_venta, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-                  <% if @user.ROL_USUARIO != 'B' %>
-                    <%= link_to 'Editar', edit_v_venta_path(venta), :class => "btn btn-default", :style=>"width:100px;" %>
-                  <% end %>
                 </div>
               </td>
             <%end%>
@@ -65,7 +62,11 @@
               <div class="btn-group" role="group" >
                 <%= link_to 'Detalle', v_venta, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
                 <% if @user.ROL_USUARIO != 'B' %>
-                  <%= link_to 'Editar', edit_v_venta_path(v_venta), :class => "btn btn-default", :style=>"width:100px;" %>
+                  <% @venta.each do |venta|%>
+                    <%if venta.ID_VENTA==v_venta.ID_VENTA%>
+                        <%= link_to 'Editar', edit_venta_path(venta), :class => "btn btn-default", :style=>"width:100px;" %>
+                    <%end%>
+                  <%end%>
                 <% end %>
               </div>
             </td>

@@ -2,7 +2,8 @@
   <div class="panel-heading"><h1>Lista de cotizaciones</h1></div>
   <div class="panel-body" >
     <br><br>
-      <%= link_to 'Ingresar Cotización', new_v_cotizacion_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+      <%= link_to 'Ingresar Cotización', new_cotizacion_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;background-color:green"%>
+      <%= link_to 'Códigos de proveedor', v_codigo_proveedor_index_path , :class => "col-xs-2 btn btn-primary", :style=>"margin-left:20px;color:white;"%>
       <br><br>
       <table class="table table-striped table-hover">
         <thead>
@@ -16,16 +17,16 @@
         </thead>
 
         <tbody>
-          <% @v_cotizacion.each do |v_cotizacion| %>
+          <% @v_cotizacion.each do |cotizacion| %>
             <tr>
-              <td><%= v_cotizacion.ID_COTIZACION %></td>
-              <td><%= v_cotizacion.NOMBRE_PROVEEDOR %></td>
-              <td><%= v_cotizacion.FECHA_COTIZACION %></td>
-              <td><%= v_cotizacion.MONTO_TOTAL_COTIZACION %></td>
+              <td><%= cotizacion.ID_COTIZACION %></td>
+              <td><%= cotizacion.NOMBRE_PROVEEDOR %></td>
+              <td><%= cotizacion.FECHA_COTIZACION %></td>
+              <td>$<%= cotizacion.MONTO_TOTAL_COTIZACION.to_i %></td>
               <td>
                 <div class="btn-group" role="group" >
-                  <%= link_to 'Detalle', v_cotizacion, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
-                  <%= link_to 'Editar', edit_v_cotizacion_path(v_cotizacion), :class => "btn btn-default", :style=>"width:100px;" %>
+                  <%= link_to 'Detalle', cotizacion, :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+                  <%= link_to 'Editar', edit_cotizacion_path(cotizacion), :class => "btn btn-default", :style=>"width:100px;" %>
                 </div>
               </td>
             </tr>

@@ -6,6 +6,7 @@ class VDevolucionController < ApplicationController
 
   def index
     @v_devolucion = VDevolucion.all
+    @devolucion = Devolucion.all
     if usuario_signed_in?
       if current_usuario.ROL_USUARIO == 'B'
         redirect_to '/restricted_access/index'
@@ -17,6 +18,7 @@ class VDevolucionController < ApplicationController
   end
 
   def show
+    @devolucion = Devolucion.all
     @v_detalle_devolucion = VDetalleDevolucion.all
     @v_detalle_cambio = VDetalleCambio.all
     respond_with(@v_devolucion,@v_detalle_devolucion,@v_detalle_cambio)

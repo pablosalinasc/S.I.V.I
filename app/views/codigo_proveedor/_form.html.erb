@@ -12,18 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :ID_PROVEEDOR %><br>
-    <%= f.number_field :ID_PROVEEDOR %>
+    <%= f.label :ID_PROVEEDOR, "Proveedor *" %><br>
+    <%= f.collection_select :ID_PROVEEDOR, Proveedor.all, :id, :NOMBRE_PROVEEDOR , :class => "form-control" %><br>
   </div>
   <div class="field">
-    <%= f.label :ID_INSUMO %><br>
-    <%= f.number_field :ID_INSUMO %>
+    <%= f.label :ID_INSUMO, "Insumo *" %><br>
+    <%= f.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO , :class => "form-control" %><br>
   </div>
   <div class="field">
-    <%= f.label :CODIGO_INSUMO %><br>
-    <%= f.text_field :CODIGO_INSUMO %>
+    <%= f.label :CODIGO_INSUMO, "Código del insumo *" %><br>
+    <%= f.text_field :CODIGO_INSUMO, :class => "form-control" %>
   </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingresar Código", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', v_codigo_proveedor_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

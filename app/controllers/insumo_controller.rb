@@ -22,6 +22,7 @@ class InsumoController < ApplicationController
 
   def new
     @insumo = Insumo.new
+    @insumo.PropiedadValor.build
     respond_with(@insumo)
   end
 
@@ -31,12 +32,14 @@ class InsumoController < ApplicationController
   def create
     @insumo = Insumo.new(insumo_params)
     @insumo.save
-    respond_with(@insumo)
+    redirect_to v_stock_insumo_index_path
+
   end
 
   def update
     @insumo.update(insumo_params)
-    respond_with(@insumo)
+    redirect_to v_stock_insumo_index_path
+
   end
 
   def destroy
@@ -50,6 +53,6 @@ class InsumoController < ApplicationController
     end
 
     def insumo_params
-      params.require(:insumo).permit(:ID_TIPO_INSUMO, :PRECIO_INSUMO, :NOMBRE_UNICO_INSUMO)
+      params.require(:insumo).permit(:ID_TIPO_INSUMO, :PRECIO_INSUMO, :NOMBRE_UNICO_INSUMO, PropiedadValor_attributes: [:ID_PROPIEDAD, :VALOR])
     end
 end

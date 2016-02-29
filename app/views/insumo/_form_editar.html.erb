@@ -1,0 +1,50 @@
+<%= form_for(@insumo) do |f| %>
+  <% if @insumo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insumo.errors.count, "error") %> prohibited this insumo from being saved:</h2>
+
+      <ul>
+      <% @insumo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_TIPO_INSUMO, "Tipo de insumo *" %><br>
+    <%= f.collection_select :ID_TIPO_INSUMO, TipoInsumo.all, :id, :NOMBRE_INSUMO %><br>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="field">
+        <%= f.label :PRECIO_INSUMO, "Precio *" %><br>
+        <%= f.number_field :PRECIO_INSUMO, :class=>"form-control", :min => "0" %>
+      </div>
+      <div class="field">
+        <%= f.label :NOMBRE_UNICO_INSUMO, "Nombre insumo *" %><br>
+        <%= f.text_field :NOMBRE_UNICO_INSUMO, :class=>"form-control"%>
+      </div>
+    </div>
+  </div>
+  <div clsas="row">
+  <h3> Propiedades </h3>
+  <%= f.fields_for :PropiedadValor, include_id: false do |detalle_cotizacion|%>
+    <div class="row">
+      <div class="fields panel panel-default col-xs-6" d style="margin-left:20px;">
+        <div class="panel-body">
+        <%= detalle_cotizacion.label :ID_PROPIEDAD, "Código Insumo *"%><br>
+        <%= detalle_cotizacion.collection_select :ID_PROPIEDAD , Propiedad.all, :id, :NOMBRE_PROPIEDAD %><br>
+        <%= detalle_cotizacion.label :VALOR, "Valor *"%><br>
+        <%= detalle_cotizacion.text_field :VALOR%><br>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  </div>
+  <br><br>
+  <div class="actions">
+    <%= f.submit "Actualizar Insumo" , :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+  </div>
+    <%= link_to 'Volver', v_stock_insumo_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+<% end %>

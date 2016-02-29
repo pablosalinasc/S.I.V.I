@@ -103,7 +103,11 @@
     <br><br>
     <div class="row">
       <div class="col-xs-2 btn-group" role="group" >
-        <%= link_to 'Editar', edit_v_devolucion_path(@v_devolucion), :class => "btn btn-primary", :style=> "color:white;background-color:green;width:100px;" %>
+            <% @devolucion.each do |devolucion|%>
+              <%if devolucion.ID_DEVOLUCION==@v_devolucion.ID_DEVOLUCION%>
+                  <%= link_to 'Editar', edit_devolucion_path(devolucion), :class => "btn btn-default", :style=>"width:100px;" %>
+              <%end%>
+            <%end%>
         <%= link_to 'Volver', v_devolucion_index_path, :class => "btn btn-default", :style=>"width:100px;" %>
       </div>
     </div>

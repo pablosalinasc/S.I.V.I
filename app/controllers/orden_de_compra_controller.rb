@@ -22,10 +22,12 @@ class OrdenDeCompraController < ApplicationController
 
   def new
     @orden_de_compra = OrdenDeCompra.new
+    @orden_de_compra.DetalleOrdenDeCompra.build
     respond_with(@orden_de_compra)
   end
 
   def edit
+    @orden_de_compra.DetalleOrdenDeCompra.build
   end
 
   def create
@@ -50,6 +52,6 @@ class OrdenDeCompraController < ApplicationController
     end
 
     def orden_de_compra_params
-      params.require(:orden_de_compra).permit(:ID_PROVEEDOR, :ID_COTIZACION, :ID_ESTADO_COMPRA, :FECHA_COMPRA, :MONTO_TOTAL_COMPRA)
+      params.require(:orden_de_compra).permit(:ID_PROVEEDOR, :ID_COTIZACION, :ID_ESTADO_COMPRA, :FECHA_COMPRA, :MONTO_TOTAL_COMPRA, DetalleOrdenDeCompra_attributes: [:ID_COMPRA,:ID_CODIGO_PROVEEDOR,:LINEA_COMPRA, :CANTIDAD_COMPRA, :PRECIO_COMPRA])
     end
 end

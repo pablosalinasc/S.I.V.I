@@ -10,6 +10,7 @@ class VVentaController < ApplicationController
       @bodeguero = Bodeguero.find_by ID_BODEGUERO: current_usuario.ID_USUARIO
     end
     @v_venta = VVenta.all
+    @venta = Venta.all
     @user = current_usuario
 
     if usuario_signed_in?
@@ -19,6 +20,7 @@ class VVentaController < ApplicationController
   end
 
   def show
+    @venta = Venta.all
     @v_detalle_venta = VDetalleVenta.all
     @user = current_usuario
     respond_with(@v_venta,@v_detalle_venta)

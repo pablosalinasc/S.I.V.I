@@ -1,0 +1,64 @@
+<%= form_for(@guia_de_despacho) do |f| %>
+  <% if @guia_de_despacho.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guia_de_despacho.errors.count, "error") %> prohibited this guia_de_despacho from being saved:</h2>
+
+      <ul>
+      <% @guia_de_despacho.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_COMPRA, "Número de órden de compra *" %><br>
+    <%= f.collection_select :ID_COMPRA, OrdenDeCompra.all, :id, :ID_COMPRA %><br>
+  </div>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR, "Proveedor *" %><br>
+    <%= f.collection_select :ID_PROVEEDOR, Proveedor.all, :id, :NOMBRE_PROVEEDOR %><br>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_SALIDA_GUIA, "Fecha de salida *" %><br>
+    <%= f.datetime_field :FECHA_SALIDA_GUIA, :class => "form-control"  %>
+  </div>
+  <div class="field">
+    <%= f.label :FECHA_RECEPCION_GUIA, "Fecha de recepción *" %><br>
+    <%= f.datetime_field :FECHA_RECEPCION_GUIA, :class => "form-control"  %>
+  </div>
+  <div class="field">
+    <%= f.label :TIPO_MOVIMIENTO_GUIA, "Tipo de movimiento *" %><br>
+    <%= f.text_field :TIPO_MOVIMIENTO_GUIA, :class => "form-control"  %>
+  </div>
+  <div class="field">
+    <%= f.label :VEHICULO_GUIA, "Vehículo" %><br>
+    <%= f.text_field :VEHICULO_GUIA, :class => "form-control"  %>
+  </div>
+  <div class="field">
+    <%= f.label :DESTINO_GUIA, "Destino *" %><br>
+    <%= f.text_field :DESTINO_GUIA, :class => "form-control"  %>
+  </div>
+  <h3> Detalle Guía de despacho </h3>
+  <%= f.fields_for :DetalleGuiaDeDespacho, include_id: false do |detalle_guia_de_despacho|%>
+    <div class="row">
+      <div class="fields panel panel-default col-xs-6" style="margin-left:20px;">
+        <div class="panel-body">
+        <%=detalle_guia_de_despacho.label :LINEA_GUIA, "Linea de detalle *"%><br>
+        <%= detalle_guia_de_despacho.number_field :LINEA_GUIA, :class => "form-control" %><br>
+        <%=detalle_guia_de_despacho.label :ID_CODIGO_PROVEEDOR, "Código Insumo *"%><br>
+        <%= detalle_guia_de_despacho.collection_select :ID_CODIGO_PROVEEDOR , CodigoProveedor.all, :id, :CODIGO_INSUMO %><br>
+        <%=detalle_guia_de_despacho.label :CANTIDAD_GUIA, "Cantidad de unidades *"%><br>
+        <%= detalle_guia_de_despacho.number_field :CANTIDAD_GUIA, :class => "form-control" %><br>
+        <%=detalle_guia_de_despacho.label :PRECIO_GUIA, "Precio *"%><br>
+        <%= detalle_guia_de_despacho.number_field :PRECIO_GUIA, :class => "form-control" %><br>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <br><br>
+  <div class="actions">
+    <%= f.submit "Actualizar guía de despacho", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+  </div>
+    <%= link_to 'Volver', v_guia_despacho_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+<% end %>

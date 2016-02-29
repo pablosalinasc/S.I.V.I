@@ -5,11 +5,12 @@ class VCotizacionController < ApplicationController
 
   def index
     @v_cotizacion = VCotizacion.all
+    @cotizacion = Cotizacion.all
     if usuario_signed_in?
       if current_usuario.ROL_USUARIO != 'A'
         redirect_to '/restricted_access/index'
       else
-        respond_with(@v_cotizacion)
+        respond_with(@v_cotizacion,@cotizacion)
       end
     else redirect_to '/restricted_access/index'
     end
@@ -47,6 +48,7 @@ class VCotizacionController < ApplicationController
   private
     def set_v_cotizacion
       @v_cotizacion = VCotizacion.find(params[:id])
+      @cotizacion = Cotizacion.find(params[:id])
     end
 
     def v_cotizacion_params

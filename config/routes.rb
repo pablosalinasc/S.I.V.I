@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :v_codigo_proveedor
+
+  resources :detalle_cotizacion
+
   resources :v_detalle_cotizacion
 
   resources :v_cotizacion

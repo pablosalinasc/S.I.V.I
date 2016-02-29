@@ -19,7 +19,21 @@
     <%= f.label :COMPATIBILIDAD_INSUMO %><br>
     <%= f.check_box :COMPATIBILIDAD_INSUMO %>
   </div>
+  <h3> Propiedades asociadas </h3>
+  <%= f.fields_for :TipoInsumoPropiedad, include_id: false do |detalle_cotizacion|%>
+    <div class="row">
+      <div class="fields panel panel-default col-xs-4" style="margin-left:20px;">
+        <div class="panel-body">
+        <%=detalle_cotizacion.label :ID_PROPIEDAD, "Propiedad *"%><br>
+        <%= detalle_cotizacion.collection_select :ID_PROPIEDAD , Propiedad.all, :id, :NOMBRE_PROPIEDAD %><br>
+        <%=detalle_cotizacion.label :PRINCIPAL_PROPIEDAD, "Parte del nombre único *"%><br>
+        <%= detalle_cotizacion.check_box :PRINCIPAL_PROPIEDAD%><br>
+        </div>
+      </div>
+    </div>
+  <%end%>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ingresar Tipo de insumo", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', tipo_insumo_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

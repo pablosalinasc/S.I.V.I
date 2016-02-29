@@ -7,11 +7,7 @@ class VentaController < ApplicationController
   def index
     @venta = Venta.all
     if usuario_signed_in?
-      if current_usuario.ROL_USUARIO != 'A'
-        redirect_to '/restricted_access/index'
-      else
-        respond_with(@venta)
-      end
+        respond_with(@v_venta)
     else redirect_to '/restricted_access/index'
     end
   end
@@ -22,22 +18,23 @@ class VentaController < ApplicationController
 
   def new
     @venta = Venta.new
+    @venta.DetalleVenta.build
     respond_with(@venta)
   end
 
   def edit
+    @venta.DetalleVenta.build
   end
 
   def create
     @venta = Venta.new(venta_params)
     @venta.save
-    respond_with(@venta)
+    redirect_to v_venta_index_path
   end
 
-  def update #se activa en caso de actualise un dato
+  def update
     @venta.update(venta_params)
     redirect_to v_venta_index_path
-    #respond_with(@venta)
   end
 
   def destroy
@@ -51,6 +48,8 @@ class VentaController < ApplicationController
     end
 
     def venta_params
-      params.require(:venta).permit(:ID_VENDEDOR, :ID_LOCAL, :ID_CLIENTE, :FECHA_VENTA, :FORMA_DE_PAGO_VENTA, :DESCUENTO_TOTAL_VENTA, :MONTO_TOTAL_VENTA, :DESPACHADA_VENTA, :ID_BODEGUERO_DESPACHO, :NUMERO_BOLETA_VENTA)
+      params.require(:venta).permit(:ID_VENDEDOR, :ID_LOCAL, :ID_CLIENTE, :FECHA_VENTA, :FORMA_DE_PAGO_VENTA,
+      :DESCUENTO_TOTAL_VENTA, :MONTO_TOTAL_VENTA, :DESPACHADA_VENTA, :ID_BODEGUERO_DESPACHO, :NUMERO_BOLETA_VENTA,
+      detalle_venta_attributes: [:ID_VENTA, :LINEA_VENTA, :ID_INSUMO, :CANTIDAD_VENTA, :PRECIO_VENTA, :DESCUENTO_VENTA, :_destroy])
     end
 end

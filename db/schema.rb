@@ -20,21 +20,22 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "bodeguero", ["ID_LOCAL"], name: "FK_RELATIONSHIP_48", using: :btree
 
   create_table "cliente", primary_key: "ID_CLIENTE", force: true do |t|
-    t.string   "NOMBRE_CLIENTE",           limit: 200, null: false
-    t.string   "RUT_CLIENTE",              limit: 15,  null: false
-    t.string   "CORREO_CLIENTE",           limit: 150
-    t.string   "TELEFONO_CLIENTE",         limit: 20
-    t.datetime "FECHA_NACIMIENTO_CLIENTE",             null: false
-    t.float    "DESCUENTO_CLIENTE",        limit: 24,  null: false
+    t.string "NOMBRE_CLIENTE",           limit: 200, null: false
+    t.string "RUT_CLIENTE",              limit: 15,  null: false
+    t.string "CORREO_CLIENTE",           limit: 150
+    t.string "TELEFONO_CLIENTE",         limit: 20
+    t.date   "FECHA_NACIMIENTO_CLIENTE",             null: false
+    t.float  "DESCUENTO_CLIENTE",        limit: 24,  null: false
   end
 
-  create_table "codigo_proveedor", id: false, force: true do |t|
+  create_table "codigo_proveedor", primary_key: "ID_CODIGO_PROVEEDOR", force: true do |t|
     t.integer "ID_PROVEEDOR",             null: false
     t.integer "ID_INSUMO",                null: false
     t.string  "CODIGO_INSUMO", limit: 32, null: false
   end
 
   add_index "codigo_proveedor", ["ID_INSUMO"], name: "FK_RELATIONSHIP_68", using: :btree
+  add_index "codigo_proveedor", ["ID_PROVEEDOR"], name: "FK_RELATIONSHIP_65", using: :btree
 
   create_table "compatibilidad", id: false, force: true do |t|
     t.integer "ID_MARCA",  null: false
@@ -65,14 +66,12 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "detalle_cotizacion", id: false, force: true do |t|
     t.integer "ID_COTIZACION",                  null: false
     t.integer "LINEA_COTIZACION",               null: false
-    t.integer "ID_PROVEEDOR",                   null: false
-    t.integer "ID_INSUMO",                      null: false
-    t.string  "CODIGO_INSUMO",       limit: 32, null: false
+    t.integer "ID_CODIGO_PROVEEDOR",            null: false
     t.integer "CANTIDAD_COTIZACION",            null: false
     t.float   "PRECIO_COTIZACION",   limit: 24, null: false
   end
 
-  add_index "detalle_cotizacion", ["ID_PROVEEDOR", "ID_INSUMO", "CODIGO_INSUMO"], name: "FK_RELATIONSHIP_66", using: :btree
+  add_index "detalle_cotizacion", ["ID_CODIGO_PROVEEDOR"], name: "FK_RELATIONSHIP_66", using: :btree
 
   create_table "detalle_devolucion", id: false, force: true do |t|
     t.integer "ID_DEVOLUCION",      null: false
@@ -84,28 +83,24 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "detalle_devolucion", ["ID_INSUMO"], name: "FK_RELATIONSHIP_36", using: :btree
 
   create_table "detalle_guia_de_despacho", id: false, force: true do |t|
-    t.integer "ID_GUIA_DESPACHO",            null: false
-    t.integer "LINEA_GUIA",                  null: false
-    t.integer "ID_PROVEEDOR",                null: false
-    t.integer "ID_INSUMO",                   null: false
-    t.string  "CODIGO_INSUMO",    limit: 32, null: false
-    t.integer "CANTIDAD_GUIA",               null: false
-    t.float   "PRECIO_GUIA",      limit: 24, null: false
+    t.integer "ID_GUIA_DESPACHO",               null: false
+    t.integer "LINEA_GUIA",                     null: false
+    t.integer "ID_CODIGO_PROVEEDOR",            null: false
+    t.integer "CANTIDAD_GUIA",                  null: false
+    t.float   "PRECIO_GUIA",         limit: 24, null: false
   end
 
-  add_index "detalle_guia_de_despacho", ["ID_PROVEEDOR", "ID_INSUMO", "CODIGO_INSUMO"], name: "FK_RELATIONSHIP_63", using: :btree
+  add_index "detalle_guia_de_despacho", ["ID_CODIGO_PROVEEDOR"], name: "FK_RELATIONSHIP_63", using: :btree
 
   create_table "detalle_orden_de_compra", id: false, force: true do |t|
-    t.integer "ID_COMPRA",                  null: false
-    t.integer "LINEA_COMPRA",               null: false
-    t.integer "ID_PROVEEDOR",               null: false
-    t.integer "ID_INSUMO",                  null: false
-    t.string  "CODIGO_INSUMO",   limit: 32, null: false
-    t.integer "CANTIDAD_COMPRA",            null: false
-    t.float   "PRECIO_COMPRA",   limit: 24, null: false
+    t.integer "ID_COMPRA",                      null: false
+    t.integer "LINEA_COMPRA",                   null: false
+    t.integer "ID_CODIGO_PROVEEDOR",            null: false
+    t.integer "CANTIDAD_COMPRA",                null: false
+    t.float   "PRECIO_COMPRA",       limit: 24, null: false
   end
 
-  add_index "detalle_orden_de_compra", ["ID_PROVEEDOR", "ID_INSUMO", "CODIGO_INSUMO"], name: "FK_RELATIONSHIP_64", using: :btree
+  add_index "detalle_orden_de_compra", ["ID_CODIGO_PROVEEDOR"], name: "FK_RELATIONSHIP_64", using: :btree
 
   create_table "detalle_venta", id: false, force: true do |t|
     t.integer "ID_VENTA",        null: false
@@ -190,7 +185,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "log", primary_key: "ID_LOG", force: true do |t|
     t.integer  "ID_USUARIO_LOG"
-    t.integer  "ID_TUPLA_LOG",                 null: false
+    t.string   "ID_TUPLA_LOG",     limit: 69
     t.string   "NEW_VALUE_LOG",    limit: 500
     t.string   "OLD_VALUE_LOG",    limit: 500
     t.datetime "FECHA_LOG",                    null: false
@@ -284,6 +279,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "last_sign_in_ip"
   end
 
+  create_table "v_codigo_proveedor", id: false, force: true do |t|
+    t.integer "ID_CODIGO_PROVEEDOR",             default: 0, null: false
+    t.integer "ID_PROVEEDOR",                                null: false
+    t.integer "ID_INSUMO",                                   null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,              null: false
+    t.string  "NOMBRE_PROVEEDOR",    limit: 150,             null: false
+    t.string  "NOMBRE_UNICO_INSUMO", limit: 100,             null: false
+  end
+
   create_table "v_compatibilidad", id: false, force: true do |t|
     t.integer "ID_INSUMO",               null: false
     t.integer "ID_MARCA",                null: false
@@ -310,23 +314,23 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "v_detalle_compra", id: false, force: true do |t|
     t.integer "ID_COMPRA",                       null: false
     t.integer "LINEA_COMPRA",                    null: false
-    t.integer "ID_PROVEEDOR",                    null: false
-    t.integer "ID_INSUMO",                       null: false
-    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
+    t.integer "ID_CODIGO_PROVEEDOR",             null: false
     t.integer "CANTIDAD_COMPRA",                 null: false
     t.float   "PRECIO_COMPRA",       limit: 24,  null: false
     t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "ID_INSUMO",                       null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
   end
 
   create_table "v_detalle_cotizacion", id: false, force: true do |t|
     t.integer "ID_COTIZACION",                   null: false
     t.integer "LINEA_COTIZACION",                null: false
-    t.integer "ID_PROVEEDOR",                    null: false
-    t.integer "ID_INSUMO",                       null: false
-    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
+    t.integer "ID_CODIGO_PROVEEDOR",             null: false
     t.integer "CANTIDAD_COTIZACION",             null: false
     t.float   "PRECIO_COTIZACION",   limit: 24,  null: false
     t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "ID_INSUMO",                       null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
   end
 
   create_table "v_detalle_devolucion", id: false, force: true do |t|
@@ -339,12 +343,12 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "v_detalle_guia", id: false, force: true do |t|
     t.integer "ID_GUIA_DESPACHO",                null: false
     t.integer "LINEA_GUIA",                      null: false
-    t.integer "ID_PROVEEDOR",                    null: false
-    t.integer "ID_INSUMO",                       null: false
-    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
+    t.integer "ID_CODIGO_PROVEEDOR",             null: false
     t.integer "CANTIDAD_GUIA",                   null: false
     t.float   "PRECIO_GUIA",         limit: 24,  null: false
     t.string  "NOMBRE_UNICO_INSUMO", limit: 100, null: false
+    t.integer "ID_INSUMO",                       null: false
+    t.string  "CODIGO_INSUMO",       limit: 32,  null: false
   end
 
   create_table "v_detalle_venta", id: false, force: true do |t|
@@ -409,11 +413,11 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "v_proveedor", id: false, force: true do |t|
-    t.integer "ID_PROVEEDOR",                           default: 0
-    t.string  "NOMBRE_PROVEEDOR",           limit: 150
-    t.string  "PAIS_PROVEEDOR",             limit: 50
-    t.string  "CIUDAD_PROVEEDOR",           limit: 100
-    t.string  "DIRECCION_PROVEEDOR",        limit: 200
+    t.integer "ID_PROVEEDOR",                           default: 0, null: false
+    t.string  "NOMBRE_PROVEEDOR",           limit: 150,             null: false
+    t.string  "PAIS_PROVEEDOR",             limit: 50,              null: false
+    t.string  "CIUDAD_PROVEEDOR",           limit: 100,             null: false
+    t.string  "DIRECCION_PROVEEDOR",        limit: 200,             null: false
     t.string  "CORREO_PROVEEDOR",           limit: 100
     t.integer "CANTIDAD_COTIZACIONES",      limit: 8,   default: 0, null: false
     t.integer "CANTIDAD_ORDENES_DE_COMPRA", limit: 8,   default: 0, null: false

@@ -1,0 +1,31 @@
+<%= form_for(@codigo_proveedor) do |f| %>
+  <% if @codigo_proveedor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@codigo_proveedor.errors.count, "error") %> prohibited this codigo_proveedor from being saved:</h2>
+
+      <ul>
+      <% @codigo_proveedor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR, "Proveedor *" %><br>
+    <%= f.collection_select :ID_PROVEEDOR, Proveedor.all, :id, :NOMBRE_PROVEEDOR , :class => "form-control" %><br>
+  </div>
+  <div class="field">
+    <%= f.label :ID_INSUMO, "Insumo *" %><br>
+    <%= f.collection_select :ID_INSUMO, Insumo.all, :id, :NOMBRE_UNICO_INSUMO , :class => "form-control" %><br>
+  </div>
+  <div class="field">
+    <%= f.label :CODIGO_INSUMO, "Código del insumo *" %><br>
+    <%= f.text_field :CODIGO_INSUMO, :class => "form-control" %>
+  </div>
+  <br><br>
+  <div class="actions">
+    <%= f.submit "Editar Código", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+  </div>
+    <%= link_to 'Volver', v_codigo_proveedor_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+<% end %>

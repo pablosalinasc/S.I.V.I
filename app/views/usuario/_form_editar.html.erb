@@ -12,30 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :NOMBRE_USUARIO %><br>
-    <%= f.text_field :NOMBRE_USUARIO %>
+    <%= f.label :NOMBRE_USUARIO, "Nombre" %><br>
+    <%= f.text_field :NOMBRE_USUARIO, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :RUT_USUARIO %><br>
-    <%= f.text_field :RUT_USUARIO %>
+    <%= f.label :RUT_USUARIO, "RUT" %><br>
+    <%= f.text_field :RUT_USUARIO, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :FECHA_NACIMIENTO_USUARIO %><br>
-    <%= f.date_select :FECHA_NACIMIENTO_USUARIO %>
+    <%= f.label :FECHA_NACIMIENTO_USUARIO, "Fecha de nacimiento *" %><br>
+    <%= f.date_field :FECHA_NACIMIENTO_USUARIO, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.label :email , "Correo electrónico *"%><br>
+    <%= f.text_field :email, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :TELEFONO_USUARIO %><br>
-    <%= f.text_field :TELEFONO_USUARIO %>
+    <%= f.label :TELEFONO_USUARIO, "Teléfono" %><br>
+    <%= f.text_field :TELEFONO_USUARIO, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :ROL_USUARIO %><br>
-    <%= f.text_field :ROL_USUARIO %>
+    <%= f.label :ROL_USUARIO, "" %><br>
+    <%= f.text_field :ROL_USUARIO, :class => "form-control" %>
   </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Actualizar usuario", :class => "col-xs-4 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
+    <%= link_to 'Volver', usuario_index_path , :class => "col-xs-4 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>

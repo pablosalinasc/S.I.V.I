@@ -1,0 +1,41 @@
+<%= form_for(@v_codigo_proveedor) do |f| %>
+  <% if @v_codigo_proveedor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@v_codigo_proveedor.errors.count, "error") %> prohibited this v_codigo_proveedor from being saved:</h2>
+
+      <ul>
+      <% @v_codigo_proveedor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ID_CODIGO_PROVEEDOR %><br>
+    <%= f.number_field :ID_CODIGO_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_PROVEEDOR %><br>
+    <%= f.number_field :ID_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :ID_INSUMO %><br>
+    <%= f.number_field :ID_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :CODIGO_INSUMO %><br>
+    <%= f.text_field :CODIGO_INSUMO %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_PROVEEDOR %><br>
+    <%= f.text_field :NOMBRE_PROVEEDOR %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE_UNICO_INSUMO %><br>
+    <%= f.text_field :NOMBRE_UNICO_INSUMO %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

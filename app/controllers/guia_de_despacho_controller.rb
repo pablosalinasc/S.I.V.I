@@ -22,10 +22,12 @@ class GuiaDeDespachoController < ApplicationController
 
   def new
     @guia_de_despacho = GuiaDeDespacho.new
+    @guia_de_despacho.DetalleGuiaDeDespacho.build
     respond_with(@guia_de_despacho)
   end
 
   def edit
+    @guia_de_despacho.DetalleGuiaDeDespacho.build
   end
 
   def create
@@ -50,6 +52,6 @@ class GuiaDeDespachoController < ApplicationController
     end
 
     def guia_de_despacho_params
-      params.require(:guia_de_despacho).permit(:ID_COMPRA, :ID_PROVEEDOR, :FECHA_SALIDA_GUIA, :FECHA_RECEPCION_GUIA, :TIPO_MOVIMIENTO_GUIA, :VEHICULO_GUIA, :DESTINO_GUIA, :DESPACHO_LOCAL_GUIA)
+      params.require(:guia_de_despacho).permit(:ID_COMPRA, :ID_PROVEEDOR, :FECHA_SALIDA_GUIA, :FECHA_RECEPCION_GUIA, :TIPO_MOVIMIENTO_GUIA, :VEHICULO_GUIA, :DESTINO_GUIA, :DESPACHO_LOCAL_GUIA, DetalleGuiaDeDespacho_attributes: [:ID_GUIA_DESPACHO,:ID_CODIGO_PROVEEDOR,:LINEA_GUIA, :CANTIDAD_GUIA, :PRECIO_GUIA] )
     end
 end
