@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :NOMBRE_USUARIO, "Nombre" %><br>
-    <%= f.text_field :NOMBRE_USUARIO, :class => "form-control" %>
+    <%= f.text_field :NOMBRE_USUARIO, :required => 'required', :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :RUT_USUARIO, "RUT" %><br>
@@ -34,7 +34,7 @@
   <div class="field">
     <%roles={"Vendedor"=>"V","Bodeguero"=>"B","Administrador"=>"A"}%>
     <%= f.label :ROL_USUARIO, "Rol de usuario" %><br>
-    <%= f.select :ROL_USUARIO,roles, :class => "form-control", :include_blank => true  %>
+    <%= f.select :ROL_USUARIO,roles, :class => "form-control"%>
   </div>
 
   <div class="field">

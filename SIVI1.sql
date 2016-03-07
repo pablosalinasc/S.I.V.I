@@ -440,22 +440,22 @@ ALTER TABLE TRANSICION_ESTADO_COMPRA COMMENT 'Entidad que define las transicione
 /*==============================================================*/
 CREATE TABLE USUARIO
 (
-  `ID_USUARIO` int(11) NOT NULL auto_increment,
-  `NOMBRE_USUARIO` varchar(200) NOT NULL,
-  `RUT_USUARIO` varchar(15) NOT NULL,
-  `FECHA_NACIMIENTO_USUARIO` date NOT NULL,
-  `TELEFONO_USUARIO` varchar(12) DEFAULT NULL,
-  `ROL_USUARIO` varchar(1) NOT NULL,
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `encrypted_password` varchar(255) NOT NULL DEFAULT '',
+  `ID_USUARIO` int(11) 				  NOT NULL auto_increment,
+  `NOMBRE_USUARIO` varchar(200)       NOT NULL,
+  `RUT_USUARIO` varchar(15)           NOT NULL,
+  `FECHA_NACIMIENTO_USUARIO` 		  date NOT NULL,
+  `TELEFONO_USUARIO` varchar(12)      DEFAULT NULL,
+  `ROL_USUARIO` varchar(1) 			  NOT NULL,
+  `email` varchar(255) 				  NOT NULL DEFAULT '',
+  `encrypted_password` varchar(255)   NOT NULL DEFAULT '',
   `reset_password_token` varchar(255) DEFAULT NULL,
-  `reset_password_sent_at` datetime DEFAULT NULL,
-  `remember_created_at` datetime DEFAULT NULL,
-  `sign_in_count` int(11) NOT NULL DEFAULT '0',
-  `current_sign_in_at` datetime DEFAULT NULL,
-  `last_sign_in_at` datetime DEFAULT NULL,
-  `current_sign_in_ip` varchar(255) DEFAULT NULL,
-  `last_sign_in_ip` varchar(255) DEFAULT NULL,
+  `reset_password_sent_at` datetime   DEFAULT NULL,
+  `remember_created_at`    datetime   DEFAULT NULL,
+  `sign_in_count` int(11)             NOT NULL DEFAULT '0',
+  `current_sign_in_at`     datetime   DEFAULT NULL,
+  `last_sign_in_at` 	   datetime   DEFAULT NULL,
+  `current_sign_in_ip` varchar(255)   DEFAULT NULL,
+  `last_sign_in_ip` varchar(255) 	  DEFAULT NULL,
    PRIMARY KEY (ID_USUARIO)
 );
 
