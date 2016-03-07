@@ -321,6 +321,7 @@ INSERT INTO `sivi`.`usuario`
 `TELEFONO_USUARIO`,
 `ROL_USUARIO`,
 `email`,
+ID_LOCAL,
 `encrypted_password`,
 `reset_password_token`,
 `reset_password_sent_at`,
@@ -331,38 +332,14 @@ INSERT INTO `sivi`.`usuario`
 `current_sign_in_ip`,
 `last_sign_in_ip`)
 VALUES
-('Pablo Salinas','18455374-0',19930222,'3598633','V','pablo.salinas.cabanas@gmail.com',      '$2a$10$458okPZcLA7On6yLy5SmGefNtBFyfCoKkbsLVk5fKKyEymzktrwhW', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Nelson Andrés Jerez','18540150-2',19930721,'12341234','B','nelson.jerez@usach.cl',         '$2a$10$3XdKTFDqiOs/oNpr9NfMTekC.qonuN.HAqFC6qfAMbPdERIacI6p2', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Jorge Cocio','16913123-4',19760911,'12345678','A',	'jorge.cocio@usach.cl',	             '$2a$10$MvbjHgK3rzrAZC94eiMfiOBROjTkU5cwfO2.ydG1LgVNIJmlXYR92', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Jeison Hernandez','13244221-0',19780211,'12341233','V','jeison.hernandez@gmail.com',       '$2a$10$u8dkcbYe/RSWZLJqfIR/duALfLYffAy2g.oW4eHcJr0QRrnkED5WS', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Maicol Mesa','15134135-4',19870222,'12345454','V','maicol.mesa@gmail.com',                '$2a$10$ex3PJ5qE5xjnbNibqxOZpeZ5NfdXaG/n4ErEje7yp6IFfT1Y9.R32', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Gerson Tapia','17134164-0',19861221,'12345678','B','gerson.tapia@gmail.com',                '$2a$10$2DYgOLH5yCCKuXMXIMfimORIpf8v2gdMZqm0154n6UXxWbNZT4c.C', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
-('Samir Abdul','18342154-4',19980713,'45656767','B','samir.abdula@gmail.com',                '$2a$10$T4uXXIiiUrvKrmQhBeGXpO8lrjoEBZ6XOxkN7MgeRM1N.Lqmy9v4y', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1');
+('Pablo Salinas','18455374-0',19930222,'3598633','V','pablo.salinas.cabanas@gmail.com',1,      '$2a$10$458okPZcLA7On6yLy5SmGefNtBFyfCoKkbsLVk5fKKyEymzktrwhW', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Nelson Andrés Jerez','18540150-2',19930721,'12341234','B','nelson.jerez@usach.cl',1,         '$2a$10$3XdKTFDqiOs/oNpr9NfMTekC.qonuN.HAqFC6qfAMbPdERIacI6p2', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Jorge Cocio','16913123-4',19760911,'12345678','A',	'jorge.cocio@usach.cl',NULL,	             '$2a$10$MvbjHgK3rzrAZC94eiMfiOBROjTkU5cwfO2.ydG1LgVNIJmlXYR92', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Jeison Hernandez','13244221-0',19780211,'12341233','V','jeison.hernandez@gmail.com',2,       '$2a$10$u8dkcbYe/RSWZLJqfIR/duALfLYffAy2g.oW4eHcJr0QRrnkED5WS', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Maicol Mesa','15134135-4',19870222,'12345454','V','maicol.mesa@gmail.com',3,                '$2a$10$ex3PJ5qE5xjnbNibqxOZpeZ5NfdXaG/n4ErEje7yp6IFfT1Y9.R32', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Gerson Tapia','17134164-0',19861221,'12345678','B','gerson.tapia@gmail.com',2,                '$2a$10$2DYgOLH5yCCKuXMXIMfimORIpf8v2gdMZqm0154n6UXxWbNZT4c.C', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1'),
+('Samir Abdul','18342154-4',19980713,'45656767','B','samir.abdula@gmail.com',3,                '$2a$10$T4uXXIiiUrvKrmQhBeGXpO8lrjoEBZ6XOxkN7MgeRM1N.Lqmy9v4y', NULL, NULL, NULL,'1',NULL, NULL,'127.0.0.1','127.0.0.1');
 
-#Locales para cada usuario
-UPDATE `sivi`.`vendedor`
-SET
-`ID_LOCAL` = 1 WHERE `ID_VENDEDOR` = 1;
-
-UPDATE `sivi`.`bodeguero`
-SET
-`ID_LOCAL` = 1 WHERE `ID_BODEGUERO` = 2;
-
-UPDATE `sivi`.`vendedor`
-SET
-`ID_LOCAL` = 2 WHERE `ID_VENDEDOR` = 4;
-
-UPDATE `sivi`.`vendedor`
-SET
-`ID_LOCAL` = 3 WHERE `ID_VENDEDOR` = 5;
-
-UPDATE `sivi`.`bodeguero`
-SET
-`ID_LOCAL` = 2 WHERE `ID_BODEGUERO` = 6;
-
-UPDATE `sivi`.`bodeguero`
-SET
-`ID_LOCAL` = 3 WHERE `ID_BODEGUERO` = 7;
 
 INSERT INTO `sivi`.`estado_devolucion`
 (`DESCRIPCION_ESTADO_DEVOLUCION`)
