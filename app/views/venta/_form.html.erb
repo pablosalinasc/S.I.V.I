@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :ID_VENDEDOR , "Vendedor *" %><br>
-    <%= f.collection_select :ID_VENDEDOR, Usuario.where(ROL_USUARIO: 'V'), :id, :NOMBRE_USUARIO, :include_blank => true ,:name => 'ID_VENDEDOR'%>
+    <% datos={current_usuario.NOMBRE_USUARIO=>current_usuario.ID_USUARIO}%>
+    <%= f.select :ID_VENDEDOR,datos,disabled: true, selected: current_usuario.ID_USUARIO%>
   </div>
   <div class="field">
     <%= f.label :ID_LOCAL, "Local *" %><br>

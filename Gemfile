@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'execjs'
 # Use ActiveModel has_secure_password
+gem 'rails4-autocomplete'
+gem 'jquery-ui-rails'
 
 gem "bcrypt", '~> 3.1.10'
 

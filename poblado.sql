@@ -388,10 +388,10 @@ INSERT INTO `sivi`.`venta`
 `ID_BODEGUERO_DESPACHO`,
 `NUMERO_BOLETA_VENTA`)
 VALUES
-(1,1,2,sysdate(),'Efectivo',0,7680,true,2,1223),
-(1,1,3,sysdate(),'Cheque',0,9440,false,2,1226),
-(5,3,1,sysdate(),'Tarjeta',0,4800,true,7,1231),
-(4,2,1,sysdate(),'Efectivo',0,5000,true,6,1311);
+(1,1,2,sysdate(),'EFECTIVO',0,7680,true,2,1223),
+(1,1,3,sysdate(),'CHEQUE',0,9440,false,2,1226),
+(5,3,1,sysdate(),'TARJETA',0,4800,true,7,1231),
+(4,2,1,sysdate(),'EFECTIVO',0,5000,true,6,1311);
 
 INSERT INTO `sivi`.`detalle_venta`
 (`ID_VENTA`,
