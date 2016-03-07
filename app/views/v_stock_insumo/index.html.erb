@@ -35,7 +35,7 @@
           <% @v_stock_insumo.each do |v_stock_insumo| %>
             <tr>
               <% if current_usuario.ROL_USUARIO == 'B'%>
-                <% if @bodeguero.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
+                <% if current_usuario.ID_LOCAL == v_stock_insumo.ID_LOCAL %>
                   <td><%= v_stock_insumo.NOMBRE_UNICO_INSUMO %></td>
                   <td><%= v_stock_insumo.STOCK_INSUMO_LOCAL %></td>
                   <td>$<%= v_stock_insumo.PRECIO_INSUMO %></td>

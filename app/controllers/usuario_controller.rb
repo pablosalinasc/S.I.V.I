@@ -53,6 +53,6 @@ class UsuarioController < ApplicationController
     end
 
     def usuario_params
-      params.require(:usuario).permit(:NOMBRE_USUARIO, :RUT_USUARIO, :FECHA_NACIMIENTO_USUARIO, :CORREO_USUARIO, :TELEFONO_USUARIO, :ROL_USUARIO)
+      params.require(:usuario).permit(:NOMBRE_USUARIO, :RUT_USUARIO, :FECHA_NACIMIENTO_USUARIO, :CORREO_USUARIO, :TELEFONO_USUARIO, :ROL_USUARIO, :ID_LOCAL)
     end
 end

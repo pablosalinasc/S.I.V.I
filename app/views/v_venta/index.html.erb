@@ -30,7 +30,7 @@
       <% @v_venta.each do |v_venta| %>
         <tr>
           <% if @user.ROL_USUARIO == 'B' %>
-            <% if @bodeguero.ID_LOCAL == v_venta.ID_LOCAL %>
+            <% if current_usuario.ID_LOCAL == v_venta.ID_LOCAL %>
               <td><%= v_venta.NOMBRE_VENDEDOR %></td>
               <td><%= v_venta.NOMBRE_CLIENTE %></td>
               <td>$<%= v_venta.MONTO_TOTAL_VENTA %></td>

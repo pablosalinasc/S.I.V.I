@@ -2,7 +2,6 @@
   <% if @venta.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@venta.errors.count, "error") %> prohibited this venta from being saved:</h2>
-
       <ul>
       <% @venta.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -17,16 +16,17 @@
     <%= f.select :ID_VENDEDOR,datos,disabled: true, selected: current_usuario.ID_USUARIO%>
   </div>
   <div class="field">
+    <% if current_usuario.ROL_USUARIO=="A"%>
     <%= f.label :ID_LOCAL, "Local *" %><br>
     <%= f.collection_select :ID_LOCAL, Local.all, :id, :DIRECCION_LOCAL, :include_blank => true %>
+    <% else%>
+    <%= f.label :ID_LOCAL, "Local *" %><br>
+    <%= f.collection_select :ID_LOCAL, Local.where(ID_LOCAL: current_usuario.ID_LOCAL), :id, :DIRECCION_LOCAL %>
+    <% end%>
   </div>
   <div class="field">
     <%= f.label :ID_CLIENTE, "Cliente" %><br>
     <%= f.collection_select :ID_CLIENTE, Cliente.all, :id, :NOMBRE_CLIENTE, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label :FECHA_VENTA, "Fecha de realización *" %><br>
-    <%= f.date_field :FECHA_VENTA, :class => "form-control" %>
   </div>
   <div class="field">
     <% tipos= {"EFECTIVO"=>"EFECTIVO","CHEQUE"=>"CHEQUE","TARJETA"=>"TARJETA"}%>

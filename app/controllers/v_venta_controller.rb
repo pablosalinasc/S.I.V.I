@@ -6,9 +6,6 @@ class VVentaController < ApplicationController
   respond_to :html
 
   def index
-    if current_usuario.ROL_USUARIO == 'B'
-      @bodeguero = Bodeguero.find_by ID_BODEGUERO: current_usuario.ID_USUARIO
-    end
     @v_venta = VVenta.all
     @venta = Venta.all
     @user = current_usuario

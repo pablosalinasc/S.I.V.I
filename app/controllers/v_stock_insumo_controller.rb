@@ -5,7 +5,7 @@ class VStockInsumoController < ApplicationController
   respond_to :html
 
   def index
-    @bodeguero = Bodeguero.find_by ID_BODEGUERO: current_usuario.ID_USUARIO
+    @usuario = Usuario.find_by ID_USUARIO: current_usuario.ID_USUARIO
     @v_stock_insumo = VStockInsumo.all
     @user = current_usuario
     if usuario_signed_in?  
