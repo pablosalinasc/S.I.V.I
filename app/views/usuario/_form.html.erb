@@ -36,7 +36,11 @@
     <%= f.label :ROL_USUARIO, "Rol de usuario" %><br>
     <%= f.select :ROL_USUARIO,roles, :class => "form-control"%>
   </div>
-
+  <div class="field">
+    <%= f.label :DIRECCION_LOCAL, "Local de usuario" %><br>
+    <%#= f.select :ROL_USUARIO,roles, :class => "form-control", :include_blank => true  %>
+    <%= f.collection_select :ID_LOCAL, Local.all, :id, :DIRECCION_LOCAL %><br>
+  </div>
   <div class="field">
     <%= f.label :password, "Contraseña *" %>
     <% if @minimum_password_length %>

@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "ID_LOCAL"
   end
 
   create_table "v_codigo_proveedor", id: false, force: true do |t|

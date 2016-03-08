@@ -60,27 +60,27 @@
       </div>
       <br>
       <div class="col-xs-1"></div>
-      <div class="col-xs-4">
-        <h4 style="font-weight: bold">Lista de marcas de impresora compatibles</h4>
+          <div class="col-xs-4">
+            <h4 style="font-weight: bold">Lista de marcas de impresora compatibles</h4>
 
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th><strong>Marca</strong></th>
-            </tr>
-          </thead>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th><strong>Marca</strong></th>
+                </tr>
+              </thead>
 
-          <tbody>
-            <% @v_compatibilidad.each do |v_compatibilidad| %>
-              <tr>
-                <% if v_compatibilidad.ID_INSUMO == @v_stock_insumo.ID_INSUMO %>
-                  <td><%= v_compatibilidad.NOMBRE_MARCA %></td>
+              <tbody>
+                <% @v_compatibilidad.each do |v_compatibilidad| %>
+                  <tr>
+                    <% if v_compatibilidad.ID_INSUMO == @v_stock_insumo.ID_INSUMO %>
+                      <td><%= v_compatibilidad.NOMBRE_MARCA %></td>
+                    <% end %>
+                  </tr>
                 <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+              </tbody>
+            </table>
+          </div>
     </div>
     <br>
     <div class="row">
