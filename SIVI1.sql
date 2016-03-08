@@ -754,13 +754,14 @@ CREATE TRIGGER UPDATE_STOCK_VENTA
 BEFORE UPDATE ON venta
 FOR EACH ROW
 BEGIN
+	DECLARE done INT DEFAULT FALSE; 
 	DECLARE insumo INT;
     DECLARE stock_venta INT DEFAULT 0;
     
     DECLARE actualizar_stock CURSOR FOR
     SELECT d.ID_INSUMO,d.CANTIDAD_VENTA FROM detalle_venta d WHERE d.id_venta=new.id_venta;
     
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET @hecho = 1;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
     IF (new.DESPACHADA_VENTA=1 AND old.DESPACHADA_VENTA=0) THEN
 		INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Entro al if');
@@ -769,9 +770,9 @@ BEGIN
 		LOOP1: LOOP
 		
 			FETCH actualizar_stock INTO insumo, stock_venta;
-			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje',CONCAT_WS('Fetch:',insumo,' ',stock_venta));
+			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje',CONCAT_WS(' ','Fetch: ','insumo:',insumo,'stock:',stock_venta));
 
-			IF @hecho THEN
+			IF done THEN
 				INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Salio del cursor');
 				LEAVE LOOP1;
 			END IF;
@@ -781,7 +782,7 @@ BEGIN
 			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
 			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Intenta modificar algo');
 			
-		END LOOP;
+		END LOOP LOOP1;
 		
 		CLOSE actualizar_stock;
     
@@ -809,7 +810,8 @@ CREATE TRIGGER UPDATE_STOCK_COMPRA
 BEFORE UPDATE ON guia_de_despacho 
 FOR EACH ROW
 BEGIN
-	DECLARE id_insumo INT;
+	DECLARE done INT DEFAULT FALSE; 
+	DECLARE insumo INT;
     DECLARE stock_venta INT DEFAULT 0;
     
     DECLARE actualizar_stock CURSOR FOR
@@ -817,7 +819,7 @@ BEGIN
     FROM detalle_guia_de_despacho d, CODIGO_PROVEEDOR c 
     WHERE new.id_guia_despacho=d.id_guia_despacho and c.ID_CODIGO_PROVEEDOR=d.ID_CODIGO_PROVEEDOR;
     
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET @hecho = TRUE;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
     # despacho_local_guia va a servir ahora como booleano para poder ver si ya fue despachada esa guia
     # (no para definir si el despacho es a un local o no, ya que se considera que toda guia de despacho es a un local)
@@ -827,14 +829,14 @@ BEGIN
 		
 		LOOP1: LOOP
 		
-			FETCH actualizar_stock INTO id_insumo, stock_venta;
-			IF @hecho THEN
+			FETCH actualizar_stock INTO insumo, stock_venta;
+			IF done THEN
 				LEAVE LOOP1;
 			END IF;
 			
 			UPDATE insumo_local i
 			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL+stock_venta
-			WHERE i.id_insumo=id_insumo AND i.id_local IN (SELECT id_local FROM guia_local_bodeguero WHERE id_guia_despacho=new.id_guia_despacho);
+			WHERE i.id_insumo=insumo AND i.id_local IN (SELECT id_local FROM guia_local_bodeguero WHERE id_guia_despacho=new.id_guia_despacho);
 			
 		END LOOP LOOP1;
 		
@@ -867,9 +869,10 @@ CREATE TRIGGER UPDATE_STOCK_DEVOLUCION
 BEFORE UPDATE ON DEVOLUCION
 FOR EACH ROW
 BEGIN
-        DECLARE id_insumo INT;
-		DECLARE cantidad_devolucion INT DEFAULT 0;
-        DECLARE cantidad_cambio INT DEFAULT 0;
+		DECLARE done INT DEFAULT FALSE; 
+        DECLARE insumo INT;
+		DECLARE cantidad_dev INT DEFAULT 0;
+        DECLARE cantidad_cam INT DEFAULT 0;
         
 		DECLARE actualizar_stock_1 CURSOR FOR
 		SELECT id_insumo,cantidad_devolucion FROM detalle_devolucion WHERE new.id_devolucion=id_devolucion;
@@ -878,7 +881,7 @@ BEGIN
 		DECLARE actualizar_stock_2 CURSOR FOR
 		SELECT id_insumo,cantidad_cambio FROM detalle_cambio_insumo WHERE new.id_devolucion=id_devolucion;
         
-		DECLARE CONTINUE HANDLER FOR NOT FOUND SET @hecho = TRUE;
+		DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
         
 	#Si pide reposicion de insumos, los insumos estan defectuosos y el estado cambio a despachado
 	IF (STRCMP(new.TIPO_DEVOLUCION,'REPOSICION') = 0 AND
@@ -889,14 +892,14 @@ BEGIN
 		
 		LOOP1: LOOP
 		
-			FETCH actualizar_stock_1 INTO id_insumo, cantidad_devolucion;
-			IF @hecho THEN
+			FETCH actualizar_stock_1 INTO insumo, cantidad_dev;
+			IF done THEN
 				LEAVE LOOP1;
 			END IF;
 			
 			UPDATE insumo_local i
-			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL-cantidad_devolucion
-			WHERE i.id_insumo=id_insumo AND i.id_local=new.id_local;
+			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL-cantidad_dev
+			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
 		
 		END LOOP LOOP1;
 		
@@ -911,14 +914,14 @@ BEGIN
 		
 		LOOP2: LOOP
 		
-			FETCH actualizar_stock_2 INTO id_insumo, cantidad_cambio;
-			IF @hecho THEN
+			FETCH actualizar_stock_2 INTO insumo, cantidad_cam;
+			IF done THEN
 				LEAVE LOOP2;
 			END IF;
 			
 			UPDATE insumo_local i
-			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL-cantidad_cambio
-			WHERE i.id_insumo=id_insumo AND i.id_local=new.id_local;
+			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL-cantidad_cam
+			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
 		
 		END LOOP LOOP2;
 		
@@ -932,14 +935,14 @@ BEGIN
 		
 		LOOP1: LOOP
 		
-			FETCH actualizar_stock_1 INTO id_insumo, cantidad_devolucion;
-			IF @hecho THEN
+			FETCH actualizar_stock_1 INTO insumo, cantidad_dev;
+			IF done THEN
 				LEAVE LOOP1;
 			END IF;
 			
 			UPDATE insumo_local i
-			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL+cantidad_devolucion
-			WHERE i.id_insumo=id_insumo AND i.id_local=new.id_local;
+			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL+cantidad_dev
+			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
 		
 		END LOOP LOOP1;
 		

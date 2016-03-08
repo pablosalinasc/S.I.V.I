@@ -236,8 +236,8 @@ VALUES
 (13,1,'CD'),
 (11,1,'-R'),
 (12,1,'16x'),
-(10,1,'Verbatim'),
-(5,1,'Pack 10');
+(5,1,'Verbatim'),
+(10,1,'Pack 10');
 
 INSERT INTO `sivi`.`propiedad_valor`
 (`ID_PROPIEDAD`,
@@ -247,8 +247,8 @@ VALUES
 (13,2,'CD'),
 (11,2,'+R'),
 (12,2,'16x'),
-(10,2,'Verbatim'),
-(5,2,'Pack 25');
+(5,2,'Verbatim'),
+(10,2,'Pack 25');
 
 INSERT INTO `sivi`.`propiedad_valor`
 (`ID_PROPIEDAD`,
@@ -258,8 +258,8 @@ VALUES
 (13,3,'DVD'),
 (11,3,'-R'),
 (12,3,'8x'),
-(10,3,'Verbatim'),
-(5,3,'Pack 25');
+(5,3,'Verbatim'),
+(10,3,'Pack 25');
 
 INSERT INTO `sivi`.`propiedad_valor`
 (`ID_PROPIEDAD`,
