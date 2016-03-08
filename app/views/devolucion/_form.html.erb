@@ -16,16 +16,18 @@
     <%= f.collection_select :ID_VENTA, Venta.all, :id, :NUMERO_BOLETA_VENTA, :include_blank => true %>
   </div>
   <div class="field">
+    <% if current_usuario.ROL_USUARIO=="A"%>
     <%= f.label :ID_LOCAL, "Local *" %><br>
     <%= f.collection_select :ID_LOCAL, Local.all, :id, :DIRECCION_LOCAL, :include_blank => true %>
+    <% else%>
+    <%= f.label :ID_LOCAL, "Local *" %><br>
+    <%= f.collection_select :ID_LOCAL, Local.where(ID_LOCAL: current_usuario.ID_LOCAL), :id, :DIRECCION_LOCAL %>
+    <% end%>
   </div>
   <div class="field">
-    <%= f.label :ID_VENDEDOR, "Vendedor *" %><br>
-    <%= f.collection_select :ID_VENDEDOR, Usuario.where(ROL_USUARIO: 'V'), :id, :NOMBRE_USUARIO, :include_blank => true ,:name => 'ID_VENDEDOR'%>
-  </div>
-  <div class="field">
-    <%= f.label :FECHA_DEVOLUCION, "Fecha de realización *" %><br>
-    <%= f.date_field :FECHA_DEVOLUCION, :class => "form-control"  %>
+    <%= f.label :ID_VENDEDOR , "Vendedor *" %><br>
+    <% datos={current_usuario.NOMBRE_USUARIO=>current_usuario.ID_USUARIO}%>
+    <%= f.select :ID_VENDEDOR,datos,disabled: true, selected: current_usuario.ID_USUARIO%>
   </div>
   <div class="field">
     <%= f.label :MONTO_CAMBIO, "Monto *" %><br>

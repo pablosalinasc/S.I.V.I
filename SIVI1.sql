@@ -166,7 +166,7 @@ CREATE TABLE DEVOLUCION
    ID_VENTA             INT NOT NULL,
    ID_LOCAL             INT NOT NULL,
    ID_VENDEDOR           INT NOT NULL,
-   ID_ESTADO_DEVOLUCION INT NOT NULL DEFAULT 1,
+   ID_ESTADO_DEVOLUCION INT NOT NULL DEFAULT 3,
    FECHA_DEVOLUCION     DATETIME NOT NULL DEFAULT Now(),
    MONTO_CAMBIO         INT,
    CANT_INSUMOS_NUEVOS_DEVOLUCION INT,
@@ -933,18 +933,18 @@ BEGIN
 		
 		OPEN actualizar_stock_1;
 		
-		LOOP1: LOOP
+		LOOP3: LOOP
 		
 			FETCH actualizar_stock_1 INTO insumo, cantidad_dev;
 			IF done THEN
-				LEAVE LOOP1;
+				LEAVE LOOP3;
 			END IF;
 			
 			UPDATE insumo_local i
 			SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL+cantidad_dev
 			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
 		
-		END LOOP LOOP1;
+		END LOOP LOOP3;
 		
 		CLOSE actualizar_stock_1;
         

@@ -23,7 +23,7 @@ class CodigoProveedorController < ApplicationController
   def create
     @codigo_proveedor = CodigoProveedor.new(codigo_proveedor_params)
     @codigo_proveedor.save
-    respond_with(@codigo_proveedor)
+    redirect_to "/v_codigo_proveedor/"
   end
 
   def update
