@@ -42,7 +42,7 @@
   <h3> Detalle Guía de despacho </h3>
   <%= f.fields_for :DetalleGuiaDeDespacho, include_id: false do |detalle_guia_de_despacho|%>
     <div class="row">
-      <div class="fields panel panel-default col-xs-6" style="margin-left:20px;">
+      <div class="fields panel panel-default col-xs-10" style="margin-left:20px;">
         <div class="panel-body">
         <%=detalle_guia_de_despacho.label :LINEA_GUIA, "Linea de detalle *"%><br>
         <%= detalle_guia_de_despacho.number_field :LINEA_GUIA, :class => "form-control" %><br>
@@ -58,7 +58,7 @@
   <%end%>
   <br><br>
   <div class="actions">
-    <%= f.submit "Ingreso guía de despacho", :class => "col-xs-2 btn btn-default", :style=>"color:white;background-color:green" %>
+    <%= f.submit "Ingreso guía de despacho", :class => "col-xs-4 btn btn-default", :style=>"color:white;background-color:green" %>
   </div>
-    <%= link_to 'Volver', v_guia_despacho_index_path , :class => "col-xs-2 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
+    <%= link_to 'Volver', v_guia_despacho_index_path , :class => "col-xs-4 btn btn-default", :style=>"margin-left:20px;margin-bottom:20px;" %>
 <% end %>
