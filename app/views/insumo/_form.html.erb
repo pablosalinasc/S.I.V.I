@@ -20,11 +20,12 @@
     my_email = $("#ID_TIPO_INSUMO option").is("selected").text();
     choice = my_email;
     </script>
+    <%# render 'form' %>
   </div>
   <div class="row">
     <div class="col-xs-6">
       <div class="field">
-        <%#= f.label :PRECIO_INSUMO, "Precio *" %><%= f.label :PRECIO_INSUMO, choice %><br><br>
+        <%= f.label :PRECIO_INSUMO, "Precio *" %><br>
         <%= f.number_field :PRECIO_INSUMO, :class=>"form-control", :min => "0" %>
       </div>
       <div class="field">
