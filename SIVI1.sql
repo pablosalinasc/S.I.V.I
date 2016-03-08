@@ -750,6 +750,79 @@ CREATE VIEW V_CODIGO_PROVEEDOR AS
     WHERE i.ID_INSUMO=c.ID_INSUMO and p.ID_PROVEEDOR=c.ID_PROVEEDOR;
 
 delimiter $
+CREATE TRIGGER INSERT_STOCK_LOCAL
+AFTER INSERT ON LOCAL
+FOR EACH ROW
+BEGIN
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE my_insumo INT;
+    
+	DECLARE insertar_stock CURSOR FOR
+    SELECT ID_INSUMO FROM INSUMO;
+    
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN insertar_stock;
+		
+	LOOP1: LOOP
+	
+		FETCH insertar_stock INTO my_insumo;
+
+		IF done THEN
+			LEAVE LOOP1;
+		END IF;
+		
+		INSERT INTO `sivi`.`insumo_local`
+		(`ID_INSUMO`,
+		`ID_LOCAL`,
+		`STOCK_INSUMO_LOCAL`)
+		VALUES
+		(my_insumo,
+		new.ID_LOCAL,
+		0);
+		
+	END LOOP LOOP1;
+		
+	CLOSE insertar_stock;
+END $
+
+delimiter $
+CREATE TRIGGER INSERT_STOCK_INSUMO
+AFTER INSERT ON INSUMO
+FOR EACH ROW
+BEGIN
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE my_local INT;
+	DECLARE insertar_stock CURSOR FOR
+    SELECT ID_LOCAL FROM LOCAL;
+    
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN insertar_stock;
+		
+	LOOP1: LOOP
+	
+		FETCH insertar_stock INTO my_local;
+
+		IF done THEN
+			LEAVE LOOP1;
+		END IF;
+		
+		INSERT INTO `sivi`.`insumo_local`
+		(`ID_INSUMO`,
+		`ID_LOCAL`,
+		`STOCK_INSUMO_LOCAL`)
+		VALUES
+		(new.ID_INSUMO,
+		my_local,
+		0);
+		
+	END LOOP LOOP1;
+		
+	CLOSE insertar_stock;
+END $
+
+delimiter $
 CREATE TRIGGER UPDATE_STOCK_VENTA
 BEFORE UPDATE ON venta
 FOR EACH ROW
@@ -764,23 +837,23 @@ BEGIN
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
     IF (new.DESPACHADA_VENTA=1 AND old.DESPACHADA_VENTA=0) THEN
-		INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Entro al if');
+		#INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Entro al if');
 		OPEN actualizar_stock;
 		
 		LOOP1: LOOP
 		
 			FETCH actualizar_stock INTO insumo, stock_venta;
-			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje',CONCAT_WS(' ','Fetch: ','insumo:',insumo,'stock:',stock_venta));
+			#INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje',CONCAT_WS(' ','Fetch: ','insumo:',insumo,'stock:',stock_venta));
 
 			IF done THEN
-				INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Salio del cursor');
+				#INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Salio del cursor');
 				LEAVE LOOP1;
 			END IF;
 			
 			UPDATE insumo_local as i
 			SET i.STOCK_INSUMO_LOCAL=i.STOCK_INSUMO_LOCAL-stock_venta
 			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
-			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Intenta modificar algo');
+			#INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Intenta modificar algo');
 			
 		END LOOP LOOP1;
 		

@@ -307,12 +307,10 @@ INSERT INTO `sivi`.`local`
 VALUES
 ('Carmen 91 Santiago'),('Pocuro 115 Providencia'),('Calle 2 Recoleta');
 
-INSERT INTO `sivi`.`insumo_local`
-(`ID_INSUMO`,
-`ID_LOCAL`,
-`STOCK_INSUMO_LOCAL`)
-VALUES
-(1,1,500),(2,1,500),(3,1,500),(4,1,500),(5,1,500),(1,2,500),(2,2,500),(3,2,500),(4,2,500),(5,2,500),(1,3,500),(2,3,500),(3,3,500),(4,3,500),(5,3,500);
+UPDATE `sivi`.`insumo_local`
+SET
+`STOCK_INSUMO_LOCAL` = 500
+WHERE ID_INSUMO>0 AND ID_LOCAL>0;
 
 INSERT INTO `sivi`.`usuario`
 (`NOMBRE_USUARIO`,
