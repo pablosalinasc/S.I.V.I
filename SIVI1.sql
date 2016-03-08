@@ -167,7 +167,7 @@ CREATE TABLE DEVOLUCION
    ID_LOCAL             INT NOT NULL,
    ID_VENDEDOR           INT NOT NULL,
    ID_ESTADO_DEVOLUCION INT NOT NULL DEFAULT 1,
-   FECHA_DEVOLUCION     DATETIME NOT NULL,
+   FECHA_DEVOLUCION     DATETIME NOT NULL DEFAULT Now(),
    MONTO_CAMBIO         INT,
    CANT_INSUMOS_NUEVOS_DEVOLUCION INT,
    TIPO_DEVOLUCION      VARCHAR(30) NOT NULL,
@@ -754,31 +754,34 @@ CREATE TRIGGER UPDATE_STOCK_VENTA
 BEFORE UPDATE ON venta
 FOR EACH ROW
 BEGIN
-	DECLARE id_insumo INT;
+	DECLARE insumo INT;
     DECLARE stock_venta INT DEFAULT 0;
     
     DECLARE actualizar_stock CURSOR FOR
-    SELECT id_insumo,cantidad_venta  FROM detalle_venta WHERE id_venta=new.id_venta;
+    SELECT d.ID_INSUMO,d.CANTIDAD_VENTA FROM detalle_venta d WHERE d.id_venta=new.id_venta;
     
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET @hecho = TRUE;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET @hecho = 1;
     
-    IF (new.DESPACHADA_VENTA=TRUE AND old.DESPACHADA_VENTA=FALSE) THEN
-
+    IF (new.DESPACHADA_VENTA=1 AND old.DESPACHADA_VENTA=0) THEN
+		INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Entro al if');
 		OPEN actualizar_stock;
 		
 		LOOP1: LOOP
 		
-			FETCH actualizar_stock INTO id_insumo, stock_venta;
+			FETCH actualizar_stock INTO insumo, stock_venta;
+			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje',CONCAT_WS('Fetch:',insumo,' ',stock_venta));
+
 			IF @hecho THEN
+				INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Salio del cursor');
 				LEAVE LOOP1;
 			END IF;
 			
-				UPDATE insumo_local i
-				SET STOCK_INSUMO_LOCAL=STOCK_INSUMO_LOCAL-stock_venta
-				WHERE i.id_insumo=id_insumo AND i.id_local=new.id_local;
+			UPDATE insumo_local as i
+			SET i.STOCK_INSUMO_LOCAL=i.STOCK_INSUMO_LOCAL-stock_venta
+			WHERE i.id_insumo=insumo AND i.id_local=new.id_local;
+			INSERT INTO PARAMETRO(NOMBRE_PARAMETRO,VALOR_PARAMETRO)VALUES('mensaje','Intenta modificar algo');
 			
-			
-		END LOOP LOOP1;
+		END LOOP;
 		
 		CLOSE actualizar_stock;
     
